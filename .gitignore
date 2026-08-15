@@ -11,3 +11,6 @@ $RECYCLE.BIN/
 .vscode/
 .idea/
 *.swp
+
+# Personal build notes - kept local, not published
+CONTENT_BRIEF.md
