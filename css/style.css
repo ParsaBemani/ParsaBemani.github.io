@@ -522,14 +522,95 @@ hr {
   margin-bottom: 1.6rem;
 }
 
-/* The "What I'm working on right now" blurb */
-.currently h2 { margin-bottom: 0.75rem; }
+/* The "Who am I?" intro block */
+.about h2 { margin-bottom: 0.75rem; }
 
 /* Small grid of links out to the main sections */
 .signposts .card h3 { font-size: 1.05rem; }
 .signposts .card p { font-size: 0.94rem; color: var(--ink-soft); margin-bottom: 0.75rem; }
 .signposts a.card { text-decoration: none; color: inherit; display: block; }
-.signposts a.card .more { font-size: 0.9rem; font-weight: 550; color: var(--accent); }
+.signposts .card .more { font-size: 0.9rem; font-weight: 550; color: var(--accent); }
+
+/* --- Courses tile: a card that behaves as a button --- */
+.menu-tile { position: relative; }        /* anchors the pop-up menu below */
+
+.course-trigger {
+  display: block;
+  width: 100%;
+  height: 100%;
+  font: inherit;
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+}
+.course-trigger .more { display: inline-flex; align-items: center; gap: 0.4rem; }
+
+/* Small triangle after "Show menu"; flips when the menu is open */
+.more-caret {
+  width: 0; height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid currentColor;
+  transition: transform 0.15s ease;
+}
+.course-trigger[aria-expanded="true"] .more-caret { transform: rotate(180deg); }
+.course-trigger[aria-expanded="true"] { border-color: var(--accent); }
+
+/* --- The pop-up menu itself ---
+   Sits above the tile, centred on it, with a small pointer aimed back down
+   at the button. Each item is one segment divided by a hairline. */
+.popup-menu {
+  position: absolute;
+  bottom: calc(100% + 14px);      /* float above the tile */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 30;
+  display: flex;
+  background: var(--accent);
+  border-radius: 14px;
+  box-shadow: 0 10px 28px rgba(28, 35, 33, 0.22);
+  animation: popup-in 0.16s ease;
+}
+.popup-menu[hidden] { display: none; }
+
+/* The pointer, drawn as a triangle hanging off the bottom edge */
+.popup-menu::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 9px solid transparent;
+  border-top-color: var(--accent);
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-width: 92px;
+  padding: 0.95rem 0.7rem;
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.14s ease;
+}
+/* Hairline dividers between segments */
+.menu-item + .menu-item { border-left: 1px solid rgba(255, 255, 255, 0.28); }
+
+/* Round only the outer corners so the fill matches the menu shape */
+.menu-item:first-child { border-radius: 14px 0 0 14px; }
+.menu-item:last-child  { border-radius: 0 14px 14px 0; }
+.menu-item:hover { background: rgba(255, 255, 255, 0.14); color: #fff; }
+
+.menu-icon svg { width: 26px; height: 26px; display: block; }
+.menu-label { font-size: 0.84rem; line-height: 1.2; white-space: nowrap; }
+
+@keyframes popup-in {
+  from { opacity: 0; transform: translate(-50%, 6px); }
+  to   { opacity: 1; transform: translate(-50%, 0); }
+}
 
 
 /* ==========================================================================

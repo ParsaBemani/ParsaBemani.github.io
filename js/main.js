@@ -1,13 +1,14 @@
 /* ==========================================================================
    SITE JAVASCRIPT
-   Three small, independent features. Each one quietly does nothing if the
+   A few small, independent features. Each one quietly does nothing if the
    elements it needs aren't on the current page, so this single file can be
    loaded everywhere.
 
    1. Mobile menu toggle
-   2. "Courses" dropdown (click to open; CSS handles hover on desktop)
-   3. Lab Bootcamp journey-map accordion
-   4. Footer year
+   2. "Courses" nav dropdown (click to open; CSS handles hover on desktop)
+   3. Courses pop-up menu on the home page
+   4. Lab Bootcamp journey-map accordion
+   5. Footer year
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -58,7 +59,46 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* ------------------------------------------------------------------
-     3. LAB BOOTCAMP JOURNEY MAP
+     3. COURSES POP-UP MENU (home page)
+     The Courses tile opens a small menu floating above it. Closes on a
+     second click, on a click elsewhere, or on Escape.
+     ------------------------------------------------------------------ */
+
+  var courseTrigger = document.querySelector('.course-trigger');
+  var coursePopup = document.getElementById('courses-popup');
+
+  if (courseTrigger && coursePopup) {
+
+    var setCourseMenu = function (open) {
+      courseTrigger.setAttribute('aria-expanded', String(open));
+      coursePopup.hidden = !open;
+    };
+
+    courseTrigger.addEventListener('click', function (event) {
+      event.stopPropagation();  // don't trip the outside-click handler below
+      setCourseMenu(courseTrigger.getAttribute('aria-expanded') !== 'true');
+    });
+
+    // Clicks inside the menu (i.e. on a course link) shouldn't close it early.
+    coursePopup.addEventListener('click', function (event) {
+      event.stopPropagation();
+    });
+
+    document.addEventListener('click', function () {
+      setCourseMenu(false);
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        setCourseMenu(false);
+        courseTrigger.focus();
+      }
+    });
+  }
+
+
+  /* ------------------------------------------------------------------
+     4. LAB BOOTCAMP JOURNEY MAP
      Each stop button has aria-controls="<panel id>". Clicking a stop opens
      its panel and closes any other open stop *in the same lane*, so the two
      tracks can be read side by side.
@@ -92,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* ------------------------------------------------------------------
-     4. FOOTER YEAR
+     5. FOOTER YEAR
      Keeps the copyright year current without editing every page.
      ------------------------------------------------------------------ */
 

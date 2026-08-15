@@ -45,7 +45,7 @@
 
         <li><a class="nav-link" href="lab-bootcamp.html">Lab Bootcamp</a></li>
         <li><a class="nav-link" href="capstone.html">Capstone</a></li>
-        <li><a class="nav-link" href="looking-ahead.html">Looking Ahead</a></li>
+        <li><a class="nav-link" href="looking-ahead.html">Upcoming Works</a></li>
         <li><a class="nav-link" href="seminars.html">Seminars</a></li>
       </ul>
     </nav>
@@ -80,27 +80,44 @@
     </div>
   </section>
 
-  <!-- ======================= CURRENTLY ======================= -->
-  <section class="section section--alt currently">
+  <!-- ======================= WHO AM I ======================= -->
+  <!-- Each <p> below is one paragraph. Add another by copying a <p> block. -->
+  <section class="section section--alt about">
     <div class="container">
-      <h2>Currently</h2>
+      <h2>Who am I?</h2>
+
       <p>
-        I'm a graduate student in a research-focused master's program, where most of my time
-        is split between the bench and the questions that bring me to it. Right now I'm working
-        through a wet-lab technique bootcamp, building up a working toolkit across protein and
-        gene-expression methods — western blotting on one track, RT-qPCR on the other. Alongside
-        that, I'm part of a year-long capstone team studying Parkinson's diagnosis techniques.
-        I'm also preparing for an upcoming community rotation, which will take that work outside
-        the lab and into the community our project is meant to serve.
+        Hello, my name is Parsa I recently graduated from the University of Toronto and I am
+        a graduate student in the Masters of Medical Sciences at the University of Western
+        Ontario.
+      </p>
+
+      <p>
+        My time is split between academia and sports. I enjoy learning everything I can about
+        the human body and my passion is to understand how it works and aspire to become a
+        physician.
+      </p>
+
+      <p>
+        My aim in life is to promote the overall health of as many individuals as I can through
+        providing a better understanding of science-backed tools to improve performance and
+        health.
+      </p>
+
+      <p>
+        Whenever I'm not attending a lecture or studying I spend my time being physically active
+        and further developing my passion in sports.
       </p>
     </div>
   </section>
 
-  <!-- ======================= SIGNPOSTS ======================= -->
-  <!-- Quick links out to the main sections of the site. -->
+  <!-- ======================= RECENT ACTIVITIES ======================= -->
+  <!-- Quick links out to the main sections of the site. The Courses tile is a
+       button rather than a link: clicking it opens the pop-up menu defined
+       just below it. -->
   <section class="section signposts">
     <div class="container">
-      <h2>Around this site</h2>
+      <h2>Recent Activities</h2>
       <div class="grid cols-3">
 
         <a class="card" href="lab-bootcamp.html">
@@ -115,22 +132,58 @@
           <span class="more">See the project &rarr;</span>
         </a>
 
+        <!-- Courses tile + its pop-up menu.
+             To add a course to the menu, copy one <a class="menu-item"> block
+             and point it at the new page. The menu resizes itself. -->
+        <div class="menu-tile">
+          <button class="card course-trigger" aria-expanded="false" aria-controls="courses-popup">
+            <h3>Courses</h3>
+            <p>The three courses I've taken so far &mdash; communication, ethics and policy.</p>
+            <span class="more">Show menu <span class="more-caret" aria-hidden="true"></span></span>
+          </button>
+
+          <div class="popup-menu" id="courses-popup" hidden>
+            <a class="menu-item" href="courses/sci-comm.html">
+              <span class="menu-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                     stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20.5 12c0 3.6-3.8 6.5-8.5 6.5-1 0-2-.13-2.9-.38L4 20l1.5-3.4C4.2 15.4 3.5 13.8 3.5 12c0-3.6 3.8-6.5 8.5-6.5s8.5 2.9 8.5 6.5z"/>
+                  <path d="M8.5 10.5h7M8.5 13.5h4.5"/>
+                </svg>
+              </span>
+              <span class="menu-label">Sci Comm</span>
+            </a>
+
+            <a class="menu-item" href="courses/ethics.html">
+              <span class="menu-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                     stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 4.5v15M7.5 19.5h9"/>
+                  <path d="M3.5 7.5H7c1.9 0 3.6-.7 5-1.5 1.4.8 3.1 1.5 5 1.5h3.5"/>
+                  <path d="M6.5 8 3.5 14.5h6zM17.5 8l-3 6.5h6z"/>
+                </svg>
+              </span>
+              <span class="menu-label">Ethics</span>
+            </a>
+
+            <a class="menu-item" href="courses/sci-policy.html">
+              <span class="menu-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                     stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M13.5 3.5H7A1.5 1.5 0 0 0 5.5 5v14A1.5 1.5 0 0 0 7 20.5h10a1.5 1.5 0 0 0 1.5-1.5V8.5z"/>
+                  <path d="M13.5 3.5v5h5"/>
+                  <path d="M8.5 12.5h7M8.5 16h4.5"/>
+                </svg>
+              </span>
+              <span class="menu-label">Sci Policy</span>
+            </a>
+          </div>
+        </div>
+
         <a class="card" href="looking-ahead.html">
-          <h3>Looking Ahead</h3>
+          <h3>Upcoming Works</h3>
           <p>An upcoming community rotation with Parkinson Society Southwestern Ontario.</p>
           <span class="more">What's next &rarr;</span>
-        </a>
-
-        <a class="card" href="courses/sci-comm.html">
-          <h3>Scientific Communication</h3>
-          <p>Coursework on getting research across clearly — and the people who taught it.</p>
-          <span class="more">Read more &rarr;</span>
-        </a>
-
-        <a class="card" href="courses/sci-policy.html">
-          <h3>Science Policy</h3>
-          <p>How healthcare policies and regulations get developed and implemented.</p>
-          <span class="more">Read more &rarr;</span>
         </a>
 
         <a class="card" href="seminars.html">
