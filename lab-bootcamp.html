@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab Bootcamp — Parsa Bemani</title>
+  <meta name="description" content="A two-track journey map of wet-lab bootcamp sessions: western blotting and RT-qPCR in RAT2 fibroblasts.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===== SITE HEADER (repeated on every page — keep in sync) ===== -->
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a class="brand" href="index.html">Parsa Bemani</a>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+      Menu
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+      <ul class="nav-list">
+        <li><a class="nav-link" href="index.html">Home</a></li>
+
+        <li class="has-dropdown">
+          <button class="nav-link dropdown-toggle" aria-expanded="false" aria-controls="courses-menu">
+            Courses <span class="caret" aria-hidden="true"></span>
+          </button>
+          <ul class="dropdown" id="courses-menu">
+            <li><a href="courses/sci-comm.html">Sci Comm</a></li>
+            <li><a href="courses/ethics.html">Ethics</a></li>
+            <li><a href="courses/sci-policy.html">Sci Policy</a></li>
+          </ul>
+        </li>
+
+        <li><a class="nav-link is-active" href="lab-bootcamp.html" aria-current="page">Lab Bootcamp</a></li>
+        <li><a class="nav-link" href="capstone.html">Capstone</a></li>
+        <li><a class="nav-link" href="looking-ahead.html">Looking Ahead</a></li>
+        <li><a class="nav-link" href="seminars.html">Seminars</a></li>
+      </ul>
+    </nav>
+
+  </div>
+</header>
+
+<!-- ==========================================================================
+     ICON SPRITE
+     All the little line-icons used by the journey map, defined once here and
+     reused below with <use href="#icon-name">. Editing an icon here updates
+     every stop that uses it. The sprite itself is invisible.
+     ========================================================================== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <!-- Every icon carries the same outlined look (no fill, stroke follows the
+         text color). These are written as attributes rather than CSS because
+         attributes are copied reliably into <use> across all browsers. -->
+
+    <!-- Flask — sample prep / bench chemistry -->
+    <symbol id="icon-flask" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="1.6"
+            stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 3h6"/>
+      <path d="M10 3v6L4.9 18.4A1.8 1.8 0 0 0 6.5 21h11a1.8 1.8 0 0 0 1.6-2.6L14 9V3"/>
+      <path d="M7.4 15h9.2"/>
+    </symbol>
+
+    <!-- Gel — electrophoresis / blot with lanes and bands -->
+    <symbol id="icon-gel" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="1.6"
+            stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3.5" y="3.5" width="17" height="17" rx="2"/>
+      <path d="M9.2 3.5v17M14.8 3.5v17"/>
+      <path d="M5 8.5h2.4M11 10.5h2.4M16.6 7.5h2.4M5 14h2.4M11 15.5h2.4M16.6 13h2.4"/>
+    </symbol>
+
+    <!-- Antibody — Y-shaped immunoglobulin -->
+    <symbol id="icon-antibody" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="1.6"
+            stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 21v-6.7"/>
+      <path d="M12 14.3 6.8 6.6M12 14.3 17.2 6.6"/>
+      <path d="M4.7 8 8.9 5.2M19.3 8 15.1 5.2"/>
+    </symbol>
+
+    <!-- Cell — cultured cell with nucleus -->
+    <symbol id="icon-cell" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="1.6"
+            stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="8.5"/>
+      <circle cx="13" cy="10.6" r="3"/>
+      <circle cx="8.4" cy="15.2" r="1.1"/>
+    </symbol>
+
+    <!-- DNA — double helix with base-pair rungs.
+         The two strands cross near y=7 and y=17, so the rungs sit between the
+         crossings (y = 5.3, 9.5, 14.5, 18.7) where the strands are 6.8 apart. -->
+    <symbol id="icon-dna" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="1.6"
+            stroke-linecap="round" stroke-linejoin="round">
+      <path d="M7 2.5c0 4.5 10 5.5 10 9.5s-10 5-10 9.5"/>
+      <path d="M17 2.5c0 4.5-10 5.5-10 9.5s10 5 10 9.5"/>
+      <path d="M8.6 5.3h6.8M8.6 9.5h6.8M8.6 14.5h6.8M8.6 18.7h6.8"/>
+    </symbol>
+  </defs>
+</svg>
+
+<main>
+
+  <!-- ======================= PAGE INTRO ======================= -->
+  <div class="page-head">
+    <div class="container">
+      <p class="eyebrow">Wet-lab training</p>
+      <h1>Lab Bootcamp</h1>
+      <p class="lede">
+        Two parallel technique tracks, run through the same cell model. Follow either line
+        and click a stop to see what that session covered.
+      </p>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       THE JOURNEY MAP
+       Each track is one ".lane". Inside a lane:
+         <ol class="stops">     — the line of clickable stop buttons
+         <div>...stop-panel...  — one hidden detail card per stop
+
+       To add a stop: copy one <li> in the .stops list and one .stop-panel block,
+       then give them a matching new id (the button's aria-controls must equal
+       the panel's id). The connecting line and spacing adjust automatically.
+       ========================================================================== -->
+  <section class="section">
+    <div class="container">
+
+      <p class="map-hint">Click a stop to open that session &mdash; one stop per track at a time.</p>
+
+      <!-- ------------------------------------------------------------------
+           TRACK 1 — WESTERN BLOT (3 stops)
+           ------------------------------------------------------------------ -->
+      <div class="lane lane--wb">
+
+        <div class="lane-head">
+          <h2>Western Blot Track</h2>
+          <p class="lane-goal">
+            <strong>Goal:</strong> compare single reference-protein normalization against
+            total-protein normalization for western blots.
+          </p>
+        </div>
+
+        <!-- The line of stops -->
+        <ol class="stops">
+          <li>
+            <button class="stop-btn" id="wb1-btn" aria-expanded="false" aria-controls="wb1-panel">
+              <span class="stop-node" aria-hidden="true"><svg><use href="#icon-flask"></use></svg></span>
+              <span class="stop-label"><span class="stop-num">Stop 1</span>Protein Isolation &amp; Quantification</span>
+            </button>
+          </li>
+          <li>
+            <button class="stop-btn" id="wb2-btn" aria-expanded="false" aria-controls="wb2-panel">
+              <span class="stop-node" aria-hidden="true"><svg><use href="#icon-gel"></use></svg></span>
+              <span class="stop-label"><span class="stop-num">Stop 2</span>SDS-PAGE &amp; Membrane Transfer</span>
+            </button>
+          </li>
+          <li>
+            <button class="stop-btn" id="wb3-btn" aria-expanded="false" aria-controls="wb3-panel">
+              <span class="stop-node" aria-hidden="true"><svg><use href="#icon-antibody"></use></svg></span>
+              <span class="stop-label"><span class="stop-num">Stop 3</span>Immunoblotting &amp; Imaging</span>
+            </button>
+          </li>
+        </ol>
+
+        <!-- The detail cards, hidden until their stop is clicked -->
+        <div class="stop-panels">
+
+          <article class="stop-panel" id="wb1-panel" role="region" aria-labelledby="wb1-btn" hidden>
+            <span class="stop-panel-num">Western Blot &middot; Stop 1</span>
+            <h3>Protein Isolation &amp; Quantification</h3>
+            <p>
+              Lysed cultured RAT2 fibroblast cells to extract total protein, then ran a BCA assay
+              with a BSA standard curve to determine each sample's protein concentration.
+            </p>
+            <div class="skills">
+              <p class="label">Skills gained</p>
+              <span class="chip">Cell lysis</span>
+              <span class="chip">BCA protein assay</span>
+              <span class="chip">Standard curve calculation</span>
+            </div>
+          </article>
+
+          <article class="stop-panel" id="wb2-panel" role="region" aria-labelledby="wb2-btn" hidden>
+            <span class="stop-panel-num">Western Blot &middot; Stop 2</span>
+            <h3>SDS-PAGE &amp; Membrane Transfer</h3>
+            <p>
+              Cast and ran polyacrylamide gels to separate proteins by molecular weight, then
+              transferred the separated proteins onto a PVDF membrane via semi-dry transfer.
+            </p>
+            <div class="skills">
+              <p class="label">Skills gained</p>
+              <span class="chip">Gel casting</span>
+              <span class="chip">SDS-PAGE</span>
+              <span class="chip">Protein transfer technique</span>
+            </div>
+          </article>
+
+          <article class="stop-panel" id="wb3-panel" role="region" aria-labelledby="wb3-btn" hidden>
+            <span class="stop-panel-num">Western Blot &middot; Stop 3</span>
+            <h3>Immunoblotting &amp; Imaging</h3>
+            <p>
+              Probed the membrane with primary and secondary antibodies to detect reference
+              proteins (&beta;-actin, GAPDH), imaged the blot, and compared normalization strategies.
+            </p>
+            <div class="skills">
+              <p class="label">Skills gained</p>
+              <span class="chip">Immunoblotting</span>
+              <span class="chip">Antibody probing</span>
+              <span class="chip">Densitometric image analysis</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- ------------------------------------------------------------------
+           TRACK 2 — RT-qPCR (5 stops)
+           ------------------------------------------------------------------ -->
+      <div class="lane lane--qpcr">
+
+        <div class="lane-head">
+          <h2>RT-qPCR Track</h2>
+          <p class="lane-goal">
+            <strong>Goal:</strong> test whether ascorbate treatment changes Collagen&nbsp;I expression.
+          </p>
+        </div>
+
+        <ol class="stops">
+          <li>
+            <button class="stop-btn" id="qp1-btn" aria-expanded="false" aria-controls="qp1-panel">
+              <span class="stop-node" aria-hidden="true"><svg><use href="#icon-cell"></use></svg></span>
+              <span class="stop-label"><span class="stop-num">Stop 1</span>Cell Culture &amp; RNA Isolation</span>
+            </button>
+          </li>
+          <li>
+            <button class="stop-btn" id="qp2-btn" aria-expanded="false" aria-controls="qp2-panel">
+              <span class="stop-node" aria-hidden="true"><svg><use href="#icon-dna"></use></svg></span>
+              <span class="stop-label"><span class="stop-num">Stop 2</span>Cleanup, Reverse Transcription &amp; Integrity</span>
+            </button>
+          </li>
+          <li>
+            <button class="stop-btn" id="qp3-btn" aria-expanded="false" aria-controls="qp3-panel">
+              <span class="stop-node" aria-hidden="true"><svg><use href="#icon-flask"></use></svg></span>
+              <span class="stop-label"><span class="stop-num">Stop 3</span>Primer Validation I</span>
+            </button>
+          </li>
+          <li>
+            <button class="stop-btn" id="qp4-btn" aria-expanded="false" aria-controls="qp4-panel">
+              <span class="stop-node" aria-hidden="true"><svg><use href="#icon-gel"></use></svg></span>
+              <span class="stop-label"><span class="stop-num">Stop 4</span>Primer Validation II</span>
+            </button>
+          </li>
+          <li>
+            <button class="stop-btn" id="qp5-btn" aria-expanded="false" aria-controls="qp5-panel">
+              <span class="stop-node" aria-hidden="true"><svg><use href="#icon-dna"></use></svg></span>
+              <span class="stop-label"><span class="stop-num">Stop 5</span>RT-qPCR Experiment</span>
+            </button>
+          </li>
+        </ol>
+
+        <div class="stop-panels">
+
+          <article class="stop-panel" id="qp1-panel" role="region" aria-labelledby="qp1-btn" hidden>
+            <span class="stop-panel-num">RT-qPCR &middot; Stop 1</span>
+            <h3>Cell Culture &amp; RNA Isolation</h3>
+            <p>
+              Practiced aseptic technique subculturing RAT2 fibroblasts, then isolated RNA via
+              spin-column purification and checked concentration and purity by spectrophotometry.
+            </p>
+            <div class="skills">
+              <p class="label">Skills gained</p>
+              <span class="chip">Aseptic cell culture technique</span>
+              <span class="chip">RNA isolation</span>
+              <span class="chip">Spectrophotometry</span>
+            </div>
+          </article>
+
+          <article class="stop-panel" id="qp2-panel" role="region" aria-labelledby="qp2-btn" hidden>
+            <span class="stop-panel-num">RT-qPCR &middot; Stop 2</span>
+            <h3>RNA Cleanup, Reverse Transcription &amp; Integrity Check</h3>
+            <p>
+              Removed contaminating genomic DNA, reverse-transcribed RNA into cDNA, and verified
+              RNA integrity by gel electrophoresis.
+            </p>
+            <div class="skills">
+              <p class="label">Skills gained</p>
+              <span class="chip">gDNA removal</span>
+              <span class="chip">Reverse transcription</span>
+              <span class="chip">RNA integrity analysis</span>
+            </div>
+          </article>
+
+          <article class="stop-panel" id="qp3-panel" role="region" aria-labelledby="qp3-btn" hidden>
+            <span class="stop-panel-num">RT-qPCR &middot; Stop 3</span>
+            <h3>Primer Validation I</h3>
+            <p>
+              Ran gradient PCR to identify the optimal annealing temperature for reference-gene
+              and target-gene primers.
+            </p>
+            <div class="skills">
+              <p class="label">Skills gained</p>
+              <span class="chip">Gradient PCR</span>
+              <span class="chip">Primer optimization</span>
+            </div>
+          </article>
+
+          <article class="stop-panel" id="qp4-panel" role="region" aria-labelledby="qp4-btn" hidden>
+            <span class="stop-panel-num">RT-qPCR &middot; Stop 4</span>
+            <h3>Primer Validation II</h3>
+            <p>
+              Confirmed primer specificity by agarose gel electrophoresis and built a dilution
+              series to calculate primer efficiency.
+            </p>
+            <div class="skills">
+              <p class="label">Skills gained</p>
+              <span class="chip">Gel electrophoresis</span>
+              <span class="chip">Efficiency-curve construction</span>
+            </div>
+          </article>
+
+          <article class="stop-panel" id="qp5-panel" role="region" aria-labelledby="qp5-btn" hidden>
+            <span class="stop-panel-num">RT-qPCR &middot; Stop 5</span>
+            <h3>RT-qPCR Experiment</h3>
+            <p>
+              Ran the full qPCR experiment testing whether ascorbate-2-phosphate treatment changes
+              Collagen&nbsp;I expression in RAT2 fibroblasts, analyzing results with the
+              &Delta;&Delta;Ct method.
+            </p>
+            <div class="skills">
+              <p class="label">Skills gained</p>
+              <span class="chip">Quantitative PCR</span>
+              <span class="chip">Relative gene expression analysis (&Delta;&Delta;Ct)</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- The two lines meet here: shared cell model -->
+      <div class="note">
+        <p>
+          <strong>Where the two lines meet:</strong> both tracks ran on the same RAT2 fibroblast
+          cell model &mdash; one asking a protein-level question, the other a transcript-level one.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== SITE FOOTER (repeated on every page) ===== -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>&copy; <span data-year>2026</span> Parsa Bemani</p>
+    <p>Built with plain HTML, CSS &amp; JavaScript.</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

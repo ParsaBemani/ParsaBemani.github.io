@@ -1,0 +1,13 @@
+# Windows / OneDrive clutter
+Thumbs.db
+desktop.ini
+ehthumbs.db
+$RECYCLE.BIN/
+
+# macOS, in case you ever open this folder on a Mac
+.DS_Store
+
+# Editor settings
+.vscode/
+.idea/
+*.swp

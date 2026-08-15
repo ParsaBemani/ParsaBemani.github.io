@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parsa Bemani — Portfolio</title>
+  <meta name="description" content="Portfolio of Parsa Bemani, a research-focused master's student in molecular biology and biomedical research.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ==========================================================================
+     SITE HEADER
+     This header is repeated on every page so the site works without a web
+     server (you can just double-click an HTML file to open it). If you change
+     the nav here, copy the change into the other pages too.
+
+     Active page: the "Home" link below carries class="is-active".
+     ========================================================================== -->
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a class="brand" href="index.html">Parsa Bemani</a>
+
+    <!-- Mobile-only menu button; hidden on wide screens -->
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+      Menu
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+      <ul class="nav-list">
+        <li><a class="nav-link is-active" href="index.html" aria-current="page">Home</a></li>
+
+        <!-- Courses dropdown -->
+        <li class="has-dropdown">
+          <button class="nav-link dropdown-toggle" aria-expanded="false" aria-controls="courses-menu">
+            Courses <span class="caret" aria-hidden="true"></span>
+          </button>
+          <ul class="dropdown" id="courses-menu">
+            <li><a href="courses/sci-comm.html">Sci Comm</a></li>
+            <li><a href="courses/ethics.html">Ethics</a></li>
+            <li><a href="courses/sci-policy.html">Sci Policy</a></li>
+          </ul>
+        </li>
+
+        <li><a class="nav-link" href="lab-bootcamp.html">Lab Bootcamp</a></li>
+        <li><a class="nav-link" href="capstone.html">Capstone</a></li>
+        <li><a class="nav-link" href="looking-ahead.html">Looking Ahead</a></li>
+        <li><a class="nav-link" href="seminars.html">Seminars</a></li>
+      </ul>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+  <!-- ======================= HERO ======================= -->
+  <section class="hero">
+    <div class="container hero-inner">
+
+      <div>
+        <h1>Parsa Bemani</h1>
+        <p class="hero-program">[Your Program / University]</p>
+        <p class="tagline">
+          [One-line tagline — e.g. "Molecular biology student turning bench work into
+          better answers for patients."]
+        </p>
+        <div class="btn-row">
+          <a class="btn" href="lab-bootcamp.html">See my lab work</a>
+          <a class="btn btn--ghost" href="capstone.html">Capstone project</a>
+        </div>
+      </div>
+
+      <!-- Replace this block with a real photo:
+           <img class="hero-photo" src="images/portrait.jpg" alt="Parsa Bemani"> -->
+      <div class="photo-placeholder photo-placeholder--round hero-photo">
+        Photo goes here
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================= CURRENTLY ======================= -->
+  <section class="section section--alt currently">
+    <div class="container">
+      <h2>Currently</h2>
+      <p>
+        I'm a graduate student in a research-focused master's program, where most of my time
+        is split between the bench and the questions that bring me to it. Right now I'm working
+        through a wet-lab technique bootcamp, building up a working toolkit across protein and
+        gene-expression methods — western blotting on one track, RT-qPCR on the other. Alongside
+        that, I'm part of a year-long capstone team studying Parkinson's diagnosis techniques.
+        I'm also preparing for an upcoming community rotation, which will take that work outside
+        the lab and into the community our project is meant to serve.
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================= SIGNPOSTS ======================= -->
+  <!-- Quick links out to the main sections of the site. -->
+  <section class="section signposts">
+    <div class="container">
+      <h2>Around this site</h2>
+      <div class="grid cols-3">
+
+        <a class="card" href="lab-bootcamp.html">
+          <h3>Lab Bootcamp</h3>
+          <p>A journey map of every hands-on session, across two technique tracks.</p>
+          <span class="more">View the map &rarr;</span>
+        </a>
+
+        <a class="card" href="capstone.html">
+          <h3>Capstone</h3>
+          <p>A year-long group project on Parkinson's diagnosis techniques.</p>
+          <span class="more">See the project &rarr;</span>
+        </a>
+
+        <a class="card" href="looking-ahead.html">
+          <h3>Looking Ahead</h3>
+          <p>An upcoming community rotation with Parkinson Society Southwestern Ontario.</p>
+          <span class="more">What's next &rarr;</span>
+        </a>
+
+        <a class="card" href="courses/sci-comm.html">
+          <h3>Scientific Communication</h3>
+          <p>Coursework on getting research across clearly — and the people who taught it.</p>
+          <span class="more">Read more &rarr;</span>
+        </a>
+
+        <a class="card" href="courses/sci-policy.html">
+          <h3>Science Policy</h3>
+          <p>How healthcare policies and regulations get developed and implemented.</p>
+          <span class="more">Read more &rarr;</span>
+        </a>
+
+        <a class="card" href="seminars.html">
+          <h3>Seminars</h3>
+          <p>Friday talks from guest speakers across a range of professions.</p>
+          <span class="more">See the series &rarr;</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ==========================================================================
+     SITE FOOTER (repeated on every page — see note on the header)
+     ========================================================================== -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>&copy; <span data-year>2026</span> Parsa Bemani</p>
+    <p>Built with plain HTML, CSS &amp; JavaScript.</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,906 @@
+/* ==========================================================================
+   PORTFOLIO STYLESHEET
+   One stylesheet for the whole site. Sections are numbered so you can
+   jump around quickly when hand-editing.
+
+   1.  Theme variables (colors, fonts, spacing)  <- change the look here
+   2.  Reset & base elements
+   3.  Layout helpers (container, sections, grids)
+   4.  Site header + navigation (incl. Courses dropdown)
+   5.  Site footer
+   6.  Buttons & links
+   7.  Cards & panels
+   8.  TODO placeholder blocks
+   9.  Photo placeholders
+   10. Home page (hero, "currently" blurb)
+   11. Lab Bootcamp journey map (two-lane subway map)
+   12. Capstone timeline
+   13. Seminars list
+   14. Responsive tweaks (mobile nav, vertical journey map)
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. THEME VARIABLES
+   The fastest way to restyle the site: change the values below.
+   ========================================================================== */
+
+:root {
+  /* --- Colors --- */
+  --accent:        #2f6f6b;   /* main accent: muted deep teal */
+  --accent-dark:   #23524f;   /* hover / pressed state */
+  --accent-soft:   #e8f1f0;   /* tinted backgrounds, chips */
+  --accent-line:   #b9d5d2;   /* accent-tinted borders */
+
+  --ink:           #1c2321;   /* primary text */
+  --ink-soft:      #5a6764;   /* secondary text */
+  --ink-faint:     #8a9591;   /* captions, meta */
+
+  --bg:            #ffffff;   /* page background */
+  --bg-alt:        #f7f6f3;   /* alternating section background */
+  --line:          #e4e3de;   /* hairline borders */
+
+  --todo-bg:       #fdf7ec;   /* TODO placeholder background */
+  --todo-line:     #e8d3ac;   /* TODO placeholder border */
+  --todo-ink:      #8a6a2f;   /* TODO placeholder text */
+
+  /* --- Typography --- */
+  --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, "Helvetica Neue",
+               Arial, sans-serif;
+
+  /* --- Spacing & shape --- */
+  --space:         1rem;
+  --radius:        10px;
+  --radius-lg:     16px;
+  --max-width:     1080px;   /* content column width */
+  --max-text:      68ch;     /* comfortable reading measure */
+
+  --shadow-sm: 0 1px 2px rgba(28, 35, 33, 0.06);
+  --shadow-md: 0 6px 20px rgba(28, 35, 33, 0.08);
+}
+
+
+/* ==========================================================================
+   2. RESET & BASE ELEMENTS
+   ========================================================================== */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;      /* 17px */
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  line-height: 1.2;
+  margin: 0 0 0.6em;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: clamp(2rem, 4.2vw, 2.9rem); }
+h2 { font-size: clamp(1.45rem, 2.6vw, 1.85rem); }
+h3 { font-size: 1.2rem; }
+h4 { font-size: 1.02rem; }
+
+p, ul, ol { margin: 0 0 1.1em; }
+
+/* Keep body copy at a readable line length */
+p, li { max-width: var(--max-text); }
+
+a { color: var(--accent); }
+a:hover { color: var(--accent-dark); }
+
+img { max-width: 100%; display: block; }
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 2.5rem 0;
+}
+
+/* Visible focus ring for keyboard users (accessibility) */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Screen-reader-only text */
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+
+/* ==========================================================================
+   3. LAYOUT HELPERS
+   ========================================================================== */
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+/* Standard vertical rhythm for page sections */
+.section { padding: 3.5rem 0; }
+.section--tight { padding: 2.25rem 0; }
+.section--alt { background: var(--bg-alt); border-block: 1px solid var(--line); }
+
+/* Page intro block that sits under the header on interior pages */
+.page-head {
+  padding: 3.25rem 0 2.25rem;
+  border-bottom: 1px solid var(--line);
+}
+.page-head .eyebrow {
+  display: inline-block;
+  margin-bottom: 0.6rem;
+  font-size: 0.78rem;
+  font-weight: 650;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.page-head .lede {
+  font-size: 1.15rem;
+  color: var(--ink-soft);
+  margin-bottom: 0;
+}
+
+/* Simple responsive grid: .grid.cols-2 / .cols-3 */
+.grid { display: grid; gap: 1.5rem; }
+.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+/* Small uppercase label above a block */
+.label {
+  font-size: 0.78rem;
+  font-weight: 650;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 0.4rem;
+}
+
+/* Little pill used for skills, dates, tags */
+.chip {
+  display: inline-block;
+  padding: 0.2em 0.7em;
+  margin: 0 0.35rem 0.35rem 0;
+  font-size: 0.83rem;
+  line-height: 1.5;
+  color: var(--accent-dark);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-line);
+  border-radius: 999px;
+}
+
+
+/* ==========================================================================
+   4. SITE HEADER + NAVIGATION
+   The header markup is repeated on every page (so the site works by simply
+   double-clicking an HTML file — no web server needed). If you change the
+   nav, remember to update it in every .html file.
+   ========================================================================== */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 66px;
+}
+
+/* Your name, top-left, links home */
+.brand {
+  font-weight: 700;
+  font-size: 1.02rem;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-decoration: none;
+}
+.brand:hover { color: var(--accent); }
+
+/* --- Nav list --- */
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-list > li { max-width: none; position: relative; }
+
+/* Links and the dropdown button share this look */
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0.7rem;
+  font: inherit;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  text-decoration: none;
+  background: none;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.nav-link:hover { color: var(--accent); background: var(--accent-soft); }
+
+/* Current page marker */
+.nav-link.is-active { color: var(--ink); font-weight: 600; }
+.nav-link.is-active::after {
+  content: "";
+  position: absolute;
+  left: 0.7rem; right: 0.7rem; bottom: 0.1rem;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+/* Little caret on the Courses button */
+.caret {
+  width: 0; height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid currentColor;
+  transition: transform 0.15s ease;
+}
+.dropdown-toggle[aria-expanded="true"] .caret { transform: rotate(180deg); }
+
+/* --- Courses dropdown --- */
+.dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  min-width: 180px;
+  list-style: none;
+  margin: 0;
+  padding: 0.35rem;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+
+  /* hidden by default; revealed on hover, focus, or click (see below) */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+}
+.dropdown > li { max-width: none; }
+.dropdown a {
+  display: block;
+  padding: 0.45rem 0.6rem;
+  font-size: 0.93rem;
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-radius: 6px;
+}
+.dropdown a:hover { color: var(--accent-dark); background: var(--accent-soft); }
+.dropdown a.is-active { color: var(--ink); font-weight: 600; }
+
+/* Open on hover / keyboard focus (desktop), or when JS sets aria-expanded */
+.has-dropdown:hover .dropdown,
+.has-dropdown:focus-within .dropdown,
+.dropdown-toggle[aria-expanded="true"] + .dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* --- Mobile menu button (hidden on desktop, shown in section 14) --- */
+.nav-toggle {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.7rem;
+  font: inherit;
+  font-size: 0.92rem;
+  color: var(--ink);
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.nav-toggle:hover { border-color: var(--accent-line); color: var(--accent); }
+
+
+/* ==========================================================================
+   5. SITE FOOTER
+   ========================================================================== */
+
+.site-footer {
+  margin-top: 4rem;
+  padding: 2rem 0;
+  background: var(--bg-alt);
+  border-top: 1px solid var(--line);
+}
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.site-footer p {
+  margin: 0;
+  max-width: none;
+  font-size: 0.9rem;
+  color: var(--ink-faint);
+}
+
+
+/* ==========================================================================
+   6. BUTTONS & LINKS
+   ========================================================================== */
+
+.btn {
+  display: inline-block;
+  padding: 0.62rem 1.15rem;
+  font-size: 0.95rem;
+  font-weight: 550;
+  text-decoration: none;
+  border-radius: 8px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #fff;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+.btn:hover { background: var(--accent-dark); border-color: var(--accent-dark); color: #fff; }
+
+.btn--ghost {
+  background: transparent;
+  color: var(--accent);
+  border-color: var(--accent-line);
+}
+.btn--ghost:hover { background: var(--accent-soft); color: var(--accent-dark); border-color: var(--accent); }
+
+.btn-row { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+
+/* ==========================================================================
+   7. CARDS & PANELS
+   ========================================================================== */
+
+.card {
+  padding: 1.4rem 1.5rem;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.card:hover { border-color: var(--accent-line); box-shadow: var(--shadow-md); }
+.card > :last-child { margin-bottom: 0; }
+.card h3 { margin-bottom: 0.4rem; }
+
+/* Card variant with no hover lift (for static content blocks) */
+.card--static:hover { border-color: var(--line); box-shadow: var(--shadow-sm); }
+
+/* A quieter block used for notes / asides */
+.note {
+  padding: 1rem 1.25rem;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-line);
+  border-left-width: 4px;
+  border-radius: var(--radius);
+  color: var(--accent-dark);
+}
+.note > :last-child { margin-bottom: 0; }
+.note p { max-width: none; }
+
+/* Person card (used on the Sci Comm thank-you section) */
+.person {
+  display: flex;
+  gap: 1.1rem;
+  align-items: flex-start;
+}
+.person .photo-placeholder { flex: 0 0 84px; height: 84px; }
+.person h3 { margin-bottom: 0.15rem; }
+.person .role {
+  margin: 0 0 0.5rem;
+  font-size: 0.88rem;
+  color: var(--ink-faint);
+}
+
+
+/* ==========================================================================
+   8. TODO PLACEHOLDER BLOCKS
+   Anything still to be written is wrapped in one of these so it is obvious
+   at a glance what is left to fill in. Delete the wrapper once you've
+   written the real content.
+   ========================================================================== */
+
+.todo {
+  position: relative;
+  padding: 1.15rem 1.25rem 1.15rem;
+  margin-bottom: 1.4rem;
+  background: var(--todo-bg);
+  border: 1px dashed var(--todo-line);
+  border-radius: var(--radius);
+  color: var(--todo-ink);
+  font-size: 0.95rem;
+}
+.todo::before {
+  content: "TO DO";
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--todo-ink);
+  opacity: 0.75;
+}
+.todo > :last-child { margin-bottom: 0; }
+.todo p { max-width: none; }
+
+/* Inline version, for a single missing word/phrase inside a sentence */
+.todo-inline {
+  padding: 0.05em 0.4em;
+  background: var(--todo-bg);
+  border: 1px dashed var(--todo-line);
+  border-radius: 5px;
+  color: var(--todo-ink);
+  font-size: 0.92em;
+  white-space: nowrap;
+}
+
+
+/* ==========================================================================
+   9. PHOTO PLACEHOLDERS
+   Swap these out for a real <img> when you have photos.
+   ========================================================================== */
+
+.photo-placeholder {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1 / 1;
+  background: var(--bg-alt);
+  border: 1px dashed var(--line);
+  border-radius: var(--radius-lg);
+  color: var(--ink-faint);
+  font-size: 0.82rem;
+  text-align: center;
+  padding: 0.75rem;
+}
+.photo-placeholder--round { border-radius: 50%; }
+.photo-placeholder--wide { aspect-ratio: 16 / 9; }
+
+
+/* ==========================================================================
+   10. HOME PAGE
+   ========================================================================== */
+
+.hero {
+  padding: 4rem 0 3rem;
+}
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  gap: 3rem;
+  align-items: center;
+}
+.hero h1 { margin-bottom: 0.35rem; }
+.hero .hero-program {
+  margin: 0 0 0.9rem;
+  font-size: 1.05rem;
+  color: var(--accent);
+  font-weight: 550;
+}
+.hero .tagline {
+  font-size: 1.2rem;
+  color: var(--ink-soft);
+  margin-bottom: 1.6rem;
+}
+
+/* The "What I'm working on right now" blurb */
+.currently h2 { margin-bottom: 0.75rem; }
+
+/* Small grid of links out to the main sections */
+.signposts .card h3 { font-size: 1.05rem; }
+.signposts .card p { font-size: 0.94rem; color: var(--ink-soft); margin-bottom: 0.75rem; }
+.signposts a.card { text-decoration: none; color: inherit; display: block; }
+.signposts a.card .more { font-size: 0.9rem; font-weight: 550; color: var(--accent); }
+
+
+/* ==========================================================================
+   11. LAB BOOTCAMP — TWO-LANE JOURNEY MAP
+   Each "lane" is one track. Stops sit on a horizontal line like a subway
+   map; clicking a stop opens its detail card underneath (accordion).
+   ========================================================================== */
+
+.lane {
+  margin-bottom: 3rem;
+}
+.lane-head { margin-bottom: 1.75rem; }
+.lane-head h2 { margin-bottom: 0.3rem; }
+.lane-goal {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.98rem;
+}
+
+/* Per-lane accent color: set on the .lane element so nodes, lines and the
+   open card all pick it up from one place. */
+.lane--wb    { --lane-color: #2f6f6b; }  /* Western Blot track — teal */
+.lane--qpcr  { --lane-color: #7a5ea7; }  /* RT-qPCR track — muted purple */
+
+/* --- The line of stops --- */
+.stops {
+  position: relative;
+  display: flex;
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  gap: 0;                    /* no gap, so the track segments below line up exactly */
+}
+.stops > li { position: relative; max-width: none; flex: 1 1 0; }
+
+/* The connecting "track" line.
+   Each stop after the first draws the segment reaching back to the previous
+   stop, so the line always starts and ends exactly on the end nodes — however
+   many stops a track has. The opaque node circles sit on top of it. */
+.stops > li + li::before {
+  content: "";
+  position: absolute;
+  top: 25px;                 /* (54px node - 4px line) / 2 */
+  left: -50%;                /* back to the previous node's centre */
+  right: 50%;                /* forward to this node's centre */
+  height: 4px;
+  background: var(--lane-color);
+  opacity: 0.28;
+}
+
+/* Each stop is a button so it is clickable and keyboard accessible */
+.stop-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0 0.4rem;
+  font: inherit;
+  text-align: center;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: var(--ink-soft);
+}
+
+/* The circular node itself */
+.stop-node {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  background: var(--bg);
+  border: 3px solid var(--lane-color);
+  border-radius: 50%;
+  color: var(--lane-color);
+  transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+.stop-node svg { width: 24px; height: 24px; }
+
+.stop-btn:hover .stop-node {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(28, 35, 33, 0.14);
+}
+
+/* Open state: node fills in */
+.stop-btn[aria-expanded="true"] .stop-node {
+  background: var(--lane-color);
+  color: #fff;
+}
+.stop-btn[aria-expanded="true"] .stop-label { color: var(--ink); font-weight: 600; }
+
+.stop-label {
+  font-size: 0.86rem;
+  line-height: 1.35;
+  max-width: 15ch;
+}
+.stop-num {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 0.15rem;
+}
+
+/* --- The expanding detail card --- */
+.stop-panel {
+  padding: 1.5rem 1.6rem;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--lane-color);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  animation: panel-in 0.18s ease;
+}
+.stop-panel[hidden] { display: none; }
+.stop-panel h3 { margin-bottom: 0.5rem; }
+.stop-panel .stop-panel-num {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 650;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--lane-color);
+  margin-bottom: 0.3rem;
+}
+.stop-panel .skills { margin-top: 1rem; }
+.stop-panel > :last-child { margin-bottom: 0; }
+
+@keyframes panel-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Hint shown before anything is clicked */
+.map-hint {
+  font-size: 0.92rem;
+  color: var(--ink-faint);
+  margin-bottom: 2rem;
+}
+
+
+/* ==========================================================================
+   12. CAPSTONE TIMELINE
+   ========================================================================== */
+
+/* Add or remove a phase by editing the <li> list *and* the column count below. */
+.timeline {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;                          /* no gap, so the segments below line up exactly */
+  list-style: none;
+  margin: 0;
+  padding: 1.5rem 0 0;
+}
+.timeline > li {
+  position: relative;
+  max-width: none;
+  padding: 1.5rem 0.6rem 0;
+  text-align: center;
+}
+/* Connecting line: each phase after the first draws the segment back to the
+   previous dot, so the line stops exactly at the first and last dots. */
+.timeline > li + li::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: -50%;
+  right: 50%;
+  height: 3px;
+  background: var(--accent);
+  opacity: 0.25;
+}
+/* The dot. Drawn as ::after so it paints on top of the line. */
+.timeline > li::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 15px;
+  height: 15px;
+  background: var(--bg);
+  border: 3px solid var(--accent);
+  border-radius: 50%;
+}
+.timeline .when {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.3rem;
+}
+.timeline .what { font-size: 0.93rem; color: var(--ink-soft); }
+
+/* Reference list */
+.references {
+  padding-left: 1.25rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+.references li { margin-bottom: 0.6rem; }
+
+
+/* ==========================================================================
+   13. SEMINARS LIST
+   ========================================================================== */
+
+.seminar-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.1rem;
+}
+.seminar-list > li { max-width: none; }
+
+.seminar {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.35rem 1.5rem;
+  align-items: baseline;
+}
+.seminar h3 { margin: 0; font-size: 1.1rem; }
+.seminar .profession {
+  grid-column: 1;
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+}
+.seminar .date {
+  grid-column: 2;
+  grid-row: 1;
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+  white-space: nowrap;
+}
+.seminar .takeaway {
+  grid-column: 1 / -1;
+  margin: 0.6rem 0 0;
+  padding-left: 0.9rem;
+  border-left: 3px solid var(--accent-line);
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+
+/* ==========================================================================
+   14. RESPONSIVE
+   Two breakpoints: 900px (nav collapses, journey map goes vertical)
+   and 640px (single-column grids).
+   ========================================================================== */
+
+@media (max-width: 900px) {
+
+  /* --- Mobile navigation --- */
+  .nav-toggle { display: inline-flex; }
+
+  .site-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: none;
+    padding: 0.75rem 1.5rem 1.25rem;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    box-shadow: var(--shadow-md);
+  }
+  .site-nav.is-open { display: block; }
+
+  .header-inner { position: relative; }
+
+  .nav-list { flex-direction: column; align-items: stretch; gap: 0; }
+  .nav-link { padding: 0.65rem 0.5rem; font-size: 1rem; }
+  .nav-link.is-active::after { left: 0.5rem; right: auto; width: 22px; }
+
+  /* Dropdown becomes an inline sub-list instead of a floating menu */
+  .has-dropdown { display: flex; flex-direction: column; }
+  .dropdown {
+    position: static;
+    display: none;
+    min-width: 0;
+    margin: 0 0 0.35rem 0.9rem;
+    padding: 0.2rem 0;
+    border: 0;
+    border-left: 2px solid var(--line);
+    border-radius: 0;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+  /* Only open on explicit tap, not hover */
+  .has-dropdown:hover .dropdown { display: none; }
+  .dropdown-toggle[aria-expanded="true"] + .dropdown { display: block; }
+  .dropdown a { padding: 0.5rem 0.75rem; font-size: 0.98rem; }
+
+  /* --- Home hero stacks --- */
+  .hero-inner { grid-template-columns: 1fr; gap: 1.75rem; }
+  .hero-photo { max-width: 200px; }
+
+  /* --- Journey map turns into a vertical line ---
+     Stacked stops have uneven heights, so instead of per-stop segments the
+     line becomes one continuous bar running down the list. */
+  .stops { flex-direction: column; gap: 0.35rem; }
+  .stops > li + li::before { display: none; }
+  .stops::before {
+    content: "";
+    position: absolute;
+    top: 31px;                /* centre of the first node (4px button padding + 27) */
+    bottom: 31px;             /* centre of the last node */
+    left: 25px;               /* centred on the 54px nodes */
+    width: 4px;
+    background: var(--lane-color);
+    opacity: 0.28;
+  }
+  .stop-btn {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    text-align: left;
+    padding: 0.25rem 0;
+  }
+  .stop-node { flex: 0 0 54px; }
+  .stop-label { max-width: none; font-size: 0.95rem; }
+  .stop-num { display: inline; margin-right: 0.4rem; }
+
+  /* --- Capstone timeline goes vertical ---
+     Each phase now draws its segment *downward* to the next dot, so the line
+     runs dot-to-dot however tall each phase's text turns out to be. */
+  .timeline { grid-template-columns: 1fr; padding: 0; }
+  .timeline > li {
+    text-align: left;
+    padding: 0 0 1.5rem 2rem;
+  }
+  .timeline > li::after { left: 0; transform: none; top: 4px; }  /* the dot */
+
+  .timeline > li + li::before { display: none; }                 /* drop the sideways segments */
+  .timeline > li:not(:last-child)::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 14px;                    /* centre of this dot */
+    bottom: -6px;                 /* tuck under the next dot */
+    left: 9px;                    /* centred on the 21px dot */
+    right: auto;
+    width: 3px;
+    height: auto;
+    background: var(--accent);
+    opacity: 0.25;
+  }
+}
+
+@media (max-width: 640px) {
+  .cols-2, .cols-3 { grid-template-columns: 1fr; }
+  .section { padding: 2.5rem 0; }
+  .person { flex-direction: column; }
+  .seminar { grid-template-columns: 1fr; }
+  .seminar .date { grid-column: 1; grid-row: auto; }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
