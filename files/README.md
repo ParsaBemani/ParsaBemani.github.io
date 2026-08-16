@@ -2,13 +2,12 @@
 
 Downloadable documents go here — PDFs mainly.
 
-**To add the UofT research report:** drop the PDF in this folder (e.g.
-`parsa-bemani-uoft-research-report.pdf`), then in `uoft.html` find the `.todo`
-block under the "Research" heading and replace it with:
+**Currently holds:** `bemani-uoft-hmb496-final-report.pdf` — the HMB496Y1 research thesis,
+linked from the Research section of `uoft.html` and from its entry on `research.html`.
+
+To add another document, drop it in here (lowercase filename, hyphens not spaces — spaces
+in a URL get encoded as `%20` and are easy to typo in a link), then link it with:
 
 ```html
-<a class="btn" href="files/parsa-bemani-uoft-research-report.pdf">Read the final report (PDF) &rarr;</a>
+<a class="btn" href="files/your-file-name.pdf">Some label &rarr;</a>
 ```
-
-Keep filenames lowercase with hyphens, no spaces — spaces in a URL get encoded
-as `%20` and are easy to typo in a link.

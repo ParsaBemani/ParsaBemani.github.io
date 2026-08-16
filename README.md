@@ -5,14 +5,13 @@ file in a browser and it works.
 
 ## Files
 
-Top-level nav: **Home · About · Education · Research · Skills · Involvement ·
+Top-level nav: **Home · About · Education · Research · Involvement ·
 Upcoming Works · Contact**
 
 ```
 index.html            Home — hero, "Who am I?", Education, Recent Activities
 about.html            Long-form biography
 research.html         Every research project, linking out to full write-ups
-skills.html           Lab techniques, grouped by what they're used for
 involvement.html      Volunteering, extracurriculars, athletics
 looking-ahead.html    Upcoming Works — community rotation with PSSO
 contact.html          Email, university address, LinkedIn / CV
