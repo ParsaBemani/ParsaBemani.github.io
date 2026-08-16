@@ -59,38 +59,51 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* ------------------------------------------------------------------
-     3. COURSES POP-UP MENU (home page)
-     The Courses tile opens a small menu floating above it. Closes on a
-     second click, on a click elsewhere, or on Escape.
+     3. COURSES WHEEL (home page)
+     Clicking the Courses tile fans a hexagon of six slots out from its
+     centre. The hub in the middle doubles as the close button. Also closes
+     on a click elsewhere, on Escape, or on a real course link (after the
+     browser has started navigating, so the collapse animation doesn't
+     visibly race the page unload).
      ------------------------------------------------------------------ */
 
   var courseTrigger = document.querySelector('.course-trigger');
-  var coursePopup = document.getElementById('courses-popup');
+  var courseWheel = document.getElementById('courses-wheel');
+  var wheelHub = courseWheel && courseWheel.querySelector('.wheel-hub');
 
-  if (courseTrigger && coursePopup) {
+  if (courseTrigger && courseWheel) {
 
-    var setCourseMenu = function (open) {
+    var setCourseWheel = function (open) {
       courseTrigger.setAttribute('aria-expanded', String(open));
-      coursePopup.hidden = !open;
+      courseWheel.classList.toggle('is-open', open);
     };
 
     courseTrigger.addEventListener('click', function (event) {
       event.stopPropagation();  // don't trip the outside-click handler below
-      setCourseMenu(courseTrigger.getAttribute('aria-expanded') !== 'true');
+      setCourseWheel(courseTrigger.getAttribute('aria-expanded') !== 'true');
     });
 
-    // Clicks inside the menu (i.e. on a course link) shouldn't close it early.
-    coursePopup.addEventListener('click', function (event) {
+    // Clicking the hub closes the wheel without navigating anywhere.
+    if (wheelHub) {
+      wheelHub.addEventListener('click', function (event) {
+        event.stopPropagation();
+        setCourseWheel(false);
+      });
+    }
+
+    // Clicking elsewhere inside the wheel (e.g. a course link) shouldn't
+    // trip the outside-click handler before the browser can navigate.
+    courseWheel.addEventListener('click', function (event) {
       event.stopPropagation();
     });
 
     document.addEventListener('click', function () {
-      setCourseMenu(false);
+      setCourseWheel(false);
     });
 
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape') {
-        setCourseMenu(false);
+        setCourseWheel(false);
         courseTrigger.focus();
       }
     });

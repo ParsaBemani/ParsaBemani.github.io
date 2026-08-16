@@ -21,11 +21,6 @@ js/main.js            Nav dropdown, mobile menu, journey-map accordion
 
 ## Things you'll want to change
 
-**Your program and tagline.** The home page hero still has two placeholders:
-`[Your Program / University]` and `[One-line tagline ...]`. Both are in
-`index.html`, near the top of the `<section class="hero">` block. (Your name is
-already filled in across all eight pages.)
-
 **Colors and fonts.** Section 1 of `css/style.css` holds every color and size as
 a variable. Changing `--accent` there restyles the whole site.
 
@@ -53,3 +48,11 @@ and one `<article class="stop-panel">` block, then give them a new matching id �
 the button's `aria-controls` must equal the panel's `id`. The connecting line and
 spacing adjust on their own. Icons come from the sprite at the top of
 `lab-bootcamp.html`; reuse one with `<use href="#icon-dna">`.
+
+**Turning a blank Courses-wheel slot into a real course:** the "Courses" tile on
+the home page opens a radial wheel with six fixed hexagon slots — the three real
+courses on top, three open "TODO" slots on the bottom. To fill one in, find its
+`<span class="wheel-item wheel-item--empty wheel-pos-...">` in `index.html`,
+change the `<span>` to an `<a href="courses/your-page.html">`, swap in a real
+icon, and update the label. The layout is a fixed hexagon (not an auto-growing
+list), so a 7th course needs a new position class — ask Claude Code for that one.
