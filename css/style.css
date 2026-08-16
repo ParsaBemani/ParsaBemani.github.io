@@ -659,6 +659,25 @@ hr {
   font-size: 0.95rem;
   color: var(--ink-soft);
 }
+
+/* Street address under a school name. <address> is italic by default in
+   browsers, so it gets reset here. */
+.edu-address {
+  display: block;
+  margin: 0.35rem 0 0;
+  font-style: normal;
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+}
+
+/* Standalone postal address block (contact page, masters page header) */
+.postal {
+  margin: 1rem 0 0;
+  font-style: normal;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
 .edu-honours { margin-top: 0.9rem; }
 .edu-honours .chip { margin-bottom: 0; }
 
