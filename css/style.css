@@ -531,6 +531,65 @@ hr {
 .signposts a.card { text-decoration: none; color: inherit; display: block; }
 .signposts .card .more { font-size: 0.9rem; font-weight: 550; color: var(--accent); }
 
+/* --- Education list ---
+   Each entry is a card: school + degree on the left, dates + location on the
+   right, then an optional detail line and optional honour chips underneath. */
+
+/* Stops the sticky header from covering the heading when the nav's
+   "Education" link jumps to this section. */
+#education { scroll-margin-top: 90px; }
+
+.edu-list {
+  display: grid;
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.edu-list > li { max-width: none; }
+
+.edu-item {
+  padding: 1.4rem 1.5rem;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Top row: name/degree on the left, dates/location right-aligned */
+.edu-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+.edu-school { margin: 0; font-size: 1.12rem; }
+.edu-degree {
+  margin: 0.15rem 0 0;
+  max-width: none;
+  color: var(--accent-dark);
+  font-weight: 550;
+}
+.edu-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-shrink: 0;
+  font-size: 0.88rem;
+  color: var(--ink-faint);
+  white-space: nowrap;
+}
+
+.edu-detail {
+  margin: 0.85rem 0 0;
+  max-width: none;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+.edu-honours { margin-top: 0.9rem; }
+.edu-honours .chip { margin-bottom: 0; }
+
 /* --- Courses tile: a card that behaves as a button --- */
 .menu-tile { position: relative; }        /* anchors the wheel menu below */
 
@@ -1075,6 +1134,10 @@ a.wheel-item:hover { background: rgba(255, 255, 255, 0.28); }
   .person { flex-direction: column; }
   .seminar { grid-template-columns: 1fr; }
   .seminar .date { grid-column: 1; grid-row: auto; }
+
+  /* Education entries stack: dates/location drop below the school name */
+  .edu-head { flex-direction: column; gap: 0.5rem; }
+  .edu-meta { align-items: flex-start; flex-direction: row; gap: 0.75rem; }
 }
 
 /* Respect users who prefer reduced motion */

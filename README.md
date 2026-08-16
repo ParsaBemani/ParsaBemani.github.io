@@ -6,7 +6,7 @@ file in a browser and it works.
 ## Files
 
 ```
-index.html            Home — hero + "currently" blurb + section links
+index.html            Home — hero, "Who am I?", Education, Recent Activities
 lab-bootcamp.html     Two-lane journey map of the wet-lab sessions
 capstone.html         Parkinson's diagnosis capstone (overview, team, timeline…)
 looking-ahead.html    Community rotation with PSSO
@@ -48,6 +48,13 @@ and one `<article class="stop-panel">` block, then give them a new matching id �
 the button's `aria-controls` must equal the panel's `id`. The connecting line and
 spacing adjust on their own. Icons come from the sprite at the top of
 `lab-bootcamp.html`; reuse one with `<use href="#icon-dna">`.
+
+**Adding a school to Education:** the section lives on `index.html` under
+`<section id="education">`, newest first. Copy a whole `<li class="edu-item">`
+block and edit the fields. The `.edu-detail` line (major/minor) and the
+`.edu-honours` chips are both optional — delete either if an entry doesn't need
+them. The nav's "Education" link points at `index.html#education`, so it works
+from every page.
 
 **Turning a blank Courses-wheel slot into a real course:** the "Courses" tile on
 the home page opens a radial wheel with six fixed hexagon slots — the three real
