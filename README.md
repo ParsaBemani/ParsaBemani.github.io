@@ -5,37 +5,57 @@ file in a browser and it works.
 
 ## Files
 
-Top-level nav: **Home · About · Education · Skills · Involvement · Contact**
+Top-level nav: **Home · About · Education · Research · Skills · Involvement ·
+Upcoming Works · Contact**
 
 ```
 index.html            Home — hero, "Who am I?", Education, Recent Activities
 about.html            Long-form biography
+research.html         Every research project, linking out to full write-ups
 skills.html           Lab techniques, grouped by what they're used for
 involvement.html      Volunteering, extracurriculars, athletics
-contact.html          Email / LinkedIn / CV
+looking-ahead.html    Upcoming Works — community rotation with PSSO
+contact.html          Email, university address, LinkedIn / CV
 
 masters.html          Masters hub — reached from Education > "More information"
   lab-bootcamp.html     Two-lane journey map of the wet-lab sessions
   capstone.html         Parkinson's diagnosis capstone
-  looking-ahead.html    Upcoming Works — community rotation with PSSO
   seminars.html         Friday seminar series entries
   courses/
     sci-comm.html       Scientific Communication + instructor thank-you
     ethics.html         Ethics (placeholder for now)
     sci-policy.html     Science Policy
 
-css/style.css         All styling, in numbered sections
-js/main.js            Mobile menu, Courses wheel, journey-map accordion
+uoft.html            UofT hub — reached from Education > "More information"
+                       degree & distinctions, graduation photo, research write-up
+
+files/                 Downloadable documents (e.g. the UofT research report)
+images/                Photos (e.g. the UofT graduation photo)
+css/style.css          All styling, in numbered sections
+js/main.js             Mobile menu, Courses wheel, journey-map accordion
 ```
 
-**How the Masters section works.** Everything belonging to the master's program
-sits behind `masters.html` rather than in the top nav. You reach it from the
-Education section on the home page via the "More information" button. Those
-pages are indented above to show the hierarchy — they're still ordinary files in
-the root folder, not a subfolder. Each one carries a breadcrumb
+**How the Masters and UofT hubs work.** Everything belonging to a specific
+degree sits behind its own hub page rather than in the top nav — `masters.html`
+for the MSc, `uoft.html` for the undergrad. You reach each one from its
+Education entry on the home page via the "More information" button. Pages
+under a hub are indented above to show the hierarchy — they're still ordinary
+files in the root folder, not subfolders. Each carries a breadcrumb
 (`Education › Masters › This page`) and marks **Education** as the active nav
-item. When you build the UofT page later, the same pattern applies: a new
-`uoft.html` hub plus a "More information" button on that education entry.
+item. `looking-ahead.html` is the one exception: it's linked from the Masters
+hub (the rotation runs with the capstone team) but is also its own top-level
+nav item, so it has no breadcrumb and marks itself active rather than
+Education.
+
+**Adding the UofT research report and graduation photo.** Both have their own
+placeholder with copy-paste-ready instructions: see `files/README.md` for the
+PDF and `images/README.md` for the photo. Once either is in place, update the
+matching `.todo` block in `uoft.html`.
+
+**Adding another research entry.** `research.html` uses the same entry-list
+pattern as Involvement — copy a whole `<li class="entry">` block. Point its
+link at a detail page, or a section id on one (like `uoft.html#research`) if
+the full write-up lives elsewhere.
 
 ## Things you'll want to change
 

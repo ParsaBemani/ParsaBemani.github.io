@@ -609,7 +609,7 @@ hr {
 
 /* Stops the sticky header from covering the heading when the nav's
    "Education" link jumps to this section. */
-#education { scroll-margin-top: 90px; }
+#education, #research { scroll-margin-top: 90px; }
 
 .edu-list {
   display: grid;
