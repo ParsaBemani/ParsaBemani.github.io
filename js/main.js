@@ -5,10 +5,9 @@
    loaded everywhere.
 
    1. Mobile menu toggle
-   2. "Courses" nav dropdown (click to open; CSS handles hover on desktop)
-   3. Courses pop-up menu on the home page
-   4. Lab Bootcamp journey-map accordion
-   5. Footer year
+   2. Courses wheel menu on the home page
+   3. Lab Bootcamp journey-map accordion
+   4. Footer year
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -30,36 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* ------------------------------------------------------------------
-     2. COURSES DROPDOWN
-     On desktop the menu also opens on hover (pure CSS). This adds click
-     support so it works on touch screens and for keyboard users.
-     ------------------------------------------------------------------ */
-
-  var dropdownToggle = document.querySelector('.dropdown-toggle');
-
-  if (dropdownToggle) {
-    dropdownToggle.addEventListener('click', function (event) {
-      event.stopPropagation(); // don't immediately trigger the outside-click close
-      var isOpen = dropdownToggle.getAttribute('aria-expanded') === 'true';
-      dropdownToggle.setAttribute('aria-expanded', String(!isOpen));
-    });
-
-    // Click anywhere else on the page closes the menu.
-    document.addEventListener('click', function () {
-      dropdownToggle.setAttribute('aria-expanded', 'false');
-    });
-
-    // Escape closes the menu and returns focus to the button.
-    document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape') {
-        dropdownToggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-  }
-
-
-  /* ------------------------------------------------------------------
-     3. COURSES WHEEL (home page)
+     2. COURSES WHEEL (home page)
      Clicking the Courses tile fans a hexagon of six slots out from its
      centre. The hub in the middle doubles as the close button. Also closes
      on a click elsewhere, on Escape, or on a real course link (after the
@@ -111,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* ------------------------------------------------------------------
-     4. LAB BOOTCAMP JOURNEY MAP
+     3. LAB BOOTCAMP JOURNEY MAP
      Each stop button has aria-controls="<panel id>". Clicking a stop opens
      its panel and closes any other open stop *in the same lane*, so the two
      tracks can be read side by side.
@@ -145,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* ------------------------------------------------------------------
-     5. FOOTER YEAR
+     4. FOOTER YEAR
      Keeps the copyright year current without editing every page.
      ------------------------------------------------------------------ */
 

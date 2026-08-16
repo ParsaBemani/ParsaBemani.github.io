@@ -168,6 +168,20 @@ hr {
 .cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
+/* Breadcrumb trail, used on pages that sit under Education > Masters */
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+}
+.breadcrumb a { color: var(--ink-soft); text-decoration: none; }
+.breadcrumb a:hover { color: var(--accent); text-decoration: underline; }
+.breadcrumb [aria-current] { color: var(--ink); font-weight: 550; }
+
 /* Small uppercase label above a block */
 .label {
   font-size: 0.78rem;
@@ -531,6 +545,64 @@ hr {
 .signposts a.card { text-decoration: none; color: inherit; display: block; }
 .signposts .card .more { font-size: 0.9rem; font-weight: 550; color: var(--accent); }
 
+/* --- About page: intro block with a photo beside it --- */
+.about-intro {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 3rem;
+  align-items: center;
+}
+.about-intro h2 { margin-top: 0; }
+
+/* --- Involvement page: volunteering / extracurricular entries ---
+   Same shape as the education entries: title + role on the left,
+   dates + location right-aligned, detail line underneath. */
+.entry-list {
+  display: grid;
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.entry-list > li { max-width: none; }
+
+.entry {
+  padding: 1.4rem 1.5rem;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+.entry-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+.entry-title { margin: 0; font-size: 1.12rem; }
+.entry-role {
+  margin: 0.15rem 0 0;
+  max-width: none;
+  color: var(--accent-dark);
+  font-weight: 550;
+}
+.entry-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-shrink: 0;
+  font-size: 0.88rem;
+  color: var(--ink-faint);
+  white-space: nowrap;
+}
+.entry-detail {
+  margin: 0.85rem 0 0;
+  max-width: none;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
 /* --- Education list ---
    Each entry is a card: school + degree on the left, dates + location on the
    right, then an optional detail line and optional honour chips underneath. */
@@ -589,6 +661,9 @@ hr {
 }
 .edu-honours { margin-top: 0.9rem; }
 .edu-honours .chip { margin-bottom: 0; }
+
+/* "More information" button on an education entry */
+.edu-actions { margin-top: 1.15rem; }
 
 /* --- Courses tile: a card that behaves as a button --- */
 .menu-tile { position: relative; }        /* anchors the wheel menu below */
@@ -1076,6 +1151,10 @@ a.wheel-item:hover { background: rgba(255, 255, 255, 0.28); }
   .hero-inner { grid-template-columns: 1fr; gap: 1.75rem; }
   .hero-photo { max-width: 200px; }
 
+  /* --- About page intro stacks the same way --- */
+  .about-intro { grid-template-columns: 1fr; gap: 1.75rem; }
+  .about-intro .photo-placeholder { max-width: 200px; }
+
   /* --- Journey map turns into a vertical line ---
      Stacked stops have uneven heights, so instead of per-stop segments the
      line becomes one continuous bar running down the list. */
@@ -1138,6 +1217,10 @@ a.wheel-item:hover { background: rgba(255, 255, 255, 0.28); }
   /* Education entries stack: dates/location drop below the school name */
   .edu-head { flex-direction: column; gap: 0.5rem; }
   .edu-meta { align-items: flex-start; flex-direction: row; gap: 0.75rem; }
+
+  /* Involvement entries stack the same way */
+  .entry-head { flex-direction: column; gap: 0.5rem; }
+  .entry-meta { align-items: flex-start; flex-direction: row; gap: 0.75rem; }
 }
 
 /* Respect users who prefer reduced motion */

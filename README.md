@@ -5,19 +5,37 @@ file in a browser and it works.
 
 ## Files
 
+Top-level nav: **Home · About · Education · Skills · Involvement · Contact**
+
 ```
 index.html            Home — hero, "Who am I?", Education, Recent Activities
-lab-bootcamp.html     Two-lane journey map of the wet-lab sessions
-capstone.html         Parkinson's diagnosis capstone (overview, team, timeline…)
-looking-ahead.html    Community rotation with PSSO
-seminars.html         Friday seminar series entries
-courses/
-  sci-comm.html       Scientific Communication + instructor thank-you
-  ethics.html         Ethics (placeholder for now)
-  sci-policy.html     Science Policy
+about.html            Long-form biography
+skills.html           Lab techniques, grouped by what they're used for
+involvement.html      Volunteering, extracurriculars, athletics
+contact.html          Email / LinkedIn / CV
+
+masters.html          Masters hub — reached from Education > "More information"
+  lab-bootcamp.html     Two-lane journey map of the wet-lab sessions
+  capstone.html         Parkinson's diagnosis capstone
+  looking-ahead.html    Upcoming Works — community rotation with PSSO
+  seminars.html         Friday seminar series entries
+  courses/
+    sci-comm.html       Scientific Communication + instructor thank-you
+    ethics.html         Ethics (placeholder for now)
+    sci-policy.html     Science Policy
+
 css/style.css         All styling, in numbered sections
-js/main.js            Nav dropdown, mobile menu, journey-map accordion
+js/main.js            Mobile menu, Courses wheel, journey-map accordion
 ```
+
+**How the Masters section works.** Everything belonging to the master's program
+sits behind `masters.html` rather than in the top nav. You reach it from the
+Education section on the home page via the "More information" button. Those
+pages are indented above to show the hierarchy — they're still ordinary files in
+the root folder, not a subfolder. Each one carries a breadcrumb
+(`Education › Masters › This page`) and marks **Education** as the active nav
+item. When you build the UofT page later, the same pattern applies: a new
+`uoft.html` hub plus a "More information" button on that education entry.
 
 ## Things you'll want to change
 
@@ -35,13 +53,14 @@ picture (make an `images/` folder alongside `css/`).
 ## Two things to know when editing
 
 **The header and footer are repeated in every page.** That keeps the site working
-without a web server, but it means a nav change has to be copied into all eight
-files. Two details to keep right:
+without a web server, but it means a nav change has to be copied into all 13
+files. Three details to keep right:
 
 - Pages inside `courses/` prefix every link with `../` (e.g. `../index.html`).
 - The current page's nav link carries `class="nav-link is-active"` and
-  `aria-current="page"`. On the three course pages, the `Courses` button gets
-  `is-active` instead.
+  `aria-current="page"`.
+- On every page under the Masters section, **Education** is the active item
+  (without `aria-current`, since that link points at a section on another page).
 
 **Adding a stop to the Lab Bootcamp map:** copy one `<li>` from the `.stops` list
 and one `<article class="stop-panel">` block, then give them a new matching id —
