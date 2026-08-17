@@ -97,6 +97,15 @@ p, ul, ol { margin: 0 0 1.1em; }
 /* Keep body copy at a readable line length */
 p, li { max-width: var(--max-text); }
 
+/* Escape hatch for a paragraph that should run wide instead of wrapping at
+   68 characters — e.g. a short block you want to read as 2 long lines
+   rather than several short ones. Pair with .container--wide on the
+   ancestor .container, since the container's own max-width is the real
+   ceiling — widening just the <p> does nothing once it exceeds that. The
+   .container--wide rule itself lives in section 3 (Layout helpers), right
+   after .container, so it wins the cascade. */
+.text-wide { max-width: none; }
+
 a { color: var(--accent); }
 a:hover { color: var(--accent-dark); }
 
@@ -137,6 +146,11 @@ hr {
   margin-inline: auto;
   padding-inline: 1.5rem;
 }
+
+/* Wider variant for a section whose content needs more than 68ch to read
+   as 2 lines instead of 3+. Use sparingly — most sections should stay at
+   the standard width for a consistent page rhythm. */
+.container--wide { max-width: 1200px; }
 
 /* Standard vertical rhythm for page sections */
 .section { padding: 3.5rem 0; }
