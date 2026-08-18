@@ -620,6 +620,73 @@ hr {
   color: var(--ink-soft);
 }
 
+/* --- Course pages: ePortfolio artifacts ---
+   A numbered card per artifact selected for the ePortfolio. Reusable on
+   any course page: numbered badge on the left, then the kind of work,
+   its title, and what it involved. */
+.artifact-list {
+  display: grid;
+  gap: 1.25rem;
+  list-style: none;
+  margin: 1.75rem 0 0;
+  padding: 0;
+}
+.artifact-list > li { max-width: none; }
+
+.artifact {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.35rem;
+  padding: 1.5rem 1.6rem;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.artifact:hover { box-shadow: var(--shadow-md); }
+
+/* Numbered badge */
+.artifact-num {
+  flex: 0 0 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-line);
+  color: var(--accent-dark);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.artifact-kind {
+  margin: 0 0 0.2rem;
+  max-width: none;
+  font-size: 0.75rem;
+  font-weight: 650;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.artifact-body h3 { margin: 0 0 0.5rem; font-size: 1.1rem; }
+.artifact-body > p:last-child {
+  margin: 0;
+  max-width: none;
+  font-size: 0.96rem;
+  color: var(--ink-soft);
+}
+
+/* Closing takeaway under the artifact list */
+.artifact-closing {
+  margin-top: 1.75rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--accent-line);
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
 /* --- Involvement page: athletics ---
    Sport cards sit on a faintly striped background, a nod to a mown pitch.
    The stripes are deliberately very low contrast — they should read as
@@ -1316,6 +1383,16 @@ a.wheel-item:hover { background: rgba(255, 255, 255, 0.28); }
   /* Involvement entries stack the same way */
   .entry-head { flex-direction: column; gap: 0.5rem; }
   .entry-meta { align-items: flex-start; flex-direction: row; gap: 0.75rem; }
+
+  /* Artifact cards: shrink the badge and padding so the text column keeps
+     a usable width on a phone rather than wrapping every few words. */
+  .artifact { gap: 0.9rem; padding: 1.35rem 1.25rem; }
+  .artifact-num {
+    flex-basis: 36px;
+    height: 36px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+  }
 }
 
 /* Respect users who prefer reduced motion */
