@@ -59,19 +59,108 @@
     </div>
   </div>
 
-  <!-- ======================= COURSE + ARTIFACTS =======================
-       The three artifacts are the pieces selected for the ePortfolio.
-       To add another, copy a whole <li class="artifact"> block and bump
-       the number in .artifact-num. The same markup works on any course
-       page — the styles live in section 10 of css/style.css.
-       ================================================================= -->
+  <!-- ======================= ABOUT + THEMES =======================
+       The theme cards summarise what the course actually covered.
+       To add or remove one, copy or delete a whole <div class="card
+       card--static"> block — the grid reflows on its own. Six cards
+       fill three even rows on desktop; an odd number leaves a gap in
+       the last row.
+       ============================================================= -->
   <section class="section">
     <div class="container">
       <h2>About the course</h2>
       <p>
-        This course built a practical toolkit for communicating science to a range of
-        audiences &mdash; from peer reviewers to funding panels to the public. Three
-        experiences stood out:
+        <em>Communicating Science in the 21st Century</em> built a practical toolkit for
+        reaching the very different audiences a researcher has to write for &mdash; peer
+        reviewers, funding panels, colleagues in other fields, and the public. Almost every
+        session ended in something written, pitched, or posted, so the ideas below were
+        never left as theory for long.
+      </p>
+
+      <h3 class="label" style="margin-top:2.25rem;">What the course covered</h3>
+
+      <div class="grid cols-2">
+
+        <div class="card card--static">
+          <h3>Knowing your audience</h3>
+          <p>
+            Every other choice follows from who is listening. We mapped the full range of
+            audiences a scientist writes for, then practised the hardest case &mdash; a
+            reader with no background at all &mdash; by writing a 250-word layman summary
+            of a research article for a general newspaper readership.
+          </p>
+        </div>
+
+        <div class="card card--static">
+          <h3>Clear and concise writing</h3>
+          <p>
+            Writing was treated as a sequence rather than a single act: free writing,
+            organizing, drafting, reviewing, revising, editing. Rewriting overloaded
+            sentences together at the whiteboard made the lesson concrete &mdash; most
+            scientific prose gets clearer by deletion.
+          </p>
+        </div>
+
+        <div class="card card--static">
+          <h3>Proposals, pitches and panels</h3>
+          <p>
+            A strong proposal answers three questions: what you want to do, why it matters,
+            and how you will do it. Alongside the Canadian Tri-Council agencies and their
+            requirements, we heard directly from Dr. Owen on how grant panels actually
+            arrive at a decision.
+          </p>
+        </div>
+
+        <div class="card card--static">
+          <h3>Publication and peer review</h3>
+          <p>
+            We followed a manuscript from journal selection through to decision, comparing
+            single-blind, double-blind, open, published, post-publication and collaborative
+            review. Writing a review of a peer's work, then a response letter answering a
+            review of my own, taught the etiquette of critique far better than reading
+            about it would have.
+          </p>
+        </div>
+
+        <div class="card card--static">
+          <h3>Open access, preprints and predatory journals</h3>
+          <p>
+            Beall's List, the long argument over MDPI, and the role preprints played during
+            COVID-19 all showed how much of publishing runs on judgment rather than rules.
+            The open-access scenarios we worked through &mdash; a $3,000 fee at a top
+            journal against free publication somewhere quieter &mdash; had no clean
+            answers, which was the point.
+          </p>
+        </div>
+
+        <div class="card card--static">
+          <h3>Generative AI in scientific writing</h3>
+          <p>
+            We stress-tested AI-written scientific prose and kept finding the same faults:
+            generic, overconfident, no limitations, no evidence. The course closed by
+            asking each of us to set our own guidelines for these tools &mdash; where they
+            genuinely help with clarity and structure, and where using one would mean
+            signing my name to something I could not vouch for.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================= ePORTFOLIO ARTIFACTS =======================
+       The pieces selected for the ePortfolio. To add another, copy a whole
+       <li class="artifact"> block and bump the number in .artifact-num.
+       The same markup works on any course page — the styles live in
+       section 10 of css/style.css.
+       ==================================================================== -->
+  <section class="section section--alt">
+    <div class="container">
+      <h2>Selected work</h2>
+      <p>
+        Five pieces from the course, each asking for a different register &mdash; adversarial,
+        instructional, persuasive, conversational, and public.
       </p>
 
       <ol class="artifact-list">
@@ -114,10 +203,43 @@
           </div>
         </li>
 
+        <li class="artifact">
+          <span class="artifact-num" aria-hidden="true">04</span>
+          <div class="artifact-body">
+            <p class="artifact-kind">Podcast &mdash; group project</p>
+            <h3><span class="todo-inline">[TODO: podcast title / topic]</span></h3>
+            <p>
+              The course's one audio-first assignment: an episode planned, scripted and
+              recorded with an assigned group. Speaking rather than writing changed the
+              problem entirely &mdash; pacing, handing off between voices, and explaining
+              with no figure to point at.
+              <span class="todo-inline">[TODO: the topic, your role in the group, and one
+              thing you'd do differently next time.]</span>
+            </p>
+          </div>
+        </li>
+
+        <li class="artifact">
+          <span class="artifact-num" aria-hidden="true">05</span>
+          <div class="artifact-body">
+            <p class="artifact-kind">Ongoing practice</p>
+            <h3>Science communication on LinkedIn</h3>
+            <p>
+              Every class ended with a post recapping the session for a public audience, and
+              with reading and responding to what my peers had written. Varying the length,
+              hook and format week to week &mdash; writing for someone scrolling rather than
+              for a marker &mdash; made this the most repeated and most transferable habit
+              the course built.
+              <span class="todo-inline">[TODO: link your LinkedIn profile, or a post you're
+              particularly happy with.]</span>
+            </p>
+          </div>
+        </li>
+
       </ol>
 
       <p class="artifact-closing">
-        Across all three, the throughline was the same: effective communication starts with
+        Across all of them, the throughline was the same: effective communication starts with
         knowing your audience.
       </p>
 
@@ -125,7 +247,7 @@
   </section>
 
   <!-- ======================= INSTRUCTOR RECOGNITION ======================= -->
-  <section class="section section--alt">
+  <section class="section">
     <div class="container">
       <h2>With thanks to my instructors</h2>
       <p class="lede" style="margin-bottom:2rem;">
