@@ -499,7 +499,10 @@ hr {
   border-radius: 5px;
   color: var(--todo-ink);
   font-size: 0.92em;
-  white-space: nowrap;
+  /* Must wrap: long placeholders (a full sentence of guidance) would
+     otherwise push the page wider than a phone screen and cause sideways
+     scrolling. Short ones like [Date] still sit on one line naturally. */
+  overflow-wrap: break-word;
 }
 
 
@@ -612,6 +615,65 @@ hr {
 }
 .entry-detail {
   margin: 0.85rem 0 0;
+  max-width: none;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+/* --- Involvement page: athletics ---
+   Sport cards sit on a faintly striped background, a nod to a mown pitch.
+   The stripes are deliberately very low contrast — they should read as
+   texture, not as a pattern competing with the text. */
+.pitch {
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(47, 111, 107, 0.05) 0 52px,
+    transparent 52px 104px
+  );
+}
+
+.sport-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.1rem;
+  padding: 1.5rem;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.sport-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-line);
+  box-shadow: var(--shadow-md);
+}
+
+/* Circular icon badge */
+.sport-icon {
+  flex: 0 0 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-line);
+  color: var(--accent);
+}
+.sport-icon svg { width: 26px; height: 26px; display: block; }
+
+.sport-card h3 { margin: 0 0 0.15rem; font-size: 1.05rem; }
+.sport-card .sport-role {
+  margin: 0 0 0.55rem;
+  max-width: none;
+  font-size: 0.78rem;
+  font-weight: 650;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.sport-card p:last-child {
+  margin: 0;
   max-width: none;
   font-size: 0.95rem;
   color: var(--ink-soft);

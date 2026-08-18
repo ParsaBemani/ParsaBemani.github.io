@@ -139,18 +139,68 @@
     </div>
   </section>
 
-  <!-- ======================= ATHLETICS ======================= -->
-  <section class="section">
+  <!-- ======================= ATHLETICS =======================
+       Sport cards. To add one, copy a whole <div class="sport-card"> block,
+       swap the <use href="#..."> for another icon from the sprite below,
+       and edit the title, role and blurb.
+       ========================================================== -->
+  <section class="section pitch">
     <div class="container">
       <h2>Athletics</h2>
-      <p>
-        A large part of my time outside academics goes into sport &mdash; both training and
-        continuing to develop my passion for it.
+      <p class="lede" style="margin-bottom:2rem;">
+        Most of my time outside the lab is spent on a pitch &mdash; sometimes playing,
+        sometimes the one everybody is yelling at.
       </p>
-      <div class="todo">
+
+      <div class="grid cols-2">
+
+        <div class="sport-card">
+          <span class="sport-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <!-- whistle: body, pea-hole, mouthpiece -->
+              <path d="M9.8 8.6h8.9a1.8 1.8 0 0 1 1.8 1.8v.9a1.8 1.8 0 0 1-1.8 1.8h-4.3"/>
+              <circle cx="9" cy="14" r="5.5"/>
+              <circle cx="9" cy="14" r="1.5"/>
+            </svg>
+          </span>
+          <div>
+            <h3>Ontario Soccer</h3>
+            <p class="sport-role">Referee</p>
+            <p>
+              Refereeing organized soccer matches. Twenty-two players, one ball, and one
+              person expected to see all of it at once.
+            </p>
+          </div>
+        </div>
+
+        <div class="sport-card">
+          <span class="sport-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <!-- soccer ball: outline plus centre panel and seams -->
+              <circle cx="12" cy="12" r="8.5"/>
+              <path d="M12 7.2 15.7 9.9 14.3 14.2H9.7L8.3 9.9z"/>
+              <path d="M12 7.2V3.5M15.7 9.9l3.4-1.1M14.3 14.2l2.1 2.9M9.7 14.2l-2.1 2.9M8.3 9.9 4.9 8.8"/>
+            </svg>
+          </span>
+          <div>
+            <h3>Western University Intramurals</h3>
+            <p class="sport-role">Player</p>
+            <p>
+              Back on the other side of the whistle, playing for Western's intramural soccer
+              team.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Optional extras — delete this block if you'd rather keep it short. -->
+      <div class="todo" style="margin-top:1.5rem;">
         <p>
-          [TODO: sports you compete in or train for, teams, levels, coaching or officiating
-          roles, and any achievements worth listing.]
+          [TODO (optional): add the level you officiate at, how long you've been doing each,
+          and any other sports or achievements worth listing.]
         </p>
       </div>
     </div>
