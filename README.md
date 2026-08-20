@@ -19,6 +19,7 @@ contact.html          Email, university address, LinkedIn / CV
 
 masters.html          Masters hub — reached from Education > "More information"
   lab-bootcamp.html     Two-lane journey map of the wet-lab sessions
+  journal-club.html     Paper discussions running alongside the lab bootcamp
   capstone.html         Parkinson's diagnosis capstone
   seminars.html         Friday seminar series entries
   courses/
@@ -73,7 +74,7 @@ picture (make an `images/` folder alongside `css/`).
 ## Two things to know when editing
 
 **The header and footer are repeated in every page.** That keeps the site working
-without a web server, but it means a nav change has to be copied into all 15
+without a web server, but it means a nav change has to be copied into all 16
 files. Three details to keep right:
 
 - Pages inside `courses/` prefix every link with `../` (e.g. `../index.html`).
@@ -116,3 +117,9 @@ bundled with this site. To use one, download it from the university's brand or
 media-relations page and follow the instructions in the comment above the
 university cards in `education.html`. The brand colours used are the official
 ones: Western Purple `#4F2683` and U of T Blue `#1E3765`.
+
+**The Courses wheel appears on two pages** — the home page and `masters.html` —
+using identical markup. Its script (`js/main.js`, section 2) looks up a single
+`.course-trigger` and `#courses-wheel`, so exactly one instance per page works;
+adding a second to the same page would need the script generalised first. If
+you add a course, update the wheel in **both** files.

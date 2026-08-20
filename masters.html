@@ -65,10 +65,11 @@
       <h2>About the program</h2>
       <p>
         This is a research-focused master's program, so most of my time is split between the
-        bench and the questions that bring me to it. The year runs on four tracks at once:
+        bench and the questions that bring me to it. The year runs on several tracks at once:
         a wet-lab technique bootcamp building a working toolkit across protein and
-        gene-expression methods, a year-long group capstone on Parkinson's diagnosis, a Friday
-        seminar series, and coursework in communication, ethics and policy.
+        gene-expression methods, a journal club running alongside it, a year-long group
+        capstone on Parkinson's diagnosis, a Friday seminar series, and coursework in
+        communication, ethics and policy.
       </p>
       <div class="todo">
         <p>[TODO: add anything else about the program you want visitors to know &mdash; structure,
@@ -77,15 +78,23 @@
     </div>
   </section>
 
-  <!-- ======================= PROGRAM COMPONENTS ======================= -->
+  <!-- ======================= EXPLORE THE PROGRAM =======================
+       The chooser for everything inside the degree. Five of the six tiles
+       are ordinary link cards; the Courses tile is a button that opens the
+       same radial wheel used on the home page (see js/main.js section 2).
+
+       The wheel needs exactly one instance per page — its script looks up
+       a single .course-trigger and #courses-wheel — which is why the home
+       page and this page can each carry one without clashing.
+       ================================================================== -->
   <section class="section">
     <div class="container">
-      <h2>Program components</h2>
+      <h2>Explore the program</h2>
       <p class="lede" style="margin-bottom:2rem;">
-        The hands-on parts of the degree.
+        Everything the degree is made of. Pick a piece.
       </p>
 
-      <div class="grid cols-2">
+      <div class="grid cols-3">
 
         <a class="card" href="lab-bootcamp.html">
           <h3>Lab Bootcamp</h3>
@@ -94,17 +103,130 @@
           <span class="more">View the map &rarr;</span>
         </a>
 
+        <a class="card" href="journal-club.html">
+          <h3>Journal Club</h3>
+          <p>Weekly paper discussions running in parallel with the bench work.</p>
+          <span class="more">See the papers &rarr;</span>
+        </a>
+
+        <!-- Courses tile + its radial "wheel" menu.
+             Six fixed hexagon slots (60° apart): top / upper-right / lower-right /
+             bottom / lower-left / upper-left. The three real courses sit on the
+             top half; the bottom half is left as open slots for future courses.
+
+             To turn a blank slot into a real course: change its
+             <span class="wheel-item wheel-item--empty"> into an
+             <a class="wheel-item" href="courses/your-page.html">, swap the "+"
+             icon for a real one, and update the label. To add a 7th course you'd
+             need a new position class (the layout is a fixed hexagon, not an
+             auto-growing list) — ask Claude Code to add one. -->
+        <div class="menu-tile">
+          <button class="card course-trigger" aria-expanded="false" aria-controls="courses-wheel">
+            <h3>Courses</h3>
+            <p>The three courses I've taken so far &mdash; communication, ethics and policy.</p>
+            <span class="more">More <span class="more-caret" aria-hidden="true"></span></span>
+          </button>
+
+          <div class="wheel-menu" id="courses-wheel">
+            <!-- Decorative teal disc behind the wheel; also visually covers the
+                 button underneath while the wheel is open. -->
+            <div class="wheel-backdrop" aria-hidden="true"></div>
+
+            <!-- One spoke per slot, drawn from the hub out to each item. -->
+            <span class="wheel-spoke wheel-pos-top" aria-hidden="true"></span>
+            <span class="wheel-spoke wheel-pos-upper-right" aria-hidden="true"></span>
+            <span class="wheel-spoke wheel-pos-lower-right" aria-hidden="true"></span>
+            <span class="wheel-spoke wheel-pos-bottom" aria-hidden="true"></span>
+            <span class="wheel-spoke wheel-pos-lower-left" aria-hidden="true"></span>
+            <span class="wheel-spoke wheel-pos-upper-left" aria-hidden="true"></span>
+
+            <!-- Top half: the three real courses -->
+            <a class="wheel-item wheel-pos-top" href="courses/sci-comm.html">
+              <span class="wheel-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                     stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20.5 12c0 3.6-3.8 6.5-8.5 6.5-1 0-2-.13-2.9-.38L4 20l1.5-3.4C4.2 15.4 3.5 13.8 3.5 12c0-3.6 3.8-6.5 8.5-6.5s8.5 2.9 8.5 6.5z"/>
+                  <path d="M8.5 10.5h7M8.5 13.5h4.5"/>
+                </svg>
+              </span>
+              <span class="wheel-label">Sci Comm</span>
+            </a>
+
+            <a class="wheel-item wheel-pos-upper-right" href="courses/sci-policy.html">
+              <span class="wheel-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                     stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M13.5 3.5H7A1.5 1.5 0 0 0 5.5 5v14A1.5 1.5 0 0 0 7 20.5h10a1.5 1.5 0 0 0 1.5-1.5V8.5z"/>
+                  <path d="M13.5 3.5v5h5"/>
+                  <path d="M8.5 12.5h7M8.5 16h4.5"/>
+                </svg>
+              </span>
+              <span class="wheel-label">Sci Policy</span>
+            </a>
+
+            <a class="wheel-item wheel-pos-upper-left" href="courses/ethics.html">
+              <span class="wheel-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                     stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 4.5v15M7.5 19.5h9"/>
+                  <path d="M3.5 7.5H7c1.9 0 3.6-.7 5-1.5 1.4.8 3.1 1.5 5 1.5h3.5"/>
+                  <path d="M6.5 8 3.5 14.5h6zM17.5 8l-3 6.5h6z"/>
+                </svg>
+              </span>
+              <span class="wheel-label">Ethics</span>
+            </a>
+
+            <!-- Bottom half: three open slots, so the wheel reads as a full set
+                 of six before the remaining courses exist. -->
+            <span class="wheel-item wheel-item--empty wheel-pos-lower-right">
+              <span class="wheel-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                     stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 5.5v13M5.5 12h13"/>
+                </svg>
+              </span>
+              <span class="wheel-label">TODO</span>
+            </span>
+
+            <span class="wheel-item wheel-item--empty wheel-pos-bottom">
+              <span class="wheel-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                     stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 5.5v13M5.5 12h13"/>
+                </svg>
+              </span>
+              <span class="wheel-label">TODO</span>
+            </span>
+
+            <span class="wheel-item wheel-item--empty wheel-pos-lower-left">
+              <span class="wheel-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                     stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 5.5v13M5.5 12h13"/>
+                </svg>
+              </span>
+              <span class="wheel-label">TODO</span>
+            </span>
+
+            <!-- The hub sits in the centre and doubles as the close button. -->
+            <button class="wheel-hub" type="button" aria-label="Close courses menu">
+              <span class="wheel-hub-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                     stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 4.5v3c0 1.5 1.2 2.7 2.7 3l.8.2c.6.1 1 .7 1 1.3v7.5"/>
+                  <path d="M18 4.5v3c0 1.5-1.2 2.7-2.7 3l-.8.2c-.6.1-1 .7-1 1.3v7.5"/>
+                  <path d="M6 4.5h12M8.5 19.5h7"/>
+                </svg>
+              </span>
+              <span class="wheel-hub-label">Courses</span>
+            </button>
+          </div>
+        </div>
+
         <a class="card" href="capstone.html">
           <h3>Capstone</h3>
           <p>A year-long group project evaluating Parkinson's diagnosis techniques.</p>
           <span class="more">See the project &rarr;</span>
-        </a>
-
-        <a class="card" href="looking-ahead.html">
-          <h3>Upcoming Works</h3>
-          <p>A community rotation with Parkinson Society Southwestern Ontario, alongside the
-            capstone team.</p>
-          <span class="more">What's next &rarr;</span>
         </a>
 
         <a class="card" href="seminars.html">
@@ -113,36 +235,11 @@
           <span class="more">See the series &rarr;</span>
         </a>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- ======================= COURSEWORK ======================= -->
-  <section class="section section--alt">
-    <div class="container">
-      <h2>Coursework</h2>
-      <p class="lede" style="margin-bottom:2rem;">
-        Three courses taken so far.
-      </p>
-
-      <div class="grid cols-3">
-
-        <a class="card" href="courses/sci-comm.html">
-          <h3>Scientific Communication</h3>
-          <p>Getting research across clearly &mdash; and the two instructors who taught it.</p>
-          <span class="more">Read more &rarr;</span>
-        </a>
-
-        <a class="card" href="courses/ethics.html">
-          <h3>Ethics</h3>
-          <p>Coming soon.</p>
-          <span class="more">Read more &rarr;</span>
-        </a>
-
-        <a class="card" href="courses/sci-policy.html">
-          <h3>Science Policy</h3>
-          <p>How healthcare policies and regulations are developed and implemented.</p>
-          <span class="more">Read more &rarr;</span>
+        <a class="card" href="looking-ahead.html">
+          <h3>Upcoming Works</h3>
+          <p>A community rotation with Parkinson Society Southwestern Ontario, alongside the
+            capstone team.</p>
+          <span class="more">What's next &rarr;</span>
         </a>
 
       </div>
