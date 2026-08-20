@@ -56,10 +56,15 @@
        full card width. The two files live in images/ :
          images/western-schulich.png   — Schulich Medicine & Dentistry + Western
          images/uoft-arts-science.png  — University of Toronto, Arts & Science
-       They are sized with object-fit: cover at a 2:1 ratio, so each fills the
-       banner edge to edge with no letterboxing. If a logo ever looks clipped,
-       switch .uni-banner to object-fit: contain in css/style.css — the
-       surrounding band then uses that school's brand colour.
+       The banner is a short fixed-height strip (.uni-banner in
+       css/style.css) using object-fit: contain, so the whole logo always
+       stays visible — nothing gets cropped, no matter how short the strip
+       is. Any letterboxing is filled with --uni, which is set to match
+       each image's own background colour exactly (sampled from the file,
+       not the printed brand hex — the two can differ), so the letterbox
+       is invisible and the banner reads as one continuous colour block.
+       If you swap in a new logo file with a different background colour,
+       update its --uni to match or you'll see a seam.
        ================================================================== -->
   <section class="section">
     <div class="container">

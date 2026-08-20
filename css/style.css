@@ -648,19 +648,27 @@ hr {
   color: inherit;
 }
 
-/* Official brand colours (see the comment in education.html) */
+/* Colours are sampled from the actual logo banner images, not the printed
+   brand hex codes — the two don't always match exactly, and a mismatch
+   here would show up as a visible seam around the letterboxed logo. */
 .uni-card--western { --uni: #4F2683; }
-.uni-card--toronto { --uni: #1E3765; }
+.uni-card--toronto { --uni: #0E285B; }
 
-/* Logo banner across the full width of the card. The brand colour behind it
-   means a slow-loading or transparent image still looks intentional. */
+/* Logo banner across the full width of the card. A fixed (short) height
+   instead of the logo's own aspect ratio, so it reads as a slim header
+   strip rather than a large block. object-fit: contain guarantees the
+   whole logo stays visible at any height — nothing gets cropped — and
+   since the letterbox background matches the logo's own background
+   colour, the letterboxing is invisible. The top corners are rounded to
+   match the card exactly, so the banner reads as part of the card rather
+   than a rectangle sitting on top of it. */
 .uni-banner {
   display: block;
   width: 100%;
-  aspect-ratio: 2 / 1;
-  object-fit: cover;
+  height: 132px;
+  object-fit: contain;
   background: var(--uni);
-  border-bottom: 4px solid var(--uni);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
 }
 
 .uni-card-body { padding: 1.75rem 2rem 2rem; }
@@ -1479,8 +1487,9 @@ a.wheel-item:hover { background: rgba(255, 255, 255, 0.28); }
   .entry-head { flex-direction: column; gap: 0.5rem; }
   .entry-meta { align-items: flex-start; flex-direction: row; gap: 0.75rem; }
 
-  /* University cards stack; the banner keeps its full width */
+  /* University cards stack; the banner keeps its full width, slightly shorter */
   .uni-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+  .uni-banner { height: 104px; }
   .uni-card-body { padding: 1.5rem 1.5rem 1.5rem; }
   .uni-name { font-size: 1.2rem; }
 

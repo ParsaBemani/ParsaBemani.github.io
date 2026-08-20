@@ -2,24 +2,27 @@
 
 Photos and logos go here.
 
-## Replace these two placeholders
-
-`western-schulich.png` and `uoft-arts-science.png` are **temporary text
-placeholders** in each school's brand colour — they are not the real logos.
-Save the actual logo images over them, keeping the same two filenames, and the
-Education page picks them up with no code change:
+## The two university logo banners
 
 ```
 images/western-schulich.png    Schulich Medicine & Dentistry + Western
 images/uoft-arts-science.png   University of Toronto, Faculty of Arts & Science
 ```
 
-They display in a 2:1 banner across the top of each card on `education.html`,
-using `object-fit: cover`. Anything roughly landscape works — a wider image
-loses a little from the top and bottom, so keep the logo away from the edges.
-If a logo ever looks clipped, change `.uni-banner` in `css/style.css` from
-`object-fit: cover` to `contain`; the band around it then fills with the
-school's brand colour.
+These are the real logos, displayed as a short banner strip across the top of
+each card on `education.html` (`.uni-banner` in `css/style.css`). It uses
+`object-fit: contain` at a fixed height, so the whole logo always stays
+visible — nothing gets cropped, however short the strip is.
+
+**If you replace either file:** update its `--uni` colour to match. Each
+card's banner background is set to the image's own background colour
+(`.uni-card--western` / `.uni-card--toronto` in `css/style.css`), not the
+school's printed brand hex — the two aren't always the same, and the U of T
+logo here is a good example (its actual background is `#0E285B`, a touch
+darker than U of T's official `#1E3765`). If the colours don't match, you'll
+see a visible seam where the logo's own background meets the letterbox around
+it. Sample the image's corner pixel (any image editor's colour picker works)
+and use that exact value.
 
 ## Still to add
 
