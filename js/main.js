@@ -5,9 +5,10 @@
    loaded everywhere.
 
    1. Mobile menu toggle
-   2. Courses wheel menu on the home page
-   3. Lab Bootcamp journey-map accordion
-   4. Footer year
+   2. Masters section-nav Courses dropdown
+   3. Courses wheel menu (home page and Masters hub)
+   4. Lab Bootcamp journey-map accordion
+   5. Footer year
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -29,9 +30,55 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* ------------------------------------------------------------------
-     2. COURSES WHEEL (home page)
-     Clicking the Courses tile fans a hexagon of six slots out from its
-     centre. The hub in the middle doubles as the close button. Also closes
+     2. MASTERS SECTION-NAV COURSES DROPDOWN
+     The Courses item in the Masters sub-navigation bar. Three separate
+     menus can be on screen at once (main mobile nav, this, and the
+     Courses wheel), so each uses its own selectors and its own state —
+     nothing here touches the other two.
+     ------------------------------------------------------------------ */
+
+  var subnavToggle = document.querySelector('.subnav-toggle');
+  var subnavMenu = document.getElementById('subnav-courses');
+
+  if (subnavToggle && subnavMenu) {
+
+    var setSubnavMenu = function (open) {
+      subnavToggle.setAttribute('aria-expanded', String(open));
+      subnavMenu.hidden = !open;
+    };
+
+    subnavToggle.addEventListener('click', function (event) {
+      event.stopPropagation();  // don't trip the outside-click handler below
+      // Shut the Courses wheel if it's open, so only one menu shows at a
+      // time. setCourseWheel is declared further down; by the time a click
+      // can happen it has been assigned.
+      if (typeof setCourseWheel === 'function') { setCourseWheel(false); }
+      setSubnavMenu(subnavToggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    // Clicking a course link inside shouldn't close the menu before the
+    // browser has started navigating.
+    subnavMenu.addEventListener('click', function (event) {
+      event.stopPropagation();
+    });
+
+    document.addEventListener('click', function () {
+      setSubnavMenu(false);
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        setSubnavMenu(false);
+        subnavToggle.focus();
+      }
+    });
+  }
+
+
+  /* ------------------------------------------------------------------
+     3. COURSES WHEEL (home page and Masters hub)
+     Clicking the Courses tile fans three slots out from its centre, evenly
+     spaced 120° apart. The hub doubles as the close button. Also closes
      on a click elsewhere, on Escape, or on a real course link (after the
      browser has started navigating, so the collapse animation doesn't
      visibly race the page unload).
@@ -50,6 +97,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     courseTrigger.addEventListener('click', function (event) {
       event.stopPropagation();  // don't trip the outside-click handler below
+      // Shut the section-nav dropdown if it's open — same reason as above.
+      if (typeof setSubnavMenu === 'function') { setSubnavMenu(false); }
       setCourseWheel(courseTrigger.getAttribute('aria-expanded') !== 'true');
     });
 
@@ -81,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* ------------------------------------------------------------------
-     3. LAB BOOTCAMP JOURNEY MAP
+     4. LAB BOOTCAMP JOURNEY MAP
      Each stop button has aria-controls="<panel id>". Clicking a stop opens
      its panel and closes any other open stop *in the same lane*, so the two
      tracks can be read side by side.
@@ -115,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* ------------------------------------------------------------------
-     4. FOOTER YEAR
+     5. FOOTER YEAR
      Keeps the copyright year current without editing every page.
      ------------------------------------------------------------------ */
 

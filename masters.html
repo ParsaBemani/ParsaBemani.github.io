@@ -34,6 +34,40 @@
   </div>
 </header>
 
+<!-- ===== MASTERS SECTION NAV =====
+     Appears ONLY on the Masters hub and the pages inside it — not on any
+     top-level page. Sits below the main nav and is styled to look
+     subordinate to it (see section 4b of css/style.css).
+
+     Mark the current page's link with class="subnav-link is-active".
+     On the three course pages, the Courses *toggle* gets is-active instead.
+     ===== -->
+<nav class="subnav" aria-label="Masters program sections">
+  <div class="container subnav-inner">
+    <span class="subnav-label">Masters of Medical Sciences</span>
+
+    <ul class="subnav-list">
+      <li><a class="subnav-link is-active" href="masters.html" aria-current="page">Overview</a></li>
+      <li><a class="subnav-link" href="lab-bootcamp.html">Lab Bootcamp</a></li>
+      <li><a class="subnav-link" href="journal-club.html">Journal Club</a></li>
+
+      <li>
+        <button class="subnav-link subnav-toggle" aria-expanded="false" aria-controls="subnav-courses">
+          Courses <span class="caret" aria-hidden="true"></span>
+        </button>
+        <ul class="subnav-menu" id="subnav-courses" hidden>
+          <li><a href="courses/sci-comm.html">Sci Comm</a></li>
+          <li><a href="courses/ethics.html">Ethics</a></li>
+          <li><a href="courses/sci-policy.html">Sci Policy</a></li>
+        </ul>
+      </li>
+
+      <li><a class="subnav-link" href="capstone.html">Capstone</a></li>
+      <li><a class="subnav-link" href="seminars.html">Seminars</a></li>
+    </ul>
+  </div>
+</nav>
+
 <main>
 
   <!-- ======================= PAGE INTRO ======================= -->
@@ -49,13 +83,6 @@
 
       <p class="eyebrow">University of Western Ontario &middot; 2026 &ndash; 2027</p>
       <h1>Masters of Medical Sciences</h1>
-      <p class="lede">
-        Everything from my master's program in one place &mdash; the coursework, the bench
-        training, the year-long capstone, and the seminar series.
-      </p>
-      <address class="postal">
-        Western University &middot; 1151 Richmond Street, London, ON&nbsp; N6A 3K7
-      </address>
     </div>
   </div>
 
@@ -79,22 +106,23 @@
   </section>
 
   <!-- ======================= EXPLORE THE PROGRAM =======================
-       The chooser for everything inside the degree. Five of the six tiles
-       are ordinary link cards; the Courses tile is a button that opens the
-       same radial wheel used on the home page (see js/main.js section 2).
+       The chooser for everything inside the degree — the same destinations
+       as the section nav at the top of the page, in card form. Four are
+       ordinary link cards; the Courses tile is a button that opens the
+       radial wheel (see js/main.js section 3).
 
        The wheel needs exactly one instance per page — its script looks up
        a single .course-trigger and #courses-wheel — which is why the home
        page and this page can each carry one without clashing.
+
+       .grid--center rather than .cols-3, so the last row of five sits
+       centred instead of hanging left with an empty gap beside it.
        ================================================================== -->
   <section class="section">
     <div class="container">
       <h2>Explore the program</h2>
-      <p class="lede" style="margin-bottom:2rem;">
-        Everything the degree is made of. Pick a piece.
-      </p>
 
-      <div class="grid cols-3">
+      <div class="grid grid--center">
 
         <a class="card" href="lab-bootcamp.html">
           <h3>Lab Bootcamp</h3>
@@ -110,16 +138,12 @@
         </a>
 
         <!-- Courses tile + its radial "wheel" menu.
-             Six fixed hexagon slots (60° apart): top / upper-right / lower-right /
-             bottom / lower-left / upper-left. The three real courses sit on the
-             top half; the bottom half is left as open slots for future courses.
-
-             To turn a blank slot into a real course: change its
-             <span class="wheel-item wheel-item--empty"> into an
-             <a class="wheel-item" href="courses/your-page.html">, swap the "+"
-             icon for a real one, and update the label. To add a 7th course you'd
-             need a new position class (the layout is a fixed hexagon, not an
-             auto-growing list) — ask Claude Code to add one. -->
+             Three slots, evenly spaced 120° apart: top / lower-right /
+             lower-left. The position classes (.wheel-pos-*) in section 10
+             of css/style.css still define all six hexagon points, so a
+             fourth course can reuse one — but with four items the spacing
+             is no longer even. Ask Claude Code to re-space them.
+             -->
         <div class="menu-tile">
           <button class="card course-trigger" aria-expanded="false" aria-controls="courses-wheel">
             <h3>Courses</h3>
@@ -134,13 +158,10 @@
 
             <!-- One spoke per slot, drawn from the hub out to each item. -->
             <span class="wheel-spoke wheel-pos-top" aria-hidden="true"></span>
-            <span class="wheel-spoke wheel-pos-upper-right" aria-hidden="true"></span>
             <span class="wheel-spoke wheel-pos-lower-right" aria-hidden="true"></span>
-            <span class="wheel-spoke wheel-pos-bottom" aria-hidden="true"></span>
             <span class="wheel-spoke wheel-pos-lower-left" aria-hidden="true"></span>
-            <span class="wheel-spoke wheel-pos-upper-left" aria-hidden="true"></span>
 
-            <!-- Top half: the three real courses -->
+            <!-- The three courses, one per slot -->
             <a class="wheel-item wheel-pos-top" href="courses/sci-comm.html">
               <span class="wheel-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
@@ -152,7 +173,7 @@
               <span class="wheel-label">Sci Comm</span>
             </a>
 
-            <a class="wheel-item wheel-pos-upper-right" href="courses/sci-policy.html">
+            <a class="wheel-item wheel-pos-lower-right" href="courses/sci-policy.html">
               <span class="wheel-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
                      stroke-linecap="round" stroke-linejoin="round">
@@ -164,7 +185,7 @@
               <span class="wheel-label">Sci Policy</span>
             </a>
 
-            <a class="wheel-item wheel-pos-upper-left" href="courses/ethics.html">
+            <a class="wheel-item wheel-pos-lower-left" href="courses/ethics.html">
               <span class="wheel-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
                      stroke-linecap="round" stroke-linejoin="round">
@@ -176,37 +197,8 @@
               <span class="wheel-label">Ethics</span>
             </a>
 
-            <!-- Bottom half: three open slots, so the wheel reads as a full set
-                 of six before the remaining courses exist. -->
-            <span class="wheel-item wheel-item--empty wheel-pos-lower-right">
-              <span class="wheel-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
-                     stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 5.5v13M5.5 12h13"/>
-                </svg>
-              </span>
-              <span class="wheel-label">TODO</span>
-            </span>
 
-            <span class="wheel-item wheel-item--empty wheel-pos-bottom">
-              <span class="wheel-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
-                     stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 5.5v13M5.5 12h13"/>
-                </svg>
-              </span>
-              <span class="wheel-label">TODO</span>
-            </span>
 
-            <span class="wheel-item wheel-item--empty wheel-pos-lower-left">
-              <span class="wheel-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
-                     stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 5.5v13M5.5 12h13"/>
-                </svg>
-              </span>
-              <span class="wheel-label">TODO</span>
-            </span>
 
             <!-- The hub sits in the centre and doubles as the close button. -->
             <button class="wheel-hub" type="button" aria-label="Close courses menu">
@@ -233,13 +225,6 @@
           <h3>Seminars</h3>
           <p>The Friday seminar series &mdash; guest speakers from a range of professions.</p>
           <span class="more">See the series &rarr;</span>
-        </a>
-
-        <a class="card" href="looking-ahead.html">
-          <h3>Upcoming Works</h3>
-          <p>A community rotation with Parkinson Society Southwestern Ontario, alongside the
-            capstone team.</p>
-          <span class="more">What's next &rarr;</span>
         </a>
 
       </div>

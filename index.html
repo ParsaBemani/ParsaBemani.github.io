@@ -189,16 +189,12 @@
         </a>
 
         <!-- Courses tile + its radial "wheel" menu.
-             Six fixed hexagon slots (60° apart): top / upper-right / lower-right /
-             bottom / lower-left / upper-left. The three real courses sit on the
-             top half; the bottom half is left as open slots for future courses.
-
-             To turn a blank slot into a real course: change its
-             <span class="wheel-item wheel-item--empty"> into an
-             <a class="wheel-item" href="courses/your-page.html">, swap the "+"
-             icon for a real one, and update the label. To add a 7th course you'd
-             need a new position class (the layout is a fixed hexagon, not an
-             auto-growing list) — ask Claude Code to add one. -->
+             Three slots, evenly spaced 120° apart: top / lower-right /
+             lower-left. The position classes (.wheel-pos-*) in section 10
+             of css/style.css still define all six hexagon points, so a
+             fourth course can reuse one — but with four items the spacing
+             is no longer even. Ask Claude Code to re-space them.
+             -->
         <div class="menu-tile">
           <button class="card course-trigger" aria-expanded="false" aria-controls="courses-wheel">
             <h3>Courses</h3>
@@ -213,13 +209,10 @@
 
             <!-- One spoke per slot, drawn from the hub out to each item. -->
             <span class="wheel-spoke wheel-pos-top" aria-hidden="true"></span>
-            <span class="wheel-spoke wheel-pos-upper-right" aria-hidden="true"></span>
             <span class="wheel-spoke wheel-pos-lower-right" aria-hidden="true"></span>
-            <span class="wheel-spoke wheel-pos-bottom" aria-hidden="true"></span>
             <span class="wheel-spoke wheel-pos-lower-left" aria-hidden="true"></span>
-            <span class="wheel-spoke wheel-pos-upper-left" aria-hidden="true"></span>
 
-            <!-- Top half: the three real courses -->
+            <!-- The three courses, one per slot -->
             <a class="wheel-item wheel-pos-top" href="courses/sci-comm.html">
               <span class="wheel-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
@@ -231,7 +224,7 @@
               <span class="wheel-label">Sci Comm</span>
             </a>
 
-            <a class="wheel-item wheel-pos-upper-right" href="courses/sci-policy.html">
+            <a class="wheel-item wheel-pos-lower-right" href="courses/sci-policy.html">
               <span class="wheel-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
                      stroke-linecap="round" stroke-linejoin="round">
@@ -243,7 +236,7 @@
               <span class="wheel-label">Sci Policy</span>
             </a>
 
-            <a class="wheel-item wheel-pos-upper-left" href="courses/ethics.html">
+            <a class="wheel-item wheel-pos-lower-left" href="courses/ethics.html">
               <span class="wheel-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
                      stroke-linecap="round" stroke-linejoin="round">
@@ -255,37 +248,8 @@
               <span class="wheel-label">Ethics</span>
             </a>
 
-            <!-- Bottom half: three open slots, so you can preview the wheel
-                 with a full set of six before the rest of the courses exist. -->
-            <span class="wheel-item wheel-item--empty wheel-pos-lower-right">
-              <span class="wheel-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
-                     stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 5.5v13M5.5 12h13"/>
-                </svg>
-              </span>
-              <span class="wheel-label">TODO</span>
-            </span>
 
-            <span class="wheel-item wheel-item--empty wheel-pos-bottom">
-              <span class="wheel-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
-                     stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 5.5v13M5.5 12h13"/>
-                </svg>
-              </span>
-              <span class="wheel-label">TODO</span>
-            </span>
 
-            <span class="wheel-item wheel-item--empty wheel-pos-lower-left">
-              <span class="wheel-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
-                     stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 5.5v13M5.5 12h13"/>
-                </svg>
-              </span>
-              <span class="wheel-label">TODO</span>
-            </span>
 
             <!-- The hub sits in the centre and doubles as the close button. -->
             <button class="wheel-hub" type="button" aria-label="Close courses menu">

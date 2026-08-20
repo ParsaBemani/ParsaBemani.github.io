@@ -34,6 +34,40 @@
   </div>
 </header>
 
+<!-- ===== MASTERS SECTION NAV =====
+     Appears ONLY on the Masters hub and the pages inside it — not on any
+     top-level page. Sits below the main nav and is styled to look
+     subordinate to it (see section 4b of css/style.css).
+
+     Mark the current page's link with class="subnav-link is-active".
+     On the three course pages, the Courses *toggle* gets is-active instead.
+     ===== -->
+<nav class="subnav" aria-label="Masters program sections">
+  <div class="container subnav-inner">
+    <span class="subnav-label">Masters of Medical Sciences</span>
+
+    <ul class="subnav-list">
+      <li><a class="subnav-link" href="masters.html">Overview</a></li>
+      <li><a class="subnav-link" href="lab-bootcamp.html">Lab Bootcamp</a></li>
+      <li><a class="subnav-link is-active" href="journal-club.html" aria-current="page">Journal Club</a></li>
+
+      <li>
+        <button class="subnav-link subnav-toggle" aria-expanded="false" aria-controls="subnav-courses">
+          Courses <span class="caret" aria-hidden="true"></span>
+        </button>
+        <ul class="subnav-menu" id="subnav-courses" hidden>
+          <li><a href="courses/sci-comm.html">Sci Comm</a></li>
+          <li><a href="courses/ethics.html">Ethics</a></li>
+          <li><a href="courses/sci-policy.html">Sci Policy</a></li>
+        </ul>
+      </li>
+
+      <li><a class="subnav-link" href="capstone.html">Capstone</a></li>
+      <li><a class="subnav-link" href="seminars.html">Seminars</a></li>
+    </ul>
+  </div>
+</nav>
+
 <main>
 
   <!-- ======================= PAGE INTRO ======================= -->
