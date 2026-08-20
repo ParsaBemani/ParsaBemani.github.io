@@ -50,20 +50,27 @@
 
        THE BANNER IMAGES: each card opens with a logo banner spanning the
        full card width. The two files live in images/ :
-         images/uwo-logo.png    — Schulich Medicine & Dentistry, colours inverted
-                                   (purple background, white mark) from the
-                                   original logo file so it fills the banner
-                                   as a solid colour block, not a white one.
-         images/uoft-logo.png   — University of Toronto crest + wordmark
+         images/uwo-logo.png    — Schulich Medicine & Dentistry, colours
+                                   inverted (purple background, white mark)
+                                   from the original logo file, which was
+                                   purple-on-white. The purple is baked into
+                                   the image itself, matched to --uni.
+         images/uoft-logo.png   — University of Toronto crest + wordmark,
+                                   with the navy background removed
+                                   entirely (transparent) — only the white
+                                   crest and text remain in the file.
        The banner is a short fixed-height strip (.uni-banner in
        css/style.css) using object-fit: contain, so the whole logo always
        stays visible — nothing gets cropped, no matter how short the strip
-       is. Any letterboxing is filled with --uni, which is set to match
-       each image's own background colour exactly (sampled from the file,
-       not the printed brand hex — the two can differ), so the letterbox
-       is invisible and the banner reads as one continuous colour block.
-       If you swap in a new logo file with a different background colour,
-       update its --uni to match or you'll see a seam.
+       is. .uni-banner's own `background: var(--uni)` paints behind the
+       image, which is how the Toronto banner gets its colour: since the
+       image has no background pixels of its own left to (almost, but not
+       quite) match, there's nothing for the CSS colour to seam against —
+       the whole strip, including the area behind the logo, is the exact
+       same single CSS colour. This is the more robust of the two
+       techniques; if you ever see a seam on the Western card, redoing its
+       logo the same way (transparent PNG instead of a baked-in purple
+       background) would remove any chance of a mismatch there too.
        ================================================================== -->
   <section class="section">
     <div class="container">

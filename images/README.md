@@ -8,29 +8,38 @@ Photos and logos go here.
 images/uwo-logo.png    Schulich Medicine & Dentistry — colours inverted
                         (purple background, white mark) from the original
                         logo file, which was purple-on-white
-images/uoft-logo.png    University of Toronto crest + wordmark, converted
-                        from the original .avif upload
+images/uoft-logo.png    University of Toronto crest + wordmark — navy
+                        background removed entirely, leaving only the
+                        white shapes on a transparent background
 ```
 
 These display as a short banner strip across the top of each card on
 `education.html` (`.uni-banner` in `css/style.css`), using `object-fit:
 contain` at a fixed height — the whole logo always stays visible, nothing
-gets cropped, however short the strip is. Both files have a solid, flat
-background colour (no gradient), so the letterbox is a perfect match with
-no visible seam.
+gets cropped, however short the strip is.
 
-`western-schulich.png`, `uoft-arts-science.png` and `uoft-logo.jpeg` are
-earlier logo images, no longer referenced by any page. They're left in this
-folder rather than deleted, in case you want to switch back.
+The two files use different techniques, and the Toronto one is the more
+robust of the two:
 
-**If you replace either file:** update its `--uni` colour to match
-(`.uni-card--western` / `.uni-card--toronto` in `css/style.css`). The banner
-background is set to the image's own background colour, not the school's
-printed brand hex — the two aren't always the same. If they don't match,
-you'll see a visible seam where the logo's background meets the letterbox
-around it. Sample a few points across the image (corners, edges, centre) to
-check it's actually flat before picking one colour — some logo exports have
-a faint gradient, which no single flat colour can match perfectly.
+- **`uwo-logo.png`** is a fully opaque image — the purple is baked into
+  every pixel, matched to `--uni`. This works, but relies on that baked-in
+  colour and the CSS `--uni` colour staying in agreement.
+- **`uoft-logo.png`** has no background of its own at all — it's a
+  transparent PNG containing only the white crest and text. `.uni-banner`'s
+  `background: var(--uni)` paints through the transparent areas, so the
+  entire strip (not just the letterbox) is the exact same single CSS
+  colour, with the logo floating on top. There's nothing for a CSS colour
+  to seam against, because there's no second colour to begin with.
+
+If you ever see a seam on a card, converting its logo to the transparent
+approach (chroma-key out the background, keep only the white content)
+removes any chance of a mismatch — matching two colours can be imperfect,
+but there's no way to mismatch against nothing.
+
+`western-schulich.png`, `uoft-arts-science.png`, `uoft-logo.jpeg` and
+`uoft-logo-opaque.png` are earlier logo versions, no longer referenced by
+any page. They're left in this folder rather than deleted, in case you want
+to switch back.
 
 ## Still to add
 
