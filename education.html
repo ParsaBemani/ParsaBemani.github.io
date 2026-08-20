@@ -52,14 +52,14 @@
        Two large cards, most recent first. Each is one whole <a>, so the
        entire card is clickable.
 
-       ABOUT THE EMBLEMS: the coloured monogram badges below are custom
-       placeholders, not the universities' official logos — both schools
-       license their marks and restrict third-party use. To swap in a real
-       logo, save the file into images/ and replace the whole
-       <span class="uni-emblem">…</span> block with:
-         <img class="uni-emblem" src="images/western-logo.svg" alt="Western University">
-       The brand colours used here are the official ones: Western Purple
-       #4F2683 and U of T Blue #1E3765.
+       THE BANNER IMAGES: each card opens with a logo banner spanning the
+       full card width. The two files live in images/ :
+         images/western-schulich.png   — Schulich Medicine & Dentistry + Western
+         images/uoft-arts-science.png  — University of Toronto, Arts & Science
+       They are sized with object-fit: cover at a 2:1 ratio, so each fills the
+       banner edge to edge with no letterboxing. If a logo ever looks clipped,
+       switch .uni-banner to object-fit: contain in css/style.css — the
+       surrounding band then uses that school's brand colour.
        ================================================================== -->
   <section class="section">
     <div class="container">
@@ -68,40 +68,47 @@
 
         <!-- ---------- Western ---------- -->
         <a class="uni-card uni-card--western" href="masters.html">
-          <span class="uni-emblem" aria-hidden="true">W</span>
+          <img class="uni-banner" src="images/western-schulich.png"
+               alt="Schulich School of Medicine &amp; Dentistry, Western University">
 
-          <h2 class="uni-name">University of Western Ontario</h2>
-          <p class="uni-faculty">Schulich School of Medicine &amp; Dentistry</p>
+          <div class="uni-card-body">
+            <h2 class="uni-name">University of Western Ontario</h2>
+            <p class="uni-faculty">Schulich School of Medicine &amp; Dentistry</p>
 
-          <p class="uni-degree">Masters of Medical Sciences</p>
+            <p class="uni-degree">Masters of Medical Sciences</p>
 
-          <ul class="uni-facts">
-            <li>2026 &ndash; 2027</li>
-            <li>London, Ontario</li>
-          </ul>
+            <ul class="uni-facts">
+              <li>2026 &ndash; 2027</li>
+              <li>London, Ontario</li>
+            </ul>
 
-          <p class="uni-status"><span class="chip">In progress</span></p>
+            <p class="uni-status"><span class="chip">In progress</span></p>
 
-          <span class="uni-more">View this degree &rarr;</span>
+            <span class="uni-more">View this degree &rarr;</span>
+          </div>
         </a>
 
         <!-- ---------- Toronto ---------- -->
         <a class="uni-card uni-card--toronto" href="uoft.html">
-          <span class="uni-emblem" aria-hidden="true">T</span>
+          <img class="uni-banner" src="images/uoft-arts-science.png"
+               alt="University of Toronto, Faculty of Arts &amp; Science">
 
-          <h2 class="uni-name">University of Toronto</h2>
-          <p class="uni-faculty">Human Biology &middot; Physiology &amp; Immunology</p>
+          <div class="uni-card-body">
+            <h2 class="uni-name">University of Toronto</h2>
+            <p class="uni-faculty">Faculty of Arts &amp; Science</p>
 
-          <p class="uni-degree">Honours Bachelor of Science</p>
+            <p class="uni-degree">Honours Bachelor of Science</p>
+            <p class="uni-detail">Major: Human Biology &middot; Minor: Physiology &amp; Immunology</p>
 
-          <ul class="uni-facts">
-            <li>Conferred June 2025</li>
-            <li>Toronto, Ontario</li>
-          </ul>
+            <ul class="uni-facts">
+              <li>Conferred June 2025</li>
+              <li>Toronto, Ontario</li>
+            </ul>
 
-          <p class="uni-status"><span class="chip">Completed</span></p>
+            <p class="uni-status"><span class="chip">Completed</span></p>
 
-          <span class="uni-more">View this degree &rarr;</span>
+            <span class="uni-more">View this degree &rarr;</span>
+          </div>
         </a>
 
       </div>

@@ -632,10 +632,10 @@ hr {
 
 .uni-card {
   display: block;
-  padding: 2.25rem 2rem 2rem;
+  padding: 0;                 /* the banner sits flush; body has its own padding */
+  overflow: hidden;           /* clips the banner to the rounded corners */
   background: var(--bg);
   border: 1px solid var(--line);
-  border-top: 5px solid var(--uni);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
   color: inherit;
@@ -652,23 +652,18 @@ hr {
 .uni-card--western { --uni: #4F2683; }
 .uni-card--toronto { --uni: #1E3765; }
 
-/* Monogram badge standing in for the university logo. If you swap in a
-   real logo <img class="uni-emblem">, these rules still size it correctly. */
-.uni-emblem {
-  display: grid;
-  place-items: center;
-  width: 76px;
-  height: 76px;
-  margin-bottom: 1.4rem;
-  border-radius: 18px;
+/* Logo banner across the full width of the card. The brand colour behind it
+   means a slow-loading or transparent image still looks intentional. */
+.uni-banner {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  object-fit: cover;
   background: var(--uni);
-  color: #fff;
-  font-size: 2.1rem;
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.02em;
-  object-fit: contain;   /* only applies when the emblem is an <img> */
+  border-bottom: 4px solid var(--uni);
 }
+
+.uni-card-body { padding: 1.75rem 2rem 2rem; }
 
 .uni-name {
   margin: 0 0 0.25rem;
@@ -682,11 +677,17 @@ hr {
   color: var(--ink-faint);
 }
 .uni-degree {
-  margin: 0 0 0.9rem;
+  margin: 0 0 0.35rem;
   max-width: none;
   font-size: 1.02rem;
   font-weight: 600;
   color: var(--uni);
+}
+.uni-detail {
+  margin: 0 0 0.9rem;
+  max-width: none;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
 }
 
 /* Dates and city, separated by a thin rule */
@@ -1478,16 +1479,9 @@ a.wheel-item:hover { background: rgba(255, 255, 255, 0.28); }
   .entry-head { flex-direction: column; gap: 0.5rem; }
   .entry-meta { align-items: flex-start; flex-direction: row; gap: 0.75rem; }
 
-  /* University cards stack, with a slightly smaller emblem */
+  /* University cards stack; the banner keeps its full width */
   .uni-grid { grid-template-columns: 1fr; gap: 1.25rem; }
-  .uni-card { padding: 1.75rem 1.5rem 1.5rem; }
-  .uni-emblem {
-    width: 62px;
-    height: 62px;
-    border-radius: 15px;
-    font-size: 1.7rem;
-    margin-bottom: 1.1rem;
-  }
+  .uni-card-body { padding: 1.5rem 1.5rem 1.5rem; }
   .uni-name { font-size: 1.2rem; }
 
   /* Artifact cards: shrink the badge and padding so the text column keeps
