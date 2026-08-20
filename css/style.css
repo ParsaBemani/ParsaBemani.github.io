@@ -650,9 +650,14 @@ hr {
 
 /* Colours are sampled from the actual logo banner images, not the printed
    brand hex codes — the two don't always match exactly, and a mismatch
-   here would show up as a visible seam around the letterboxed logo. */
+   here would show up as a visible seam around the letterboxed logo.
+   Western: the logo was recoloured to exactly #4F2683, so this is exact.
+   Toronto: the source JPEG has a faint diagonal gradient, so this is an
+   average sampled from its own left/right edge columns specifically —
+   that's the boundary that actually touches the letterbox, so it matches
+   there even though the image is a bit darker in its top-right corner. */
 .uni-card--western { --uni: #4F2683; }
-.uni-card--toronto { --uni: #0E285B; }
+.uni-card--toronto { --uni: #002451; }
 
 /* Logo banner across the full width of the card. A fixed (short) height
    instead of the logo's own aspect ratio, so it reads as a slim header

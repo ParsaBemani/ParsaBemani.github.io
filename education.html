@@ -41,10 +41,6 @@
     <div class="container">
       <p class="eyebrow">Education</p>
       <h1>Where I've studied</h1>
-      <p class="lede">
-        Two universities, two degrees. Pick one to see the coursework, research and
-        projects behind it.
-      </p>
     </div>
   </div>
 
@@ -54,8 +50,11 @@
 
        THE BANNER IMAGES: each card opens with a logo banner spanning the
        full card width. The two files live in images/ :
-         images/western-schulich.png   — Schulich Medicine & Dentistry + Western
-         images/uoft-arts-science.png  — University of Toronto, Arts & Science
+         images/uwo-logo.png    — Schulich Medicine & Dentistry, colours inverted
+                                   (purple background, white mark) from the
+                                   original logo file so it fills the banner
+                                   as a solid colour block, not a white one.
+         images/uoft-logo.jpeg  — University of Toronto crest + wordmark
        The banner is a short fixed-height strip (.uni-banner in
        css/style.css) using object-fit: contain, so the whole logo always
        stays visible — nothing gets cropped, no matter how short the strip
@@ -73,7 +72,7 @@
 
         <!-- ---------- Western ---------- -->
         <a class="uni-card uni-card--western" href="masters.html">
-          <img class="uni-banner" src="images/western-schulich.png"
+          <img class="uni-banner" src="images/uwo-logo.png"
                alt="Schulich School of Medicine &amp; Dentistry, Western University">
 
           <div class="uni-card-body">
@@ -95,8 +94,8 @@
 
         <!-- ---------- Toronto ---------- -->
         <a class="uni-card uni-card--toronto" href="uoft.html">
-          <img class="uni-banner" src="images/uoft-arts-science.png"
-               alt="University of Toronto, Faculty of Arts &amp; Science">
+          <img class="uni-banner" src="images/uoft-logo.jpeg"
+               alt="University of Toronto">
 
           <div class="uni-card-body">
             <h2 class="uni-name">University of Toronto</h2>
