@@ -120,7 +120,7 @@ ones: Western Purple `#4F2683` and U of T Blue `#1E3765`.
 
 **The Courses wheel appears on two pages** — the home page and `masters.html` —
 using identical markup, with three slots evenly spaced 120° apart. Its script
-(`js/main.js`, section 3) looks up a single `.course-trigger` and
+(`js/main.js`, section 4) looks up a single `.course-trigger` and
 `#courses-wheel`, so exactly one instance per page works; adding a second to the
 same page would need the script generalised first. If you add a course, update
 the wheel in **both** files — and note that a fourth item breaks the even
@@ -130,7 +130,7 @@ the wheel in **both** files — and note that a fourth item breaks the even
 on `masters.html` and the seven pages inside it. It is deliberately styled to
 look subordinate to the main nav — tinted bar, smaller type, pill-shaped active
 marker instead of an underline — and uses its own `.subnav-*` class names and
-its own script (`js/main.js`, section 2) so it cannot collide with the main
+its own script (`js/main.js`, section 3) so it cannot collide with the main
 mobile menu or the Courses wheel. Opening either menu closes the other. To add
 a page to it, edit the `<nav class="subnav">` block in each of those eight
 files; pages in `courses/` use the `../` variant.

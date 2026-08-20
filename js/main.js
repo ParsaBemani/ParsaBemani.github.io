@@ -5,10 +5,11 @@
    loaded everywhere.
 
    1. Mobile menu toggle
-   2. Masters section-nav Courses dropdown
-   3. Courses wheel menu (home page and Masters hub)
-   4. Lab Bootcamp journey-map accordion
-   5. Footer year
+   2. Header height -> --header-h (parks the sticky section nav)
+   3. Masters section-nav Courses dropdown
+   4. Courses wheel menu (home page and Masters hub)
+   5. Lab Bootcamp journey-map accordion
+   6. Footer year
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -30,7 +31,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* ------------------------------------------------------------------
-     2. MASTERS SECTION-NAV COURSES DROPDOWN
+     2. HEADER HEIGHT -> --header-h
+     The Masters section nav is sticky and has to park exactly under the
+     sticky header. Rather than hard-coding that height in the CSS and
+     hoping it never changes, measure the real header and publish it as a
+     custom property. style.css falls back to 67px if this never runs.
+     ------------------------------------------------------------------ */
+
+  var siteHeader = document.querySelector('.site-header');
+
+  if (siteHeader) {
+    var syncHeaderHeight = function () {
+      var h = Math.round(siteHeader.getBoundingClientRect().height);
+      document.documentElement.style.setProperty('--header-h', h + 'px');
+    };
+
+    syncHeaderHeight();
+    window.addEventListener('resize', syncHeaderHeight);
+  }
+
+
+  /* ------------------------------------------------------------------
+     3. MASTERS SECTION-NAV COURSES DROPDOWN
      The Courses item in the Masters sub-navigation bar. Three separate
      menus can be on screen at once (main mobile nav, this, and the
      Courses wheel), so each uses its own selectors and its own state —
@@ -76,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* ------------------------------------------------------------------
-     3. COURSES WHEEL (home page and Masters hub)
+     4. COURSES WHEEL (home page and Masters hub)
      Clicking the Courses tile fans three slots out from its centre, evenly
      spaced 120° apart. The hub doubles as the close button. Also closes
      on a click elsewhere, on Escape, or on a real course link (after the
@@ -130,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* ------------------------------------------------------------------
-     4. LAB BOOTCAMP JOURNEY MAP
+     5. LAB BOOTCAMP JOURNEY MAP
      Each stop button has aria-controls="<panel id>". Clicking a stop opens
      its panel and closes any other open stop *in the same lane*, so the two
      tracks can be read side by side.
@@ -164,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* ------------------------------------------------------------------
-     5. FOOTER YEAR
+     6. FOOTER YEAR
      Keeps the copyright year current without editing every page.
      ------------------------------------------------------------------ */
 

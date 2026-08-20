@@ -386,6 +386,19 @@ hr {
    ========================================================================== */
 
 .subnav {
+  /* Sticks directly beneath the main header as you scroll, so the section
+     links stay reachable anywhere on the page.
+
+     `top` is the height of the sticky header above it. --header-h is set
+     from the real measured height by js/main.js (section 2) and updated on
+     resize; the 67px fallback is the current height, so this still parks in
+     the right place if the script never runs.
+
+     z-index sits below the header's 50 so the bar slides under it, and
+     above the Courses wheel's 30 so the dropdown is never covered. */
+  position: sticky;
+  top: var(--header-h, 67px);
+  z-index: 40;
   background: var(--accent-soft);
   border-bottom: 1px solid var(--accent-line);
 }
