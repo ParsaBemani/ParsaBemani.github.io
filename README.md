@@ -11,6 +11,7 @@ Upcoming Works · Contact**
 ```
 index.html            Home — hero, "Who am I?", Education, Recent Activities
 about.html            Long-form biography
+education.html        Chooser page: one card per university
 research.html         Every research project, linking out to full write-ups
 involvement.html      Volunteering, extracurriculars, athletics
 looking-ahead.html    Upcoming Works — community rotation with PSSO
@@ -72,7 +73,7 @@ picture (make an `images/` folder alongside `css/`).
 ## Two things to know when editing
 
 **The header and footer are repeated in every page.** That keeps the site working
-without a web server, but it means a nav change has to be copied into all 13
+without a web server, but it means a nav change has to be copied into all 15
 files. Three details to keep right:
 
 - Pages inside `courses/` prefix every link with `../` (e.g. `../index.html`).
@@ -91,8 +92,8 @@ spacing adjust on their own. Icons come from the sprite at the top of
 `<section id="education">`, newest first. Copy a whole `<li class="edu-item">`
 block and edit the fields. The `.edu-detail` line (major/minor) and the
 `.edu-honours` chips are both optional — delete either if an entry doesn't need
-them. The nav's "Education" link points at `index.html#education`, so it works
-from every page.
+them. This section is separate from `education.html` — update both if you add
+a school.
 
 **Turning a blank Courses-wheel slot into a real course:** the "Courses" tile on
 the home page opens a radial wheel with six fixed hexagon slots — the three real
@@ -101,3 +102,17 @@ courses on top, three open "TODO" slots on the bottom. To fill one in, find its
 change the `<span>` to an `<a href="courses/your-page.html">`, swap in a real
 icon, and update the label. The layout is a fixed hexagon (not an auto-growing
 list), so a 7th course needs a new position class — ask Claude Code for that one.
+
+**The Education tab** goes to `education.html`, a chooser with one large card per
+university that links through to `masters.html` and `uoft.html`. The Education
+section on the home page is separate and still there — it covers the same two
+degrees in a more compact form. Breadcrumbs on pages under a degree point back
+to `education.html`.
+
+**About the university emblems:** the coloured monogram badges on
+`education.html` are custom placeholders, not official logos. Both universities
+license their marks and restrict third-party use, so the real logos are not
+bundled with this site. To use one, download it from the university's brand or
+media-relations page and follow the instructions in the comment above the
+university cards in `education.html`. The brand colours used are the official
+ones: Western Purple `#4F2683` and U of T Blue `#1E3765`.

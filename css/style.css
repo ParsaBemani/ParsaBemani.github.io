@@ -620,6 +620,100 @@ hr {
   color: var(--ink-soft);
 }
 
+/* --- Education chooser: the two university cards ---
+   Each card sets its own --uni colour, which the emblem, hover border and
+   arrow all read from. The whole card is a link, so the hover lift and
+   colour shift apply to everything inside it at once. */
+.uni-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.75rem;
+}
+
+.uni-card {
+  display: block;
+  padding: 2.25rem 2rem 2rem;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-top: 5px solid var(--uni);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.uni-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  color: inherit;
+}
+
+/* Official brand colours (see the comment in education.html) */
+.uni-card--western { --uni: #4F2683; }
+.uni-card--toronto { --uni: #1E3765; }
+
+/* Monogram badge standing in for the university logo. If you swap in a
+   real logo <img class="uni-emblem">, these rules still size it correctly. */
+.uni-emblem {
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 76px;
+  margin-bottom: 1.4rem;
+  border-radius: 18px;
+  background: var(--uni);
+  color: #fff;
+  font-size: 2.1rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  object-fit: contain;   /* only applies when the emblem is an <img> */
+}
+
+.uni-name {
+  margin: 0 0 0.25rem;
+  font-size: 1.35rem;
+  line-height: 1.25;
+}
+.uni-faculty {
+  margin: 0 0 1.1rem;
+  max-width: none;
+  font-size: 0.92rem;
+  color: var(--ink-faint);
+}
+.uni-degree {
+  margin: 0 0 0.9rem;
+  max-width: none;
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--uni);
+}
+
+/* Dates and city, separated by a thin rule */
+.uni-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.1rem;
+  list-style: none;
+  margin: 0 0 1.1rem;
+  padding: 0.9rem 0 0;
+  border-top: 1px solid var(--line);
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+}
+.uni-facts > li { max-width: none; }
+
+.uni-status { margin: 0 0 1.25rem; max-width: none; }
+.uni-status .chip { margin-bottom: 0; }
+
+.uni-more {
+  display: inline-block;
+  font-size: 0.94rem;
+  font-weight: 600;
+  color: var(--uni);
+}
+.uni-card:hover .uni-more { text-decoration: underline; }
+
 /* --- Course pages: ePortfolio artifacts ---
    A numbered card per artifact selected for the ePortfolio. Reusable on
    any course page: numbered badge on the left, then the kind of work,
@@ -1383,6 +1477,18 @@ a.wheel-item:hover { background: rgba(255, 255, 255, 0.28); }
   /* Involvement entries stack the same way */
   .entry-head { flex-direction: column; gap: 0.5rem; }
   .entry-meta { align-items: flex-start; flex-direction: row; gap: 0.75rem; }
+
+  /* University cards stack, with a slightly smaller emblem */
+  .uni-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+  .uni-card { padding: 1.75rem 1.5rem 1.5rem; }
+  .uni-emblem {
+    width: 62px;
+    height: 62px;
+    border-radius: 15px;
+    font-size: 1.7rem;
+    margin-bottom: 1.1rem;
+  }
+  .uni-name { font-size: 1.2rem; }
 
   /* Artifact cards: shrink the badge and padding so the text column keeps
      a usable width on a phone rather than wrapping every few words. */

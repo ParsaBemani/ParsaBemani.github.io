@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Education — Parsa Bemani</title>
+  <meta name="description" content="Education — a Masters of Medical Sciences at Western University and an Honours Bachelor of Science from the University of Toronto.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===== SITE HEADER (repeated on every page — keep in sync) ===== -->
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a class="brand" href="index.html">Parsa Bemani</a>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+      Menu
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+      <ul class="nav-list">
+        <li><a class="nav-link" href="index.html">Home</a></li>
+        <li><a class="nav-link" href="about.html">About</a></li>
+        <li><a class="nav-link is-active" href="education.html" aria-current="page">Education</a></li>
+        <li><a class="nav-link" href="research.html">Research</a></li>
+        <li><a class="nav-link" href="involvement.html">Involvement</a></li>
+        <li><a class="nav-link" href="looking-ahead.html">Upcoming Works</a></li>
+        <li><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+  <!-- ======================= PAGE INTRO ======================= -->
+  <div class="page-head">
+    <div class="container">
+      <p class="eyebrow">Education</p>
+      <h1>Where I've studied</h1>
+      <p class="lede">
+        Two universities, two degrees. Pick one to see the coursework, research and
+        projects behind it.
+      </p>
+    </div>
+  </div>
+
+  <!-- ======================= UNIVERSITY CHOOSER =======================
+       Two large cards, most recent first. Each is one whole <a>, so the
+       entire card is clickable.
+
+       ABOUT THE EMBLEMS: the coloured monogram badges below are custom
+       placeholders, not the universities' official logos — both schools
+       license their marks and restrict third-party use. To swap in a real
+       logo, save the file into images/ and replace the whole
+       <span class="uni-emblem">…</span> block with:
+         <img class="uni-emblem" src="images/western-logo.svg" alt="Western University">
+       The brand colours used here are the official ones: Western Purple
+       #4F2683 and U of T Blue #1E3765.
+       ================================================================== -->
+  <section class="section">
+    <div class="container">
+
+      <div class="uni-grid">
+
+        <!-- ---------- Western ---------- -->
+        <a class="uni-card uni-card--western" href="masters.html">
+          <span class="uni-emblem" aria-hidden="true">W</span>
+
+          <h2 class="uni-name">University of Western Ontario</h2>
+          <p class="uni-faculty">Schulich School of Medicine &amp; Dentistry</p>
+
+          <p class="uni-degree">Masters of Medical Sciences</p>
+
+          <ul class="uni-facts">
+            <li>2026 &ndash; 2027</li>
+            <li>London, Ontario</li>
+          </ul>
+
+          <p class="uni-status"><span class="chip">In progress</span></p>
+
+          <span class="uni-more">View this degree &rarr;</span>
+        </a>
+
+        <!-- ---------- Toronto ---------- -->
+        <a class="uni-card uni-card--toronto" href="uoft.html">
+          <span class="uni-emblem" aria-hidden="true">T</span>
+
+          <h2 class="uni-name">University of Toronto</h2>
+          <p class="uni-faculty">Human Biology &middot; Physiology &amp; Immunology</p>
+
+          <p class="uni-degree">Honours Bachelor of Science</p>
+
+          <ul class="uni-facts">
+            <li>Conferred June 2025</li>
+            <li>Toronto, Ontario</li>
+          </ul>
+
+          <p class="uni-status"><span class="chip">Completed</span></p>
+
+          <span class="uni-more">View this degree &rarr;</span>
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== SITE FOOTER (repeated on every page) ===== -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>&copy; <span data-year>2026</span> Parsa Bemani</p>
+    <p>Built with plain HTML, CSS &amp; JavaScript.</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
