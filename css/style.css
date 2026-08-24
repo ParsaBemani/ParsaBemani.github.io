@@ -1394,7 +1394,7 @@ a.wheel-item:hover { background: rgba(255, 255, 255, 0.28); }
 .timeline {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0;                          /* no gap, so the segments below line up exactly */
   list-style: none;
   margin: 0;
