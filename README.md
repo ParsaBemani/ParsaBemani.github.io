@@ -24,7 +24,7 @@ masters.html          Masters hub — reached from Education > "More information
   seminars.html         Friday seminar series entries
   courses/
     sci-comm.html       Scientific Communication + instructor thank-you
-    ethics.html         Ethics (placeholder for now)
+    ethics.html         Academic Integrity (placeholder for now)
     sci-policy.html     Science Policy
 
 uoft.html            UofT hub — reached from Education > "More information"
