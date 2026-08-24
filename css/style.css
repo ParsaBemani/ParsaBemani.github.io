@@ -13,10 +13,10 @@
    8.  TODO placeholder blocks
    9.  Photo placeholders
    10. Home page (hero, "currently" blurb)
-   11. Lab Bootcamp journey map (two-lane subway map)
+   11. Lab Bootcamp session flowchart
    12. Capstone timeline
    13. Seminars list
-   14. Responsive tweaks (mobile nav, vertical journey map)
+   14. Responsive tweaks (mobile nav, flowchart tracks)
    ========================================================================== */
 
 
@@ -1246,102 +1246,105 @@ a.wheel-item:hover { background: rgba(255, 255, 255, 0.28); }
 
 
 /* ==========================================================================
-   11. LAB BOOTCAMP — SESSION FLOW
-   One continuous vertical flow of every bench session, newest step last.
-   Each <li> is a step: an icon node pinned left, a card to its right, and
-   a connector drawn from this node down to the next one.
+   11. LAB BOOTCAMP — SESSION FLOWCHART
+   A minimal schematic, not a session write-up: one shared starting step,
+   then two parallel technique tracks (colour-coded via --track-color, set
+   per .flow-track--* modifier), then the point where they meet again —
+   the same Rat2 fibroblast cell line both experiments were run on.
 
-   Note the name: .timeline is already taken by the capstone page
-   (section 12), so this one is .flow throughout.
-
-   To add a session: copy a whole <li class="flow-step"> and swap the
-   <use href="#icon-..."> for whichever sprite icon fits. Numbering is
-   written into .flow-num by hand, so renumber the ones below it.
+   To add a step: copy a whole <li> inside the relevant .flow-nodes list.
+   .flow-node-cite is optional — leave it off a step with no paired paper.
    ========================================================================== */
 
-.flow {
-  list-style: none;
-  margin: 2rem 0 0;
-  padding: 0;
+.flowchart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2.5rem 0 0;
 }
-.flow-step {
-  position: relative;
-  max-width: none;
-  padding-left: 78px;
-  padding-bottom: 1.5rem;
-}
-.flow-step:last-child { padding-bottom: 0; }
 
-/* The connector: runs from just under this step's node to the next node.
-   Hidden on the last step so the line stops rather than trailing off. */
-.flow-step::before {
-  content: "";
-  position: absolute;
-  left: 27px;
-  top: 60px;
-  bottom: -4px;
-  width: 2px;
-  background: var(--accent-line);
-}
-.flow-step:last-child::before { display: none; }
-
-.flow-node {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 56px;
-  height: 56px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
+.flow-anchor {
+  padding: 0.7rem 1.4rem;
   background: var(--accent-soft);
-  border: 2px solid var(--accent-line);
-  color: var(--accent);
+  border: 1px solid var(--accent-line);
+  border-radius: var(--radius);
+  font-weight: 650;
+  font-size: 0.92rem;
+  text-align: center;
+  color: var(--ink);
 }
-.flow-node svg { width: 26px; height: 26px; }
 
-.flow-card {
-  padding: 1.3rem 1.45rem;
-  background: var(--bg);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
+.flow-arrow {
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--ink-faint);
+  margin: 0.3rem 0;
 }
-.flow-num {
-  margin: 0;
+
+.flow-tracks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+.flow-track-label {
+  margin: 0 0 0.7rem;
   max-width: none;
   font-size: 0.72rem;
-  font-weight: 650;
-  letter-spacing: 0.1em;
+  font-weight: 700;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
-  color: var(--accent);
+  text-align: center;
+  color: var(--track-color);
 }
-.flow-card h3 { margin: 0.15rem 0 0.6rem; font-size: 1.08rem; }
-.flow-card p { max-width: none; }
 
-/* The one-line statement of what the session was for. */
-.flow-aim {
-  margin: 0 0 0.7rem;
-  font-size: 0.96rem;
-  color: var(--ink-soft);
-}
-.flow-aim strong { color: var(--ink); }
+/* Gel electrophoresis (RT-qPCR) vs. immunoblotting (Western Blot) —
+   reuses the two colours the old two-lane journey map used, so anyone
+   who saw that version still reads the same colour language. */
+.flow-track--qpcr { --track-color: #7a5ea7; }
+.flow-track--wb   { --track-color: #2f6f6b; }
 
-.flow-what { margin: 0 0 1rem; font-size: 0.96rem; color: var(--ink-soft); }
-
-.flow-methods { margin-bottom: 0.9rem; }
-.flow-methods .label { margin-bottom: 0.35rem; }
-
-/* The journal-club paper that backed this session, set off by a hairline
-   so it reads as a companion to the protocol rather than part of it. */
-.flow-reading {
+.flow-nodes {
+  list-style: none;
   margin: 0;
-  padding-top: 0.85rem;
-  border-top: 1px solid var(--line);
-  font-size: 0.92rem;
-  color: var(--ink-soft);
+  padding: 0;
 }
-.flow-reading .label { display: inline; margin: 0 0.5rem 0 0; }
+.flow-nodes li {
+  position: relative;
+  max-width: none;
+  margin-bottom: 1.3rem;
+  padding: 0.55rem 0.75rem;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--track-color);
+  border-radius: var(--radius);
+  text-align: center;
+}
+.flow-nodes li:last-child { margin-bottom: 0; }
+
+.flow-node-label { display: block; font-size: 0.84rem; color: var(--ink); }
+.flow-node-cite {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.72rem;
+  font-style: italic;
+  color: var(--ink-faint);
+}
+
+/* The connecting line between stacked nodes within one track. */
+.flow-nodes li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -1.3rem;
+  width: 2px;
+  height: 1.3rem;
+  background: var(--track-color);
+  opacity: 0.3;
+  transform: translateX(-50%);
+}
 
 
 /* ==========================================================================
@@ -1585,12 +1588,8 @@ a.wheel-item:hover { background: rgba(255, 255, 255, 0.28); }
   .about-intro { grid-template-columns: 1fr; gap: 1.75rem; }
   .about-intro .photo-placeholder { max-width: 200px; }
 
-  /* --- Session flow tightens up on small screens --- */
-  .flow-step { padding-left: 58px; }
-  .flow-step::before { left: 21px; top: 48px; }
-  .flow-node { width: 44px; height: 44px; }
-  .flow-node svg { width: 21px; height: 21px; }
-  .flow-card { padding: 1.1rem 1.15rem; }
+  /* --- Session flowchart narrows its two tracks --- */
+  .flow-tracks { max-width: 420px; gap: 1.25rem; }
 
   /* --- Capstone timeline goes vertical ---
      Each phase now draws its segment *downward* to the next dot, so the line
@@ -1629,6 +1628,9 @@ a.wheel-item:hover { background: rgba(255, 255, 255, 0.28); }
   .subnav-link { font-size: 0.85rem; padding: 0.35rem 0.6rem; }
   .seminar { grid-template-columns: 1fr; }
   .seminar .date { grid-column: 1; grid-row: auto; }
+
+  /* Flowchart's two tracks stack instead of squeezing side by side */
+  .flow-tracks { grid-template-columns: 1fr; max-width: 320px; gap: 2rem; }
 
   /* Education entries stack: dates/location drop below the school name */
   .edu-head { flex-direction: column; gap: 0.5rem; }

@@ -18,8 +18,8 @@ looking-ahead.html    Upcoming Works — community rotation with PSSO
 contact.html          Email, university address, LinkedIn / CV
 
 masters.html          Masters hub — reached from Education > "More information"
-  lab-bootcamp.html     Basic science rotation — one vertical flow of all eight
-                        bench sessions, each with its aim, methods and paired paper
+  lab-bootcamp.html     Basic science rotation — a flowchart of the two wet-lab
+                        technique tracks (RT-qPCR, Western Blot)
   capstone.html         Parkinson's diagnosis capstone
   seminars.html         Friday seminar series entries
   courses/
@@ -135,17 +135,17 @@ mobile menu or the Courses wheel. Opening either menu closes the other. To add
 a page to it, edit the `<nav class="subnav">` block in each of those eight
 files; pages in `courses/` use the `../` variant.
 
-**Journal Club is folded into the Lab Bootcamp page, session by session.**
-Rather than a separate papers list, each step in the flow carries a
-`.flow-reading` line naming the paper that backed that protocol. The old
+**Lab Bootcamp is a flowchart, not a write-up.** One shared starting step,
+then the two technique tracks (RT-qPCR and Western Blot) running side by
+side, then the point where they meet again. Each node is a title
+(`.flow-node-label`) plus, where one exists, its paired journal-club paper
+in one line (`.flow-node-cite`) — no per-session paragraphs. The old
 `journal-club.html` is a redirect stub — delete it once nothing points at it.
 
-**Adding a bench session:** copy a whole `<li class="flow-step">` in
-`lab-bootcamp.html` and swap the `<use href="#icon-...">` for a sprite icon
-from the top of the file. Session numbers are written by hand into
-`.flow-num`, so renumber anything below the one you insert. Styles are in
-section 11 of `css/style.css` — note the class is `.flow`, not `.timeline`,
-which the capstone page already uses.
+**Adding a bench session:** copy a whole `<li>` inside the relevant
+`.flow-nodes` list in `lab-bootcamp.html`. Styles are in section 11 of
+`css/style.css` — note the class is `.flow-*`, not `.timeline`, which the
+capstone page already uses.
 
 **The Masters section nav order is fixed:** Overview, Courses, Lab Bootcamp,
 Seminars, Capstone. It is repeated in all seven pages under the
