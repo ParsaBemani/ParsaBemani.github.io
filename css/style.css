@@ -1487,9 +1487,6 @@ a.wheel-item:hover { background: rgba(255, 255, 255, 0.28); }
 .seminar .takeaway {
   grid-column: 1 / -1;
   margin: 0.6rem 0 0;
-  padding-left: 0.9rem;
-  border-left: 3px solid var(--accent-line);
-  font-style: italic;
   color: var(--ink-soft);
 }
 
@@ -1513,8 +1510,18 @@ a.wheel-item:hover { background: rgba(255, 255, 255, 0.28); }
   background: var(--accent-soft);
   border-radius: 0 8px 8px 0;
 }
-.strength-name { font-weight: 650; color: var(--strength-color, var(--accent-dark)); }
-.strength p { margin: 0.2rem 0 0; font-size: 0.88rem; color: var(--ink-soft); }
+/* The domain colour is the strength's whole point, so it's a solid badge
+   rather than just a text tint — much harder to miss. */
+.strength-name {
+  display: inline-block;
+  padding: 0.15em 0.65em;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #fff;
+  background: var(--strength-color, var(--accent));
+  border-radius: 999px;
+}
+.strength p { margin: 0.35rem 0 0; font-size: 0.88rem; color: var(--ink-soft); }
 
 /* Gallup's four CliftonStrengths domains. */
 .strength--executing            { --strength-color: #7C4C96; } /* purple */
