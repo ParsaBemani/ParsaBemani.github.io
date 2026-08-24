@@ -1529,6 +1529,44 @@ a.wheel-item:hover { background: rgba(255, 255, 255, 0.28); }
 .strength--relationship-building { --strength-color: #1B75BB; } /* blue */
 .strength--strategic             { --strength-color: #2F8F3B; } /* green */
 
+/* A plain numbered box list — for pulling a few items out of a seminar
+   paragraph (e.g. "5 key practices") without the colour-coding that
+   .strength/.strengths-list carries. */
+.practice-list {
+  margin: 0.6rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+  counter-reset: practice;
+}
+.practice-list > li {
+  max-width: none;
+  position: relative;
+  list-style: none;
+  padding: 0.5rem 0.9rem 0.5rem 2.5rem;
+  background: var(--accent-soft);
+  border-radius: 8px;
+  font-size: 0.93rem;
+  color: var(--ink-soft);
+}
+.practice-list > li::before {
+  counter-increment: practice;
+  content: counter(practice);
+  position: absolute;
+  left: 0.9rem;
+  top: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.3rem;
+  height: 1.3rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent-dark);
+  background: var(--accent-line);
+  border-radius: 50%;
+}
+
 
 /* ==========================================================================
    14. RESPONSIVE
