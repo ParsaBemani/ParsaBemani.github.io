@@ -18,8 +18,8 @@ looking-ahead.html    Upcoming Works — community rotation with PSSO
 contact.html          Email, university address, LinkedIn / CV
 
 masters.html          Masters hub — reached from Education > "More information"
-  lab-bootcamp.html     Basic science rotation — the two-lane journey map of the
-                        wet-lab sessions, then Journal Club below it
+  lab-bootcamp.html     Basic science rotation — one vertical flow of all eight
+                        bench sessions, each with its aim, methods and paired paper
   capstone.html         Parkinson's diagnosis capstone
   seminars.html         Friday seminar series entries
   courses/
@@ -135,14 +135,20 @@ mobile menu or the Courses wheel. Opening either menu closes the other. To add
 a page to it, edit the `<nav class="subnav">` block in each of those eight
 files; pages in `courses/` use the `../` variant.
 
-**Journal Club lives on the Lab Bootcamp page.** The two were halves of one
-rotation, so they share `lab-bootcamp.html`: the journey map first, then a
-`section--alt` carrying Journal Club, its papers list, and the takeaway block.
-The old `journal-club.html` is now a redirect stub kept only so stale links
-land somewhere — delete it once nothing points at it.
+**Journal Club is folded into the Lab Bootcamp page, session by session.**
+Rather than a separate papers list, each step in the flow carries a
+`.flow-reading` line naming the paper that backed that protocol. The old
+`journal-club.html` is a redirect stub — delete it once nothing points at it.
 
-**The Masters section nav order is fixed:** Overview, Courses, Lab Bootcamp &
-Journal Club, Seminars, Capstone. It is repeated in all seven pages under the
+**Adding a bench session:** copy a whole `<li class="flow-step">` in
+`lab-bootcamp.html` and swap the `<use href="#icon-...">` for a sprite icon
+from the top of the file. Session numbers are written by hand into
+`.flow-num`, so renumber anything below the one you insert. Styles are in
+section 11 of `css/style.css` — note the class is `.flow`, not `.timeline`,
+which the capstone page already uses.
+
+**The Masters section nav order is fixed:** Overview, Courses, Lab Bootcamp,
+Seminars, Capstone. It is repeated in all seven pages under the
 Masters hub (`masters.html`, `lab-bootcamp.html`, `seminars.html`,
 `capstone.html`, and the three under `courses/`), so a change has to be copied
 into every one. Pages in `courses/` prefix the out-of-folder links with `../`

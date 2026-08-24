@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lab Bootcamp &amp; Journal Club — Parsa Bemani</title>
-  <meta name="description" content="A two-track journey map of wet-lab bootcamp sessions: western blotting and RT-qPCR in RAT2 fibroblasts.">
+  <title>Lab Bootcamp — Parsa Bemani</title>
+  <meta name="description" content="Lab Bootcamp — the wet-lab session flow from the basic science rotation, with the technique, aim and paired reading for each protocol.">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -60,7 +60,7 @@
         </ul>
       </li>
 
-      <li><a class="subnav-link is-active" href="lab-bootcamp.html" aria-current="page">Lab Bootcamp &amp; Journal Club</a></li>
+      <li><a class="subnav-link is-active" href="lab-bootcamp.html" aria-current="page">Lab Bootcamp</a></li>
       <li><a class="subnav-link" href="seminars.html">Seminars</a></li>
       <li><a class="subnav-link" href="capstone.html">Capstone</a></li>
     </ul>
@@ -139,323 +139,242 @@
         <span aria-hidden="true">&rsaquo;</span>
         <a href="masters.html">Masters</a>
         <span aria-hidden="true">&rsaquo;</span>
-        <span aria-current="page">Lab Bootcamp &amp; Journal Club</span>
+        <span aria-current="page">Lab Bootcamp</span>
       </nav>
 
       <p class="eyebrow">Basic science rotation</p>
-      <h1>Lab Bootcamp &amp; Journal Club</h1>
+      <h1>Lab Bootcamp</h1>
       <p class="lede">
-        The two halves of the same rotation: hands-on technique training at the bench, and
-        the weekly paper discussions that ran beside it.
+        Every lab session was also accompanied by research papers outlining and giving
+        background to the specific laboratory technique that we were going to use and learn.
       </p>
     </div>
   </div>
 
   <!-- ==========================================================================
-       THE JOURNEY MAP
-       Each track is one ".lane". Inside a lane:
-         <ol class="stops">     — the line of clickable stop buttons
-         <div>...stop-panel...  — one hidden detail card per stop
+       THE SESSION FLOW
+       Every bench session in one continuous line, in the order the work
+       actually built: the protein-level sessions first, then the
+       gene-expression ones. Styles live in section 11 of css/style.css.
 
-       To add a stop: copy one <li> in the .stops list and one .stop-panel block,
-       then give them a matching new id (the button's aria-controls must equal
-       the panel's id). The connecting line and spacing adjust automatically.
+       Each step carries four things: what it was for (.flow-aim), what was
+       done (.flow-what), the methods it taught (.chip list), and the journal
+       club paper that backed it (.flow-reading).
        ========================================================================== -->
   <section class="section">
     <div class="container">
 
-      <p class="map-hint">Click a stop to open that session &mdash; one stop per track at a time.</p>
+      <p>
+        Nine sessions, all run on the same Rat2 fibroblast cell model. After an introductory
+        session on safety and technique, the work builds through two complete experiments: an
+        RT-qPCR workflow asking whether ascorbate treatment changes Collagen&nbsp;I expression,
+        then a western blot workflow asking whether a single reference protein or total lane
+        protein is the sounder way to normalize a blot.
+      </p>
 
-      <!-- ------------------------------------------------------------------
-           TRACK 1 — WESTERN BLOT (3 stops)
-           ------------------------------------------------------------------ -->
-      <div class="lane lane--wb">
-
-        <div class="lane-head">
-          <h2>Western Blot Track</h2>
-          <p class="lane-goal">
-            <strong>Goal:</strong> compare single reference-protein normalization against
-            total-protein normalization for western blots.
-          </p>
-        </div>
-
-        <!-- The line of stops -->
-        <ol class="stops">
-          <li>
-            <button class="stop-btn" id="wb1-btn" aria-expanded="false" aria-controls="wb1-panel">
-              <span class="stop-node" aria-hidden="true"><svg><use href="#icon-flask"></use></svg></span>
-              <span class="stop-label"><span class="stop-num">Stop 1</span>Protein Isolation &amp; Quantification</span>
-            </button>
-          </li>
-          <li>
-            <button class="stop-btn" id="wb2-btn" aria-expanded="false" aria-controls="wb2-panel">
-              <span class="stop-node" aria-hidden="true"><svg><use href="#icon-gel"></use></svg></span>
-              <span class="stop-label"><span class="stop-num">Stop 2</span>SDS-PAGE &amp; Membrane Transfer</span>
-            </button>
-          </li>
-          <li>
-            <button class="stop-btn" id="wb3-btn" aria-expanded="false" aria-controls="wb3-panel">
-              <span class="stop-node" aria-hidden="true"><svg><use href="#icon-antibody"></use></svg></span>
-              <span class="stop-label"><span class="stop-num">Stop 3</span>Immunoblotting &amp; Imaging</span>
-            </button>
-          </li>
-        </ol>
-
-        <!-- The detail cards, hidden until their stop is clicked -->
-        <div class="stop-panels">
-
-          <article class="stop-panel" id="wb1-panel" role="region" aria-labelledby="wb1-btn" hidden>
-            <span class="stop-panel-num">Western Blot &middot; Stop 1</span>
-            <h3>Protein Isolation &amp; Quantification</h3>
-            <p>
-              Lysed cultured RAT2 fibroblast cells to extract total protein, then ran a BCA assay
-              with a BSA standard curve to determine each sample's protein concentration.
-            </p>
-            <div class="skills">
-              <p class="label">Skills gained</p>
-              <span class="chip">Cell lysis</span>
-              <span class="chip">BCA protein assay</span>
-              <span class="chip">Standard curve calculation</span>
+      <ol class="flow">
+        <li class="flow-step">
+          <span class="flow-node" aria-hidden="true"><svg><use href="#icon-flask"></use></svg></span>
+          <div class="flow-card">
+            <p class="flow-num">Session 01</p>
+            <h3>Lab Bootcamp Introduction</h3>
+            <p class="flow-aim"><strong>Aim:</strong> work safely in the space and handle the core equipment accurately, before any experiment depended on it.</p>
+            <p class="flow-what">Covered laboratory hazards, required PPE and waste disposal procedures, then practised the manual skills the rest of the year would rest on &mdash; micropipetting accurate volumes, loading agarose and acrylamide gels, and building a dilution series into a microplate for colorimetric analysis.</p>
+            <div class="flow-methods">
+              <p class="label">Methods learned</p>
+              <span class="chip">Micropipetting</span>
+              <span class="chip">Gel loading</span>
+              <span class="chip">Dilution series</span>
+              <span class="chip">Lab safety &amp; waste handling</span>
             </div>
-          </article>
-
-          <article class="stop-panel" id="wb2-panel" role="region" aria-labelledby="wb2-btn" hidden>
-            <span class="stop-panel-num">Western Blot &middot; Stop 2</span>
-            <h3>SDS-PAGE &amp; Membrane Transfer</h3>
-            <p>
-              Cast and ran polyacrylamide gels to separate proteins by molecular weight, then
-              transferred the separated proteins onto a PVDF membrane via semi-dry transfer.
+            <p class="flow-reading">
+              <span class="label">Paired reading</span>
+              <span class="todo-inline">[TODO: add the paper for this session, or delete this
+              line if there wasn't one.]</span>
             </p>
-            <div class="skills">
-              <p class="label">Skills gained</p>
-              <span class="chip">Gel casting</span>
-              <span class="chip">SDS-PAGE</span>
-              <span class="chip">Protein transfer technique</span>
-            </div>
-          </article>
+          </div>
+        </li>
 
-          <article class="stop-panel" id="wb3-panel" role="region" aria-labelledby="wb3-btn" hidden>
-            <span class="stop-panel-num">Western Blot &middot; Stop 3</span>
-            <h3>Immunoblotting &amp; Imaging</h3>
-            <p>
-              Probed the membrane with primary and secondary antibodies to detect reference
-              proteins (&beta;-actin, GAPDH), imaged the blot, and compared normalization strategies.
-            </p>
-            <div class="skills">
-              <p class="label">Skills gained</p>
-              <span class="chip">Immunoblotting</span>
-              <span class="chip">Antibody probing</span>
-              <span class="chip">Densitometric image analysis</span>
-            </div>
-          </article>
-
-        </div>
-      </div>
-
-      <!-- ------------------------------------------------------------------
-           TRACK 2 — RT-qPCR (5 stops)
-           ------------------------------------------------------------------ -->
-      <div class="lane lane--qpcr">
-
-        <div class="lane-head">
-          <h2>RT-qPCR Track</h2>
-          <p class="lane-goal">
-            <strong>Goal:</strong> test whether ascorbate treatment changes Collagen&nbsp;I expression.
-          </p>
-        </div>
-
-        <ol class="stops">
-          <li>
-            <button class="stop-btn" id="qp1-btn" aria-expanded="false" aria-controls="qp1-panel">
-              <span class="stop-node" aria-hidden="true"><svg><use href="#icon-cell"></use></svg></span>
-              <span class="stop-label"><span class="stop-num">Stop 1</span>Cell Culture &amp; RNA Isolation</span>
-            </button>
-          </li>
-          <li>
-            <button class="stop-btn" id="qp2-btn" aria-expanded="false" aria-controls="qp2-panel">
-              <span class="stop-node" aria-hidden="true"><svg><use href="#icon-dna"></use></svg></span>
-              <span class="stop-label"><span class="stop-num">Stop 2</span>Cleanup, Reverse Transcription &amp; Integrity</span>
-            </button>
-          </li>
-          <li>
-            <button class="stop-btn" id="qp3-btn" aria-expanded="false" aria-controls="qp3-panel">
-              <span class="stop-node" aria-hidden="true"><svg><use href="#icon-flask"></use></svg></span>
-              <span class="stop-label"><span class="stop-num">Stop 3</span>Primer Validation I</span>
-            </button>
-          </li>
-          <li>
-            <button class="stop-btn" id="qp4-btn" aria-expanded="false" aria-controls="qp4-panel">
-              <span class="stop-node" aria-hidden="true"><svg><use href="#icon-gel"></use></svg></span>
-              <span class="stop-label"><span class="stop-num">Stop 4</span>Primer Validation II</span>
-            </button>
-          </li>
-          <li>
-            <button class="stop-btn" id="qp5-btn" aria-expanded="false" aria-controls="qp5-panel">
-              <span class="stop-node" aria-hidden="true"><svg><use href="#icon-dna"></use></svg></span>
-              <span class="stop-label"><span class="stop-num">Stop 5</span>RT-qPCR Experiment</span>
-            </button>
-          </li>
-        </ol>
-
-        <div class="stop-panels">
-
-          <article class="stop-panel" id="qp1-panel" role="region" aria-labelledby="qp1-btn" hidden>
-            <span class="stop-panel-num">RT-qPCR &middot; Stop 1</span>
+        <li class="flow-step">
+          <span class="flow-node" aria-hidden="true"><svg><use href="#icon-cell"></use></svg></span>
+          <div class="flow-card">
+            <p class="flow-num">Session 02</p>
             <h3>Cell Culture &amp; RNA Isolation</h3>
-            <p>
-              Practiced aseptic technique subculturing RAT2 fibroblasts, then isolated RNA via
-              spin-column purification and checked concentration and purity by spectrophotometry.
-            </p>
-            <div class="skills">
-              <p class="label">Skills gained</p>
-              <span class="chip">Aseptic cell culture technique</span>
-              <span class="chip">RNA isolation</span>
-              <span class="chip">Spectrophotometry</span>
+            <p class="flow-aim"><strong>Aim:</strong> grow the cells and recover RNA clean enough to measure gene expression from.</p>
+            <p class="flow-what">Practised aseptic technique at the benchtop &mdash; changing media and subculturing adherent Rat2 fibroblasts &mdash; then isolated RNA from ascorbic-acid-treated and control cells using the E.Z.N.A. Total RNA kit, checking concentration and purity by UV spectroscopy.</p>
+            <div class="flow-methods">
+              <p class="label">Methods learned</p>
+              <span class="chip">Aseptic cell culture</span>
+              <span class="chip">Subculturing</span>
+              <span class="chip">Spin-column RNA isolation</span>
+              <span class="chip">UV spectrophotometry</span>
             </div>
-          </article>
-
-          <article class="stop-panel" id="qp2-panel" role="region" aria-labelledby="qp2-btn" hidden>
-            <span class="stop-panel-num">RT-qPCR &middot; Stop 2</span>
-            <h3>RNA Cleanup, Reverse Transcription &amp; Integrity Check</h3>
-            <p>
-              Removed contaminating genomic DNA, reverse-transcribed RNA into cDNA, and verified
-              RNA integrity by gel electrophoresis.
+            <p class="flow-reading">
+              <span class="label">Paired reading</span>
+              Chomczynski &amp; Sacchi, <em>Single-step method of RNA isolation by acid guanidinium thiocyanate&ndash;phenol&ndash;chloroform extraction</em>
             </p>
-            <div class="skills">
-              <p class="label">Skills gained</p>
+          </div>
+        </li>
+
+        <li class="flow-step">
+          <span class="flow-node" aria-hidden="true"><svg><use href="#icon-dna"></use></svg></span>
+          <div class="flow-card">
+            <p class="flow-num">Session 03</p>
+            <h3>Genomic DNA Removal, Reverse Transcription &amp; RNA Integrity</h3>
+            <p class="flow-aim"><strong>Aim:</strong> convert the RNA to cDNA and confirm it had not degraded before committing the rest of the experiment to it.</p>
+            <p class="flow-what">Removed trace genomic DNA, reverse-transcribed the RNA to cDNA with the iScript gDNA Clear kit using a combination of random and oligo(dT) primers, then judged RNA quality against both spectrophotometer readings and an agarose gel.</p>
+            <div class="flow-methods">
+              <p class="label">Methods learned</p>
               <span class="chip">gDNA removal</span>
               <span class="chip">Reverse transcription</span>
               <span class="chip">RNA integrity analysis</span>
             </div>
-          </article>
-
-          <article class="stop-panel" id="qp3-panel" role="region" aria-labelledby="qp3-btn" hidden>
-            <span class="stop-panel-num">RT-qPCR &middot; Stop 3</span>
-            <h3>Primer Validation I</h3>
-            <p>
-              Ran gradient PCR to identify the optimal annealing temperature for reference-gene
-              and target-gene primers.
+            <p class="flow-reading">
+              <span class="label">Paired reading</span>
+              <span class="todo-inline">[TODO: add the paper for this session, or delete this
+              line if there wasn't one.]</span>
             </p>
-            <div class="skills">
-              <p class="label">Skills gained</p>
+          </div>
+        </li>
+
+        <li class="flow-step">
+          <span class="flow-node" aria-hidden="true"><svg><use href="#icon-dna"></use></svg></span>
+          <div class="flow-card">
+            <p class="flow-num">Session 04</p>
+            <h3>Primer Validation I &mdash; Gradient PCR</h3>
+            <p class="flow-aim"><strong>Aim:</strong> find the annealing temperature at which each primer pair produces a single, specific product.</p>
+            <p class="flow-what">Ran the first real-time PCR reactions as a gradient across 55&ndash;65&nbsp;&deg;C, reading specificity from the amplification and melt-curve data: a specific primer gives one amplicon and one melt peak, a non-specific one gives several.</p>
+            <div class="flow-methods">
+              <p class="label">Methods learned</p>
               <span class="chip">Gradient PCR</span>
-              <span class="chip">Primer optimization</span>
+              <span class="chip">Melt curve analysis</span>
+              <span class="chip">Primer specificity assessment</span>
             </div>
-          </article>
-
-          <article class="stop-panel" id="qp4-panel" role="region" aria-labelledby="qp4-btn" hidden>
-            <span class="stop-panel-num">RT-qPCR &middot; Stop 4</span>
-            <h3>Primer Validation II</h3>
-            <p>
-              Confirmed primer specificity by agarose gel electrophoresis and built a dilution
-              series to calculate primer efficiency.
+            <p class="flow-reading">
+              <span class="label">Paired reading</span>
+              Bustin &amp; Huggett, <em>qPCR primer design revisited</em>
             </p>
-            <div class="skills">
-              <p class="label">Skills gained</p>
-              <span class="chip">Gel electrophoresis</span>
-              <span class="chip">Efficiency-curve construction</span>
-            </div>
-          </article>
+          </div>
+        </li>
 
-          <article class="stop-panel" id="qp5-panel" role="region" aria-labelledby="qp5-btn" hidden>
-            <span class="stop-panel-num">RT-qPCR &middot; Stop 5</span>
+        <li class="flow-step">
+          <span class="flow-node" aria-hidden="true"><svg><use href="#icon-gel"></use></svg></span>
+          <div class="flow-card">
+            <p class="flow-num">Session 05</p>
+            <h3>Primer Validation II &mdash; Specificity &amp; Efficiency</h3>
+            <p class="flow-aim"><strong>Aim:</strong> confirm specificity on a gel, then measure how efficiently each primer pair amplifies.</p>
+            <p class="flow-what">Ran the gradient PCR products on an agarose gel to confirm a single band, then pooled cDNA, built a dilution series and constructed efficiency curves. Primers count as valid only between 90% and 110% efficiency.</p>
+            <div class="flow-methods">
+              <p class="label">Methods learned</p>
+              <span class="chip">Agarose gel electrophoresis</span>
+              <span class="chip">Master mix preparation</span>
+              <span class="chip">Dilution series</span>
+              <span class="chip">Efficiency curve construction</span>
+            </div>
+            <p class="flow-reading">
+              <span class="label">Paired reading</span>
+              Ririe, Rasmussen &amp; Wittwer, <em>Product differentiation by analysis of DNA melting curves</em>
+            </p>
+          </div>
+        </li>
+
+        <li class="flow-step">
+          <span class="flow-node" aria-hidden="true"><svg><use href="#icon-dna"></use></svg></span>
+          <div class="flow-card">
+            <p class="flow-num">Session 06</p>
             <h3>RT-qPCR Experiment</h3>
-            <p>
-              Ran the full qPCR experiment testing whether ascorbate-2-phosphate treatment changes
-              Collagen&nbsp;I expression in RAT2 fibroblasts, analyzing results with the
-              &Delta;&Delta;Ct method.
-            </p>
-            <div class="skills">
-              <p class="label">Skills gained</p>
+            <p class="flow-aim"><strong>Aim:</strong> answer the question the whole gene-expression workflow was built toward &mdash; does ascorbate change Collagen&nbsp;I expression in Rat2 fibroblasts?</p>
+            <p class="flow-what">Ran qPCR for Collagen&nbsp;I (<em>Col1a1</em>) against the reference genes &beta;-actin (<em>Actb</em>) and GAPDH (<em>Gapdh</em>), carrying no-enzyme and no-template controls throughout, then calculated relative expression by the &Delta;&Delta;Ct method.</p>
+            <div class="flow-methods">
+              <p class="label">Methods learned</p>
               <span class="chip">Quantitative PCR</span>
-              <span class="chip">Relative gene expression analysis (&Delta;&Delta;Ct)</span>
+              <span class="chip">Experimental controls (NEC / NTC)</span>
+              <span class="chip">&Delta;&Delta;Ct relative expression</span>
             </div>
-          </article>
+            <p class="flow-reading">
+              <span class="label">Paired reading</span>
+              Higuchi et al., <em>Real-time monitoring of DNA amplification reactions</em>
+            </p>
+          </div>
+        </li>
 
-        </div>
-      </div>
+        <li class="flow-step">
+          <span class="flow-node" aria-hidden="true"><svg><use href="#icon-flask"></use></svg></span>
+          <div class="flow-card">
+            <p class="flow-num">Session 07</p>
+            <h3>Protein Isolation &amp; BCA Assay</h3>
+            <p class="flow-aim"><strong>Aim:</strong> quantify the protein in each lysate, and set up the question the blot was designed to answer.</p>
+            <p class="flow-what">Isolated total protein from Rat2 fibroblast lysates and measured concentration by BCA assay against a BSA standard curve. The experiment was framed around a known weakness of western blots: a single reference protein may shift between groups, or be so abundant its signal saturates &mdash; so total protein was tested as the alternative.</p>
+            <div class="flow-methods">
+              <p class="label">Methods learned</p>
+              <span class="chip">Protein isolation</span>
+              <span class="chip">BCA protein assay</span>
+              <span class="chip">Standard curve calculation</span>
+            </div>
+            <p class="flow-reading">
+              <span class="label">Paired reading</span>
+              Meftahi et al., <em>Applications of western blot technique: from bench to bedside</em>
+            </p>
+          </div>
+        </li>
 
-      <!-- The two lines meet here: shared cell model -->
-      <div class="note">
-        <p>
-          <strong>Where the two lines meet:</strong> both tracks ran on the same RAT2 fibroblast
-          cell model &mdash; one asking a protein-level question, the other a transcript-level one.
-        </p>
-      </div>
+        <li class="flow-step">
+          <span class="flow-node" aria-hidden="true"><svg><use href="#icon-gel"></use></svg></span>
+          <div class="flow-card">
+            <p class="flow-num">Session 08</p>
+            <h3>SDS-PAGE Separation &amp; Membrane Transfer</h3>
+            <p class="flow-aim"><strong>Aim:</strong> separate the proteins by size and move them onto a surface antibodies can reach.</p>
+            <p class="flow-what">Poured a TGX Stain-Free gel, denatured the pooled samples in Laemmli buffer, separated them by SDS-PAGE and transferred them to a PVDF membrane by semi-dry transfer. The stain-free chemistry is what makes total lane protein measurable alongside the reference bands.</p>
+            <div class="flow-methods">
+              <p class="label">Methods learned</p>
+              <span class="chip">Casting a stain-free gel</span>
+              <span class="chip">Sample preparation in Laemmli buffer</span>
+              <span class="chip">SDS-PAGE</span>
+              <span class="chip">Semi-dry transfer</span>
+            </div>
+            <p class="flow-reading">
+              <span class="label">Paired reading</span>
+              Nguyen et al., <em>Human adipose tissue protein analyses using capillary western</em>
+            </p>
+          </div>
+        </li>
+
+        <li class="flow-step">
+          <span class="flow-node" aria-hidden="true"><svg><use href="#icon-antibody"></use></svg></span>
+          <div class="flow-card">
+            <p class="flow-num">Session 09</p>
+            <h3>Probing for Reference Proteins</h3>
+            <p class="flow-aim"><strong>Aim:</strong> detect the reference proteins and decide which normalization strategy actually holds up.</p>
+            <p class="flow-what">Rehydrated and blocked the membrane, probed with primary antibodies and a fluorophore-conjugated secondary, washed, and imaged on a ChemiDoc. Band intensities were then compared by densitometry to judge single reference proteins against total lane protein as loading controls.</p>
+            <div class="flow-methods">
+              <p class="label">Methods learned</p>
+              <span class="chip">Membrane blocking</span>
+              <span class="chip">Antibody probing</span>
+              <span class="chip">Fluorescent detection &amp; imaging</span>
+              <span class="chip">Densitometric analysis</span>
+            </div>
+            <p class="flow-reading">
+              <span class="label">Paired reading</span>
+              <em>Protein kinase C&delta; expression in breast cancer as measured by real-time PCR, western blotting and ELISA</em>
+            </p>
+          </div>
+        </li>
+      </ol>
 
     </div>
   </section>
 
-  <!-- ======================= JOURNAL CLUB =======================
-       The reading half of the rotation. Sits under the same page as the
-       journey map above so the bench work and the papers behind it stay
-       together — the two were run as one rotation.
-
-       To add a paper: copy a whole <li class="entry"> block and fill in
-       the four parts (title, authors/journal, date, what you took from it).
-       ============================================================ -->
+  <!-- ======================= REFLECTION ======================= -->
   <section class="section section--alt">
     <div class="container">
-
-      <h2>Journal Club</h2>
-      <p>
-        Journal Club ran in parallel with the bench sessions above, pairing the techniques I
-        was learning at the bench with the papers that established and applied them.
-      </p>
+      <h2>What I took from the rotation</h2>
       <div class="todo">
         <p>
-          [TODO: how the sessions were run &mdash; how often they met, who presented, how
-          papers were chosen, and what was expected of you each week.]
+          [TODO: what the bench work and its paired reading changed about how you approach a
+          protocol &mdash; running a technique you have read the original method paper for,
+          spotting weak controls, judging whether a result is actually supported.]
         </p>
       </div>
-
-      <h3 style="margin-top:2.5rem;">Papers discussed</h3>
-
-      <ul class="entry-list">
-
-        <li class="entry">
-          <div class="entry-head">
-            <div>
-              <h4 class="entry-title"><span class="todo-inline">[TODO: paper title]</span></h4>
-              <p class="entry-role"><span class="todo-inline">[Authors &middot; Journal, year]</span></p>
-            </div>
-            <div class="entry-meta">
-              <span class="entry-when"><span class="todo-inline">[Date]</span></span>
-            </div>
-          </div>
-          <p class="entry-detail">
-            <span class="todo-inline">[What the paper argued, and what the discussion added
-            to your reading of it.]</span>
-          </p>
-        </li>
-
-        <li class="entry">
-          <div class="entry-head">
-            <div>
-              <h4 class="entry-title"><span class="todo-inline">[TODO: paper title]</span></h4>
-              <p class="entry-role"><span class="todo-inline">[Authors &middot; Journal, year]</span></p>
-            </div>
-            <div class="entry-meta">
-              <span class="entry-when"><span class="todo-inline">[Date]</span></span>
-            </div>
-          </div>
-          <p class="entry-detail">
-            <span class="todo-inline">[What the paper argued, and what the discussion added
-            to your reading of it.]</span>
-          </p>
-        </li>
-
-      </ul>
-
-      <h3 style="margin-top:2.5rem;">What I took from it</h3>
-      <div class="todo">
-        <p>
-          [TODO: what Journal Club changed about how you read a paper &mdash; spotting weak
-          controls, reading figures before text, judging whether a conclusion is actually
-          supported, presenting to a critical room.]
-        </p>
-      </div>
-
     </div>
   </section>
 

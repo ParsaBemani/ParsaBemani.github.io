@@ -14,3 +14,8 @@ $RECYCLE.BIN/
 
 # Personal build notes - kept local, not published
 CONTENT_BRIEF.md
+
+# Source material for the site — course protocols and journal club papers.
+# Kept local: these are copyrighted papers and the program's own teaching
+# documents, and this repo is published publicly via GitHub Pages.
+Lab Bootcamp/
