@@ -1493,6 +1493,35 @@ a.wheel-item:hover { background: rgba(255, 255, 255, 0.28); }
   color: var(--ink-soft);
 }
 
+/* CliftonStrengths list attached to a seminar entry. Each strength is
+   colour-coded by its Gallup domain via --strength-color, set per
+   .strength--* modifier below — add one per domain as needed. */
+.seminar-extra { grid-column: 1 / -1; margin-top: 0.9rem; }
+
+.strengths-list {
+  list-style: none;
+  margin: 0.6rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+.strengths-list > li { max-width: none; }
+
+.strength {
+  padding: 0.5rem 0.9rem;
+  border-left: 4px solid var(--strength-color, var(--accent));
+  background: var(--accent-soft);
+  border-radius: 0 8px 8px 0;
+}
+.strength-name { font-weight: 650; color: var(--strength-color, var(--accent-dark)); }
+.strength p { margin: 0.2rem 0 0; font-size: 0.88rem; color: var(--ink-soft); }
+
+/* Gallup's four CliftonStrengths domains. */
+.strength--executing            { --strength-color: #7C4C96; } /* purple */
+.strength--influencing           { --strength-color: #F4A100; } /* orange */
+.strength--relationship-building { --strength-color: #1B75BB; } /* blue */
+.strength--strategic             { --strength-color: #2F8F3B; } /* green */
+
 
 /* ==========================================================================
    14. RESPONSIVE
