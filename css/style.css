@@ -558,6 +558,10 @@ hr {
 .card > :last-child { margin-bottom: 0; }
 .card h3 { margin-bottom: 0.4rem; }
 
+/* Whole-card links: the card is the click target, so the heading inside
+   must not also render as underlined link text. */
+a.card { display: block; color: inherit; text-decoration: none; }
+
 /* Card variant with no hover lift (for static content blocks) */
 .card--static:hover { border-color: var(--line); box-shadow: var(--shadow-sm); }
 

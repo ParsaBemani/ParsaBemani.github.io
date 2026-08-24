@@ -18,8 +18,8 @@ looking-ahead.html    Upcoming Works — community rotation with PSSO
 contact.html          Email, university address, LinkedIn / CV
 
 masters.html          Masters hub — reached from Education > "More information"
-  lab-bootcamp.html     Two-lane journey map of the wet-lab sessions
-  journal-club.html     Paper discussions running alongside the lab bootcamp
+  lab-bootcamp.html     Basic science rotation — the two-lane journey map of the
+                        wet-lab sessions, then Journal Club below it
   capstone.html         Parkinson's diagnosis capstone
   seminars.html         Friday seminar series entries
   courses/
@@ -134,3 +134,16 @@ its own script (`js/main.js`, section 3) so it cannot collide with the main
 mobile menu or the Courses wheel. Opening either menu closes the other. To add
 a page to it, edit the `<nav class="subnav">` block in each of those eight
 files; pages in `courses/` use the `../` variant.
+
+**Journal Club lives on the Lab Bootcamp page.** The two were halves of one
+rotation, so they share `lab-bootcamp.html`: the journey map first, then a
+`section--alt` carrying Journal Club, its papers list, and the takeaway block.
+The old `journal-club.html` is now a redirect stub kept only so stale links
+land somewhere — delete it once nothing points at it.
+
+**The Masters section nav order is fixed:** Overview, Courses, Lab Bootcamp &
+Journal Club, Seminars, Capstone. It is repeated in all seven pages under the
+Masters hub (`masters.html`, `lab-bootcamp.html`, `seminars.html`,
+`capstone.html`, and the three under `courses/`), so a change has to be copied
+into every one. Pages in `courses/` prefix the out-of-folder links with `../`
+and mark the Courses *toggle* active rather than a link.

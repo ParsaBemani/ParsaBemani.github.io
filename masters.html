@@ -48,8 +48,6 @@
 
     <ul class="subnav-list">
       <li><a class="subnav-link is-active" href="masters.html" aria-current="page">Overview</a></li>
-      <li><a class="subnav-link" href="lab-bootcamp.html">Lab Bootcamp</a></li>
-      <li><a class="subnav-link" href="journal-club.html">Journal Club</a></li>
 
       <li>
         <button class="subnav-link subnav-toggle" aria-expanded="false" aria-controls="subnav-courses">
@@ -62,8 +60,9 @@
         </ul>
       </li>
 
-      <li><a class="subnav-link" href="capstone.html">Capstone</a></li>
+      <li><a class="subnav-link" href="lab-bootcamp.html">Lab Bootcamp &amp; Journal Club</a></li>
       <li><a class="subnav-link" href="seminars.html">Seminars</a></li>
+      <li><a class="subnav-link" href="capstone.html">Capstone</a></li>
     </ul>
   </div>
 </nav>
@@ -91,17 +90,29 @@
     <div class="container">
       <h2>About the program</h2>
       <p>
-        This is a research-focused master's program, so most of my time is split between the
-        bench and the questions that bring me to it. The year runs on several tracks at once:
-        a wet-lab technique bootcamp building a working toolkit across protein and
-        gene-expression methods, a journal club running alongside it, a year-long group
-        capstone on Parkinson's diagnosis, a Friday seminar series, and coursework in
-        communication, ethics and policy.
+        The MSc in Interdisciplinary Medical Sciences at Schulich Medicine &amp; Dentistry is a
+        one-year, course-based degree built around teams rather than a single thesis lab
+        &mdash; its motto, <em>Collaborate. Innovate. Adapt.</em>, describes the structure
+        fairly literally. The program is based on the second floor of Western's Natural
+        Science Centre, with bench work in the Drimmer laboratory.
       </p>
-      <div class="todo">
-        <p>[TODO: add anything else about the program you want visitors to know &mdash; structure,
-          supervisors, lab placement, thesis focus.]</p>
-      </div>
+      <p>
+        Coursework runs in four-week blocks taken as a cohort: eight core courses spanning
+        scientific communication, research design and analysis, science policy, ethical
+        research practice, academic integrity, data science, diversity in research, and
+        commercialization &mdash; plus two skill-development courses in interdisciplinary
+        skills and career development. At the end of every block, students write a progress
+        report that proposes and justifies their own final mark.
+      </p>
+      <p>
+        Alongside the coursework are three team rotations &mdash; basic science, clinical
+        science, and community-engaged &mdash; all set within a single assigned field of
+        study. That field is also the subject of the year-long capstone, where a team
+        identifies a wicked problem within it, scopes it through an environmental scan,
+        reviews the literature, and closes with a final report and a public showcase
+        presentation. This ePortfolio is the program's other milestone, presented to the
+        program director at the end of each term.
+      </p>
     </div>
   </section>
 
@@ -115,39 +126,18 @@
        a single .course-trigger and #courses-wheel — which is why the home
        page and this page can each carry one without clashing.
 
-       .grid--center rather than .cols-3, so the last row of five sits
-       centred instead of hanging left with an empty gap beside it.
+       .cols-2 gives an even 2x2 for the four destinations. Adding a fifth
+       would leave an orphan in the last row — switch to .grid--center then,
+       which centres a short final row instead of hanging it left.
        ================================================================== -->
   <section class="section">
     <div class="container">
       <h2>Explore the program</h2>
 
-      <div class="grid grid--center">
-
-        <a class="card" href="lab-bootcamp.html">
-          <h3>Lab Bootcamp</h3>
-          <p>A journey map of every hands-on session, across two technique tracks &mdash;
-            western blotting and RT-qPCR.</p>
-          <span class="more">View the map &rarr;</span>
-        </a>
-
-        <a class="card" href="journal-club.html">
-          <h3>Journal Club</h3>
-          <p>Weekly paper discussions running in parallel with the bench work.</p>
-          <span class="more">See the papers &rarr;</span>
-        </a>
-
-        <!-- Courses tile + its radial "wheel" menu.
-             Three slots, evenly spaced 120° apart: top / lower-right /
-             lower-left. The position classes (.wheel-pos-*) in section 10
-             of css/style.css still define all six hexagon points, so a
-             fourth course can reuse one — but with four items the spacing
-             is no longer even. Ask Claude Code to re-space them.
-             -->
+      <div class="grid cols-2">
         <div class="menu-tile">
           <button class="card course-trigger" aria-expanded="false" aria-controls="courses-wheel">
             <h3>Courses</h3>
-            <p>The three courses I've taken so far &mdash; communication, ethics and policy.</p>
             <span class="more">More <span class="more-caret" aria-hidden="true"></span></span>
           </button>
 
@@ -215,18 +205,17 @@
           </div>
         </div>
 
-        <a class="card" href="capstone.html">
-          <h3>Capstone</h3>
-          <p>A year-long group project evaluating Parkinson's diagnosis techniques.</p>
-          <span class="more">See the project &rarr;</span>
+        <a class="card" href="lab-bootcamp.html">
+          <h3>Lab Bootcamp &amp; Journal Club</h3>
         </a>
 
         <a class="card" href="seminars.html">
           <h3>Seminars</h3>
-          <p>The Friday seminar series &mdash; guest speakers from a range of professions.</p>
-          <span class="more">See the series &rarr;</span>
         </a>
 
+        <a class="card" href="capstone.html">
+          <h3>Capstone</h3>
+        </a>
       </div>
     </div>
   </section>
