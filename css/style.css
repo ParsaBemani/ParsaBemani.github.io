@@ -1440,6 +1440,15 @@ a.wheel-item:hover { background: rgba(255, 255, 255, 0.28); }
   color: var(--accent);
   margin-bottom: 0.3rem;
 }
+/* The date sits between the milestone label (.when) and the type of work
+   (.what) — smaller and quieter than either, since it's the least
+   important of the three lines. */
+.timeline .date {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  margin-bottom: 0.3rem;
+}
 .timeline .what { font-size: 0.93rem; color: var(--ink-soft); }
 
 /* Reference list */
