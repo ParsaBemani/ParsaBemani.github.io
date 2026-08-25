@@ -1541,32 +1541,135 @@ a.wheel-item:hover { background: rgba(255, 255, 255, 0.28); }
 
 
 /* ==========================================================================
-   14. JOURNAL CLUB GRID
-   A plain grid of link cards — title, authors/journal, one per paper. No
-   hosted PDFs or page images: these are copyrighted journal articles and
-   this site is public, so each card is a whole-card link (a.card, see
-   section 7) straight out to the article's official page (DOI/publisher/
-   PubMed). .grid.cols-2 (section 3) handles the responsive column count.
+   14. JOURNAL CLUB — GEL PANEL
+   The reading list drawn as a gel: a dark slab with a row of wells across
+   the top and one glowing band per paper, each band a link out to the
+   article's official page. It's the same visual the rest of the page is
+   about (see the RNA integrity photo on Lab 3), so the section reads as
+   part of the bench work rather than a bibliography stapled to the end.
 
-   To add a paper: copy a whole <a class="card journal-paper">.
+   No hosted PDFs or page images anywhere in here: these are copyrighted
+   journal articles and this site is public, so every lane links out.
+
+   Band widths vary purely so the panel looks like a real gel — they are
+   decorative and encode nothing. Set per lane with --band-w / --band-o.
+
+   To add a paper: copy a whole <li class="gel-lane">.
    ========================================================================== */
 
-.journal-paper-kind {
-  margin: 0 0 0.5rem;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent);
+.gel {
+  position: relative;
+  margin: 2rem 0 0;
+  padding: 1.6rem 1.5rem 1.1rem;
+  border-radius: var(--radius-lg);
+  /* A gel slab: lighter through the middle, falling off at the edges. */
+  background:
+    radial-gradient(120% 80% at 50% 38%, #2b3033 0%, #191d20 55%, #0e1113 100%);
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.55), var(--shadow-md);
+  overflow: hidden;
 }
-.journal-paper h3 { font-size: 1rem; line-height: 1.4; }
-.journal-paper-cite { font-size: 0.86rem; color: var(--ink-soft); }
-.journal-paper-link {
-  display: inline-block;
-  margin-top: 0.3rem;
-  font-size: 0.88rem;
+
+/* The comb row — dark loading wells across the top of the slab. */
+.gel-wells {
+  height: 13px;
+  margin-bottom: 0.4rem;
+  border-radius: 2px;
+  background: repeating-linear-gradient(90deg,
+    rgba(0, 0, 0, 0.62) 0 34px,
+    transparent 34px 50px);
+}
+
+.gel-caption {
+  margin: 0 0 1.4rem;
+  max-width: none;
+  font-size: 0.72rem;
   font-weight: 600;
-  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.32);
+}
+
+.gel-lanes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.gel-lanes > li { max-width: none; }
+
+/* One lane = one paper. The whole row is the click target. */
+.gel-lane-link {
+  display: grid;
+  grid-template-columns: 58px 92px 1fr auto;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 0.85rem 0.9rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.18s ease;
+}
+.gel-lane-link:hover { background: rgba(255, 255, 255, 0.045); }
+.gel-lane-link:focus-visible {
+  outline: 2px solid rgba(180, 240, 235, 0.9);
+  outline-offset: 2px;
+}
+
+/* Lane label, styled like a hand-marked lane number on a blot. */
+.gel-lane-marker {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.38);
+  transition: color 0.18s ease;
+}
+.gel-lane-link:hover .gel-lane-marker { color: rgba(185, 240, 235, 0.95); }
+
+/* The band itself: brightest through the middle, fading at both edges the
+   way a real band smears. Width/opacity come from the lane. */
+.gel-band {
+  width: var(--band-w, 74px);
+  height: 11px;
+  border-radius: 2px;
+  opacity: var(--band-o, 1);
+  background: linear-gradient(180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.45) 22%,
+    rgba(255, 255, 255, 0.97) 50%,
+    rgba(255, 255, 255, 0.45) 78%,
+    rgba(255, 255, 255, 0) 100%);
+  box-shadow: 0 0 14px rgba(255, 255, 255, 0.28);
+  transition: box-shadow 0.22s ease, filter 0.22s ease, transform 0.22s ease;
+}
+/* Hover reads as the band fluorescing harder under the imager. */
+.gel-lane-link:hover .gel-band {
+  filter: brightness(1.3);
+  box-shadow: 0 0 26px rgba(175, 250, 244, 0.65);
+  transform: scaleX(1.05);
+}
+
+.gel-lane-title {
+  display: block;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.93);
+}
+.gel-lane-cite {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* Arrow that slides out on hover. */
+.gel-lane-go {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.25);
+  transition: color 0.18s ease, transform 0.18s ease;
+}
+.gel-lane-link:hover .gel-lane-go {
+  color: rgba(185, 240, 235, 0.95);
+  transform: translateX(3px);
 }
 
 
@@ -1666,6 +1769,16 @@ a.wheel-item:hover { background: rgba(255, 255, 255, 0.28); }
   .subnav-link { font-size: 0.85rem; padding: 0.35rem 0.6rem; }
   .seminar { grid-template-columns: 1fr; }
   .seminar .date { grid-column: 1; grid-row: auto; }
+
+  /* Gel lanes: marker + band keep the top row, the paper drops beneath so
+     the title still gets the full panel width to wrap into. */
+  .gel { padding: 1.2rem 1rem 0.8rem; }
+  .gel-lane-link {
+    grid-template-columns: auto 1fr auto;
+    gap: 0.55rem 0.9rem;
+    padding: 0.8rem 0.7rem;
+  }
+  .gel-lane-body { grid-column: 1 / -1; }
 
   /* Education entries stack: dates/location drop below the school name */
   .edu-head { flex-direction: column; gap: 0.5rem; }
