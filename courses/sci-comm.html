@@ -209,27 +209,28 @@
             </p>
           </div>
 
-          <!-- Decorative only: two speech bubbles trading the spotlight back
-               and forth, with a small spark where they meet — a nod to the
-               back-and-forth of a live debate. Hidden on narrow screens
-               (see css/style.css section 10). -->
+          <!-- Decorative only: a round table viewed from above, three seats
+               a side, the two sides alternately taking the floor with a
+               small spark at the table's centre on each handoff — a nod to
+               a live, seated debate rather than a generic back-and-forth.
+               Hidden on narrow screens (see css/style.css section 10). -->
           <div class="artifact-graphic artifact-graphic--debate" aria-hidden="true">
             <svg viewBox="0 0 64 56" xmlns="http://www.w3.org/2000/svg">
-              <g class="artifact-graphic-bubble artifact-graphic-bubble--a">
-                <rect x="3" y="6" width="26" height="18" rx="7"
-                      fill="currentColor" fill-opacity="0.14"
-                      stroke="currentColor" stroke-width="1.6"/>
-                <polygon points="12,24 7,33 18,24" fill="currentColor" fill-opacity="0.14"
-                         stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+              <ellipse cx="32" cy="27" rx="23" ry="13"
+                       fill="none" stroke="currentColor" stroke-width="1.6"/>
+
+              <g class="artifact-graphic-side artifact-graphic-side--a">
+                <circle cx="14" cy="15" r="3.4" fill="currentColor"/>
+                <circle cx="32" cy="9"  r="3.4" fill="currentColor"/>
+                <circle cx="50" cy="15" r="3.4" fill="currentColor"/>
               </g>
-              <g class="artifact-graphic-bubble artifact-graphic-bubble--b">
-                <rect x="35" y="26" width="26" height="18" rx="7"
-                      fill="currentColor" fill-opacity="0.14"
-                      stroke="currentColor" stroke-width="1.6"/>
-                <polygon points="46,44 51,53 40,44" fill="currentColor" fill-opacity="0.14"
-                         stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+              <g class="artifact-graphic-side artifact-graphic-side--b">
+                <circle cx="14" cy="39" r="3.4" fill="currentColor"/>
+                <circle cx="32" cy="45" r="3.4" fill="currentColor"/>
+                <circle cx="50" cy="39" r="3.4" fill="currentColor"/>
               </g>
-              <polygon class="artifact-graphic-spark" points="32,19 35,23 32,27 29,23"
+
+              <polygon class="artifact-graphic-spark" points="32,23 35,27 32,31 29,27"
                        fill="currentColor"/>
             </svg>
           </div>
