@@ -8,8 +8,7 @@
    2. Header height -> --header-h (parks the sticky section nav)
    3. Masters section-nav Courses dropdown
    4. Courses wheel menu (home page and Masters hub)
-   5. Journal Club carousel (Lab Bootcamp)
-   6. Footer year
+   5. Footer year
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -152,61 +151,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* ------------------------------------------------------------------
-     5. JOURNAL CLUB CAROUSEL (Lab Bootcamp)
-     A horizontally scroll-snapping strip of citation cards. Rather than a
-     "View" link on every card, there's one link below the strip that
-     always points at whichever card is currently centred — an
-     IntersectionObserver watches the cards (scoped to the track, not the
-     whole viewport) and swaps the link's href/caption as the active card
-     changes. The prev/next buttons just scroll by one card width; the
-     snap-scroll and the observer do the rest.
-     ------------------------------------------------------------------ */
-
-  var journalCarousel = document.querySelector('.journal-carousel');
-
-  if (journalCarousel) {
-    var journalTrack = journalCarousel.querySelector('.journal-carousel-track');
-    var journalCards = Array.prototype.slice.call(journalTrack.children);
-    var journalViewLink = journalCarousel.querySelector('.journal-carousel-view');
-    var journalActiveTitle = journalCarousel.querySelector('.journal-carousel-active-title');
-
-    var setActiveJournalCard = function (card) {
-      if (!card) return;
-      journalViewLink.href = card.getAttribute('data-href');
-      journalActiveTitle.textContent = card.getAttribute('data-title');
-    };
-
-    if ('IntersectionObserver' in window) {
-      var journalObserver = new IntersectionObserver(function (entries) {
-        // Several cards can be partially visible at once — the active one
-        // is whichever has the most of itself inside the track right now.
-        var best = null;
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting && (!best || entry.intersectionRatio > best.intersectionRatio)) {
-            best = entry;
-          }
-        });
-        if (best) { setActiveJournalCard(best.target); }
-      }, { root: journalTrack, threshold: [0.5, 0.75, 1] });
-
-      journalCards.forEach(function (card) { journalObserver.observe(card); });
-    }
-
-    setActiveJournalCard(journalCards[0]);  // sensible default before any scrolling
-
-    journalCarousel.querySelectorAll('.journal-carousel-btn').forEach(function (button) {
-      button.addEventListener('click', function () {
-        var dir = Number(button.getAttribute('data-dir'));
-        var cardWidth = journalCards[0].getBoundingClientRect().width;
-        var gap = 16;  // matches the gap in .journal-carousel-track
-        journalTrack.scrollBy({ left: dir * (cardWidth + gap), behavior: 'smooth' });
-      });
-    });
-  }
-
-
-  /* ------------------------------------------------------------------
-     6. FOOTER YEAR
+     5. FOOTER YEAR
      Keeps the copyright year current without editing every page.
      ------------------------------------------------------------------ */
 
