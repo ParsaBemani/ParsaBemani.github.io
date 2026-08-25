@@ -147,6 +147,18 @@ was done and why — no long per-session write-up. The old
 `css/style.css` — note the class is `.lab-timeline`, not `.timeline`, which
 the capstone page already uses.
 
+**Journal Club is its own section at the bottom of the Lab Bootcamp page**,
+with a horizontally scroll-snapping carousel of citation cards — title,
+authors, journal — each linking out to the article's official page (DOI/
+publisher/PubMed). There are no hosted PDFs or page images: these are
+copyrighted journal articles and this site is public, so `Lab Bootcamp/` in
+the project root (the source PDFs) is gitignored and never committed. One
+"View this article" link below the strip follows whichever card is
+scrolled to — see `js/main.js` section 5. To add a paper: copy a whole
+`<li class="journal-card">` in the carousel, keeping `data-href` and
+`data-title` in sync with its content. The old `journal-club.html` is a
+redirect stub — delete it once nothing points at it.
+
 **The Masters section nav order is fixed:** Overview, Courses, Lab Bootcamp,
 Seminars, Capstone. It is repeated in all seven pages under the
 Masters hub (`masters.html`, `lab-bootcamp.html`, `seminars.html`,

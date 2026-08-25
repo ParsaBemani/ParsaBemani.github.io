@@ -16,7 +16,8 @@
    11. Lab Bootcamp — two timelines
    12. Capstone timeline
    13. Seminars list
-   14. Responsive tweaks (mobile nav)
+   14. Journal Club carousel
+   15. Responsive tweaks (mobile nav)
    ========================================================================== */
 
 
@@ -1335,6 +1336,27 @@ a.wheel-item:hover { background: rgba(255, 255, 255, 0.28); }
 .lab-timeline h3 { margin: 0 0 0.35rem; font-size: 1.02rem; }
 .lab-timeline p { margin: 0; max-width: none; font-size: 0.92rem; color: var(--ink-soft); }
 
+/* An occasional photo/gel image attached to one timeline point — capped
+   well short of the point's own width so it reads as a supporting figure,
+   not something that takes over the timeline. */
+.lab-timeline-figure {
+  margin: 0.85rem 0 0;
+  max-width: 380px;
+}
+.lab-timeline-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #000;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.lab-timeline-figure figcaption {
+  margin-top: 0.4rem;
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+}
+
 
 /* ==========================================================================
    12. CAPSTONE TIMELINE
@@ -1519,7 +1541,85 @@ a.wheel-item:hover { background: rgba(255, 255, 255, 0.28); }
 
 
 /* ==========================================================================
-   14. RESPONSIVE
+   14. JOURNAL CLUB CAROUSEL
+   A horizontally scroll-snapping strip of citation cards (title + authors/
+   journal — no hosted PDFs or page images, since these are copyrighted
+   journal articles and this site is public). js/main.js watches which
+   card is centred and points the "View this article" link and caption at
+   it, so there's one button rather than one per card.
+
+   To add a paper: copy a whole <li class="journal-card">, keeping
+   data-href (the article's official page) and data-title in sync with
+   its content.
+   ========================================================================== */
+
+.journal-carousel { margin: 2rem 0 0; }
+
+.journal-carousel-track {
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0.25rem 0.25rem 1rem;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0.25rem;
+}
+
+.journal-card {
+  flex: 0 0 260px;
+  max-width: none;
+  padding: 1.1rem 1.2rem;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  scroll-snap-align: center;
+}
+.journal-card-kind {
+  margin: 0 0 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.journal-card h3 { margin: 0 0 0.5rem; font-size: 0.96rem; line-height: 1.35; }
+.journal-card-cite { margin: 0; font-size: 0.82rem; color: var(--ink-soft); }
+
+.journal-carousel-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.journal-carousel-btn {
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--ink-soft);
+  font: inherit;
+  cursor: pointer;
+  transition: background 0.14s ease, color 0.14s ease;
+}
+.journal-carousel-btn:hover { background: var(--accent-soft); color: var(--accent-dark); }
+
+.journal-carousel-active { text-align: center; }
+.journal-carousel-active-title {
+  margin: 0 0 0.5rem;
+  max-width: none;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+
+/* ==========================================================================
+   15. RESPONSIVE
    Two breakpoints: 900px (nav collapses, journey map goes vertical)
    and 640px (single-column grids).
    ========================================================================== */
@@ -1607,6 +1707,9 @@ a.wheel-item:hover { background: rgba(255, 255, 255, 0.28); }
   .cols-2, .cols-3 { grid-template-columns: 1fr; }
   .section { padding: 2.5rem 0; }
   .person { flex-direction: column; }
+
+  /* Journal Club cards narrow so two are never fully hidden off-screen */
+  .journal-card { flex-basis: 84vw; }
 
   /* Section nav: drop the label and tighten the pills so all the links
      still fit without needing a horizontal scroll. */
