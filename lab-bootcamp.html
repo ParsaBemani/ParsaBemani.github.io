@@ -224,120 +224,107 @@
         laboratory work that we have done.
       </p>
 
-      <!-- ======================= THE GEL =======================
-           The reading list drawn as a gel — wells across the top, one
-           glowing band per paper. Styles are in section 14 of
-           css/style.css; --band-w / --band-o just vary the bands so the
-           panel looks like a real gel and mean nothing on their own.
+      <!-- ======================= READING LIST =======================
+           One row per paper: the lab it belonged to, the title, and the
+           citation. Styles are in section 14 of css/style.css, built from
+           the same markers and hairlines as the lab timeline above so the
+           two sections read as one page.
 
            No hosted PDFs or page images here: these are copyrighted
-           journal articles and this site is public, so every lane links
+           journal articles and this site is public, so every row links
            out to the article's official page instead.
-           ======================================================== -->
-      <div class="gel">
-        <div class="gel-wells" aria-hidden="true"></div>
-        <p class="gel-caption">Journal club &middot; 8 papers</p>
+           ============================================================ -->
+      <ol class="reading-list">
 
-        <ol class="gel-lanes">
+        <li>
+          <a class="reading-item" href="https://pubmed.ncbi.nlm.nih.gov/2440339/" target="_blank" rel="noopener noreferrer">
+            <span class="reading-tag">Lab 2</span>
+            <span class="reading-body">
+              <span class="reading-title">Single-Step Method of RNA Isolation by Acid Guanidinium Thiocyanate&ndash;Phenol&ndash;Chloroform Extraction</span>
+              <span class="reading-cite">Chomczynski &amp; Sacchi &middot; Analytical Biochemistry, 1987</span>
+            </span>
+            <span class="reading-go" aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
 
-          <li class="gel-lane" style="--band-w: 78px;">
-            <a class="gel-lane-link" href="https://pubmed.ncbi.nlm.nih.gov/2440339/" target="_blank" rel="noopener noreferrer">
-              <span class="gel-lane-marker">Lab 2</span>
-              <span class="gel-band" aria-hidden="true"></span>
-              <span class="gel-lane-body">
-                <span class="gel-lane-title">Single-Step Method of RNA Isolation by Acid Guanidinium Thiocyanate&ndash;Phenol&ndash;Chloroform Extraction</span>
-                <span class="gel-lane-cite">Chomczynski &amp; Sacchi &middot; Analytical Biochemistry, 1987</span>
-              </span>
-              <span class="gel-lane-go" aria-hidden="true">&rarr;</span>
-            </a>
-          </li>
+        <li>
+          <a class="reading-item" href="https://doi.org/10.1016/j.bdq.2017.11.001" target="_blank" rel="noopener noreferrer">
+            <span class="reading-tag">Lab 4</span>
+            <span class="reading-body">
+              <span class="reading-title">qPCR Primer Design Revisited</span>
+              <span class="reading-cite">Bustin &amp; Huggett &middot; Biomolecular Detection and Quantification, 2017</span>
+            </span>
+            <span class="reading-go" aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
 
-          <li class="gel-lane" style="--band-w: 62px; --band-o: 0.86;">
-            <a class="gel-lane-link" href="https://doi.org/10.1016/j.bdq.2017.11.001" target="_blank" rel="noopener noreferrer">
-              <span class="gel-lane-marker">Lab 4</span>
-              <span class="gel-band" aria-hidden="true"></span>
-              <span class="gel-lane-body">
-                <span class="gel-lane-title">qPCR Primer Design Revisited</span>
-                <span class="gel-lane-cite">Bustin &amp; Huggett &middot; Biomolecular Detection and Quantification, 2017</span>
-              </span>
-              <span class="gel-lane-go" aria-hidden="true">&rarr;</span>
-            </a>
-          </li>
+        <li>
+          <a class="reading-item" href="https://doi.org/10.1006/abio.1996.9916" target="_blank" rel="noopener noreferrer">
+            <span class="reading-tag">Lab 5</span>
+            <span class="reading-body">
+              <span class="reading-title">Product Differentiation by Analysis of DNA Melting Curves during the PCR</span>
+              <span class="reading-cite">Ririe, Rasmussen &amp; Wittwer &middot; Analytical Biochemistry, 1997</span>
+            </span>
+            <span class="reading-go" aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
 
-          <li class="gel-lane" style="--band-w: 86px;">
-            <a class="gel-lane-link" href="https://doi.org/10.1006/abio.1996.9916" target="_blank" rel="noopener noreferrer">
-              <span class="gel-lane-marker">Lab 5</span>
-              <span class="gel-band" aria-hidden="true"></span>
-              <span class="gel-lane-body">
-                <span class="gel-lane-title">Product Differentiation by Analysis of DNA Melting Curves during the PCR</span>
-                <span class="gel-lane-cite">Ririe, Rasmussen &amp; Wittwer &middot; Analytical Biochemistry, 1997</span>
-              </span>
-              <span class="gel-lane-go" aria-hidden="true">&rarr;</span>
-            </a>
-          </li>
+        <li>
+          <a class="reading-item" href="https://www.nature.com/articles/nbt0993-1026" target="_blank" rel="noopener noreferrer">
+            <span class="reading-tag">Lab 6</span>
+            <span class="reading-body">
+              <span class="reading-title">Kinetic PCR Analysis: Real-Time Monitoring of DNA Amplification Reactions</span>
+              <span class="reading-cite">Higuchi et al. &middot; Nature Biotechnology, 1993</span>
+            </span>
+            <span class="reading-go" aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
 
-          <li class="gel-lane" style="--band-w: 70px; --band-o: 0.92;">
-            <a class="gel-lane-link" href="https://www.nature.com/articles/nbt0993-1026" target="_blank" rel="noopener noreferrer">
-              <span class="gel-lane-marker">Lab 6</span>
-              <span class="gel-band" aria-hidden="true"></span>
-              <span class="gel-lane-body">
-                <span class="gel-lane-title">Kinetic PCR Analysis: Real-Time Monitoring of DNA Amplification Reactions</span>
-                <span class="gel-lane-cite">Higuchi et al. &middot; Nature Biotechnology, 1993</span>
-              </span>
-              <span class="gel-lane-go" aria-hidden="true">&rarr;</span>
-            </a>
-          </li>
+        <li>
+          <a class="reading-item" href="https://doi.org/10.1002/bmb.21516" target="_blank" rel="noopener noreferrer">
+            <span class="reading-tag">Lab 7</span>
+            <span class="reading-body">
+              <span class="reading-title">Applications of Western Blot Technique: From Bench to Bedside</span>
+              <span class="reading-cite">Meftahi et al. &middot; Biochem. Mol. Biol. Education, 2021</span>
+            </span>
+            <span class="reading-go" aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
 
-          <li class="gel-lane" style="--band-w: 90px;">
-            <a class="gel-lane-link" href="https://doi.org/10.1002/bmb.21516" target="_blank" rel="noopener noreferrer">
-              <span class="gel-lane-marker">Lab 7</span>
-              <span class="gel-band" aria-hidden="true"></span>
-              <span class="gel-lane-body">
-                <span class="gel-lane-title">Applications of Western Blot Technique: From Bench to Bedside</span>
-                <span class="gel-lane-cite">Meftahi et al. &middot; Biochem. Mol. Biol. Education, 2021</span>
-              </span>
-              <span class="gel-lane-go" aria-hidden="true">&rarr;</span>
-            </a>
-          </li>
+        <li>
+          <a class="reading-item" href="https://doi.org/10.1038/nutd.2017.35" target="_blank" rel="noopener noreferrer">
+            <span class="reading-tag">Lab 8</span>
+            <span class="reading-body">
+              <span class="reading-title">Human Adipose Tissue Protein Analyses Using Capillary Western Blot Technology</span>
+              <span class="reading-cite">Lu, Allred &amp; Jensen &middot; Nutrition &amp; Diabetes, 2017</span>
+            </span>
+            <span class="reading-go" aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
 
-          <li class="gel-lane" style="--band-w: 58px; --band-o: 0.8;">
-            <a class="gel-lane-link" href="https://doi.org/10.1038/nutd.2017.35" target="_blank" rel="noopener noreferrer">
-              <span class="gel-lane-marker">Lab 8</span>
-              <span class="gel-band" aria-hidden="true"></span>
-              <span class="gel-lane-body">
-                <span class="gel-lane-title">Human Adipose Tissue Protein Analyses Using Capillary Western Blot Technology</span>
-                <span class="gel-lane-cite">Lu, Allred &amp; Jensen &middot; Nutrition &amp; Diabetes, 2017</span>
-              </span>
-              <span class="gel-lane-go" aria-hidden="true">&rarr;</span>
-            </a>
-          </li>
+        <li>
+          <a class="reading-item" href="https://doi.org/10.1038/sj.bjc.6604728" target="_blank" rel="noopener noreferrer">
+            <span class="reading-tag">Lab 9</span>
+            <span class="reading-body">
+              <span class="reading-title">Protein Kinase C&delta; Expression in Breast Cancer as Measured by Real-Time PCR, Western Blotting and ELISA</span>
+              <span class="reading-cite">McKiernan et al. &middot; British Journal of Cancer, 2008</span>
+            </span>
+            <span class="reading-go" aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
 
-          <li class="gel-lane" style="--band-w: 74px;">
-            <a class="gel-lane-link" href="https://doi.org/10.1038/sj.bjc.6604728" target="_blank" rel="noopener noreferrer">
-              <span class="gel-lane-marker">Lab 9</span>
-              <span class="gel-band" aria-hidden="true"></span>
-              <span class="gel-lane-body">
-                <span class="gel-lane-title">Protein Kinase C&delta; Expression in Breast Cancer as Measured by Real-Time PCR, Western Blotting and ELISA</span>
-                <span class="gel-lane-cite">McKiernan et al. &middot; British Journal of Cancer, 2008</span>
-              </span>
-              <span class="gel-lane-go" aria-hidden="true">&rarr;</span>
-            </a>
-          </li>
+        <li>
+          <a class="reading-item" href="https://doi.org/10.7150/thno.100991" target="_blank" rel="noopener noreferrer">
+            <span class="reading-tag">Extra</span>
+            <span class="reading-body">
+              <span class="reading-title">Clearance of Senescent Cells Enhances Skin Wound Healing in Type 2 Diabetic Mice</span>
+              <span class="reading-cite">Samarawickrama et al. &middot; Theranostics, 2024</span>
+            </span>
+            <span class="reading-go" aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
 
-          <li class="gel-lane" style="--band-w: 66px; --band-o: 0.72;">
-            <a class="gel-lane-link" href="https://doi.org/10.7150/thno.100991" target="_blank" rel="noopener noreferrer">
-              <span class="gel-lane-marker">Extra</span>
-              <span class="gel-band" aria-hidden="true"></span>
-              <span class="gel-lane-body">
-                <span class="gel-lane-title">Clearance of Senescent Cells Enhances Skin Wound Healing in Type 2 Diabetic Mice</span>
-                <span class="gel-lane-cite">Samarawickrama et al. &middot; Theranostics, 2024</span>
-              </span>
-              <span class="gel-lane-go" aria-hidden="true">&rarr;</span>
-            </a>
-          </li>
-
-        </ol>
-      </div>
+      </ol>
 
     </div>
   </section>

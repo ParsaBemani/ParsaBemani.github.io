@@ -1541,134 +1541,77 @@ a.wheel-item:hover { background: rgba(255, 255, 255, 0.28); }
 
 
 /* ==========================================================================
-   14. JOURNAL CLUB — GEL PANEL
-   The reading list drawn as a gel: a dark slab with a row of wells across
-   the top and one glowing band per paper, each band a link out to the
-   article's official page. It's the same visual the rest of the page is
-   about (see the RNA integrity photo on Lab 3), so the section reads as
-   part of the bench work rather than a bibliography stapled to the end.
+   14. JOURNAL CLUB — READING LIST
+   A quiet list of the papers, one row each: the lab it belonged to in a
+   fixed left column (so every title starts on the same line), the title,
+   and the citation beneath it. Deliberately built from the same pieces as
+   the lab timeline right above it — accent-coloured lab markers, hairline
+   rules, the site's own type scale — so the two sections read as one page
+   rather than two designs.
 
-   No hosted PDFs or page images anywhere in here: these are copyrighted
-   journal articles and this site is public, so every lane links out.
+   No hosted PDFs or page images: these are copyrighted journal articles
+   and this site is public, so every row links out to the article's
+   official page.
 
-   Band widths vary purely so the panel looks like a real gel — they are
-   decorative and encode nothing. Set per lane with --band-w / --band-o.
-
-   To add a paper: copy a whole <li class="gel-lane">.
+   To add a paper: copy a whole <li> from .reading-list.
    ========================================================================== */
 
-.gel {
-  position: relative;
-  margin: 2rem 0 0;
-  padding: 1.6rem 1.5rem 1.1rem;
-  border-radius: var(--radius-lg);
-  /* A gel slab: lighter through the middle, falling off at the edges. */
-  background:
-    radial-gradient(120% 80% at 50% 38%, #2b3033 0%, #191d20 55%, #0e1113 100%);
-  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.55), var(--shadow-md);
-  overflow: hidden;
-}
-
-/* The comb row — dark loading wells across the top of the slab. */
-.gel-wells {
-  height: 13px;
-  margin-bottom: 0.4rem;
-  border-radius: 2px;
-  background: repeating-linear-gradient(90deg,
-    rgba(0, 0, 0, 0.62) 0 34px,
-    transparent 34px 50px);
-}
-
-.gel-caption {
-  margin: 0 0 1.4rem;
-  max-width: none;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.32);
-}
-
-.gel-lanes {
+.reading-list {
   list-style: none;
-  margin: 0;
+  margin: 1.75rem 0 0;
   padding: 0;
+  border-top: 1px solid var(--line);
 }
-.gel-lanes > li { max-width: none; }
+.reading-list > li {
+  max-width: none;
+  border-bottom: 1px solid var(--line);
+}
 
-/* One lane = one paper. The whole row is the click target. */
-.gel-lane-link {
+.reading-item {
   display: grid;
-  grid-template-columns: 58px 92px 1fr auto;
-  align-items: center;
-  gap: 1.1rem;
-  padding: 0.85rem 0.9rem;
-  border-radius: var(--radius);
+  grid-template-columns: 78px 1fr auto;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 1rem 0.75rem;
   text-decoration: none;
   color: inherit;
-  transition: background 0.18s ease;
+  border-radius: var(--radius);
+  transition: background 0.15s ease;
 }
-.gel-lane-link:hover { background: rgba(255, 255, 255, 0.045); }
-.gel-lane-link:focus-visible {
-  outline: 2px solid rgba(180, 240, 235, 0.9);
-  outline-offset: 2px;
-}
+.reading-item:hover { background: var(--accent-soft); }
 
-/* Lane label, styled like a hand-marked lane number on a blot. */
-.gel-lane-marker {
-  font-size: 0.68rem;
+/* Same treatment as .lab-timeline-num, so the lab a paper belonged to is
+   labelled identically in both sections. */
+.reading-tag {
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.38);
-  transition: color 0.18s ease;
-}
-.gel-lane-link:hover .gel-lane-marker { color: rgba(185, 240, 235, 0.95); }
-
-/* The band itself: brightest through the middle, fading at both edges the
-   way a real band smears. Width/opacity come from the lane. */
-.gel-band {
-  width: var(--band-w, 74px);
-  height: 11px;
-  border-radius: 2px;
-  opacity: var(--band-o, 1);
-  background: linear-gradient(180deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.45) 22%,
-    rgba(255, 255, 255, 0.97) 50%,
-    rgba(255, 255, 255, 0.45) 78%,
-    rgba(255, 255, 255, 0) 100%);
-  box-shadow: 0 0 14px rgba(255, 255, 255, 0.28);
-  transition: box-shadow 0.22s ease, filter 0.22s ease, transform 0.22s ease;
-}
-/* Hover reads as the band fluorescing harder under the imager. */
-.gel-lane-link:hover .gel-band {
-  filter: brightness(1.3);
-  box-shadow: 0 0 26px rgba(175, 250, 244, 0.65);
-  transform: scaleX(1.05);
+  color: var(--accent);
 }
 
-.gel-lane-title {
+.reading-title {
   display: block;
+  font-size: 0.97rem;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.reading-item:hover .reading-title { color: var(--accent-dark); }
+
+.reading-cite {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+}
+
+.reading-go {
   font-size: 0.95rem;
-  line-height: 1.4;
-  color: rgba(255, 255, 255, 0.93);
+  color: var(--ink-faint);
+  transition: color 0.15s ease, transform 0.15s ease;
 }
-.gel-lane-cite {
-  display: block;
-  margin-top: 0.2rem;
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.45);
-}
-
-/* Arrow that slides out on hover. */
-.gel-lane-go {
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.25);
-  transition: color 0.18s ease, transform 0.18s ease;
-}
-.gel-lane-link:hover .gel-lane-go {
-  color: rgba(185, 240, 235, 0.95);
+.reading-item:hover .reading-go {
+  color: var(--accent);
   transform: translateX(3px);
 }
 
@@ -1770,18 +1713,18 @@ a.wheel-item:hover { background: rgba(255, 255, 255, 0.28); }
   .seminar { grid-template-columns: 1fr; }
   .seminar .date { grid-column: 1; grid-row: auto; }
 
-  /* Gel lanes: marker, band and arrow keep the top row, the paper drops
-     beneath so the title gets the full panel width to wrap into. Both the
-     arrow and the body need explicit placement — without it the arrow is
-     pushed past the full-width body onto a third row of its own. */
-  .gel { padding: 1.2rem 1rem 0.8rem; }
-  .gel-lane-link {
-    grid-template-columns: auto 1fr auto;
-    gap: 0.55rem 0.9rem;
-    padding: 0.8rem 0.7rem;
+  /* Reading list: the lab marker moves onto its own line above the title
+     rather than eating a fixed column of an already narrow screen. Both
+     the arrow and the body need explicit placement — without it the arrow
+     is pushed past the full-width body onto a third row of its own. */
+  .reading-item {
+    grid-template-columns: 1fr auto;
+    gap: 0.35rem 0.8rem;
+    padding: 0.9rem 0.6rem;
   }
-  .gel-lane-go { grid-column: 3; grid-row: 1; }
-  .gel-lane-body { grid-column: 1 / -1; grid-row: 2; }
+  .reading-tag { grid-column: 1; grid-row: 1; }
+  .reading-go { grid-column: 2; grid-row: 1; }
+  .reading-body { grid-column: 1 / -1; grid-row: 2; }
 
   /* Education entries stack: dates/location drop below the school name */
   .edu-head { flex-direction: column; gap: 0.5rem; }

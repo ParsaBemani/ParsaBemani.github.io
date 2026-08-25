@@ -148,13 +148,15 @@ was done and why — no long per-session write-up. The old
 the capstone page already uses.
 
 **Journal Club is its own section at the bottom of the Lab Bootcamp page**,
-with a plain `.grid.cols-2` of whole-card links (`a.card.journal-paper`) —
-title, authors, journal — each pointing straight at the article's official
-page (DOI/publisher/PubMed). There are no hosted PDFs or page images: these
-are copyrighted journal articles and this site is public, so `Lab Bootcamp/`
-in the project root (the source PDFs) is gitignored and never committed. To
-add a paper: copy a whole `<a class="card journal-paper">` block. The old
-`journal-club.html` is a redirect stub — delete it once nothing points at it.
+with a `.reading-list` — one row per paper, showing the lab it belonged to,
+the title, and the citation, each row linking straight to the article's
+official page (DOI/publisher/PubMed). It reuses the lab timeline's accent
+markers and hairline rules on purpose, so the two sections read as one page.
+There are no hosted PDFs or page images: these are copyrighted journal
+articles and this site is public, so `Lab Bootcamp/` in the project root
+(the source PDFs) is gitignored and never committed. To add a paper: copy a
+whole `<li>` from `.reading-list`. The old `journal-club.html` is a redirect
+stub — delete it once nothing points at it.
 
 **The Masters section nav order is fixed:** Overview, Courses, Lab Bootcamp,
 Seminars, Capstone. It is repeated in all seven pages under the
