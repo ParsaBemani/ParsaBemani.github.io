@@ -908,12 +908,20 @@ a.card { display: block; color: inherit; text-decoration: none; }
   color: var(--accent);
 }
 .artifact-body h3 { margin: 0 0 0.5rem; font-size: 1.1rem; }
-.artifact-body > p:last-child {
-  margin: 0;
+/* Every paragraph in the body gets the same treatment — an artifact can
+   run one closing line or several (aim/what/learned), and they should
+   all read as one voice rather than the last one looking different. */
+.artifact-body > p:not(.artifact-kind):not(.todo-inline) {
+  margin: 0 0 0.6rem;
   max-width: none;
   font-size: 0.96rem;
   color: var(--ink-soft);
 }
+.artifact-body > p:not(.artifact-kind):not(.todo-inline):last-of-type { margin-bottom: 0; }
+
+/* Explicit so a third flex child (.artifact-graphic) can sit to its
+   right without the body getting squeezed to fit-content width. */
+.artifact-body { flex: 1 1 auto; min-width: 0; }
 
 /* Closing takeaway under the artifact list */
 .artifact-closing {
@@ -922,6 +930,41 @@ a.card { display: block; color: inherit; text-decoration: none; }
   border-left: 3px solid var(--accent-line);
   font-style: italic;
   color: var(--ink-soft);
+}
+
+/* Optional decorative graphic on the right of an artifact card — used
+   sparingly, only where a small animation genuinely fits the piece (e.g.
+   the elevator-pitch icon below). Hidden once the card gets tight. */
+.artifact-graphic {
+  flex: 0 0 auto;
+  align-self: center;
+  width: 40px;
+  height: 64px;
+  color: var(--accent);
+}
+.artifact-graphic svg { display: block; width: 100%; height: 100%; overflow: visible; }
+
+/* Elevator pitch: the car rides up to the top of the shaft and back down
+   on a loop; the floor lights blink in a staggered sequence. Both loop
+   independently rather than being physically synced — it's a decorative
+   nod to the assignment, not a literal diagram. */
+.artifact-graphic-car {
+  animation: artifact-elevator-ride 3s ease-in-out infinite;
+}
+@keyframes artifact-elevator-ride {
+  0%, 100% { transform: translateY(38px); }
+  50%      { transform: translateY(0); }
+}
+.artifact-graphic-dot {
+  opacity: 0.25;
+  animation: artifact-elevator-blink 3s ease-in-out infinite;
+}
+.artifact-graphic-dot:nth-of-type(1) { animation-delay: 0s; }
+.artifact-graphic-dot:nth-of-type(2) { animation-delay: 0.5s; }
+.artifact-graphic-dot:nth-of-type(3) { animation-delay: 1s; }
+@keyframes artifact-elevator-blink {
+  0%, 80%, 100% { opacity: 0.25; }
+  10%, 30%      { opacity: 1; }
 }
 
 /* --- Involvement page: athletics ---
@@ -1749,6 +1792,7 @@ a.wheel-item:hover { background: rgba(255, 255, 255, 0.28); }
     border-radius: 10px;
     font-size: 0.85rem;
   }
+  .artifact-graphic { display: none; }
 }
 
 /* Respect users who prefer reduced motion */
