@@ -967,6 +967,30 @@ a.card { display: block; color: inherit; text-decoration: none; }
   10%, 30%      { opacity: 1; }
 }
 
+/* Debate: two speech bubbles trading the spotlight back and forth, with
+   a small spark popping at each handoff — the point where the argument
+   actually meets. Sized a little larger than the elevator slot since a
+   pair of bubbles needs more room to read clearly than a single icon. */
+.artifact-graphic--debate { width: 56px; height: 49px; }
+
+.artifact-graphic-bubble { animation: artifact-debate-volley 3s ease-in-out infinite; }
+.artifact-graphic-bubble--a { opacity: 1; }
+.artifact-graphic-bubble--b { opacity: 0.3; animation-delay: 1.5s; }
+@keyframes artifact-debate-volley {
+  0%, 45%  { opacity: 1; }
+  55%, 100% { opacity: 0.3; }
+}
+
+.artifact-graphic-spark {
+  opacity: 0;
+  transform-origin: 32px 23px;
+  animation: artifact-debate-spark 3s ease-in-out infinite;
+}
+@keyframes artifact-debate-spark {
+  0%, 40%, 60%, 100% { opacity: 0; transform: scale(0.6); }
+  50%                { opacity: 1; transform: scale(1); }
+}
+
 /* --- Involvement page: athletics ---
    Sport cards sit on a faintly striped background, a nod to a mown pitch.
    The stripes are deliberately very low contrast — they should read as
