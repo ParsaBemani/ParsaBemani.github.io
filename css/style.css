@@ -995,6 +995,31 @@ a.card { display: block; color: inherit; text-decoration: none; }
   50%                { opacity: 1; transform: scale(1); }
 }
 
+/* Podcast: a five-bar audio-waveform equalizer, each bar scaling up from
+   the bottom on its own loop with a staggered delay so the middle bars
+   lead and the outer ones trail — the usual "levels" look of a live
+   recording. */
+.artifact-graphic--podcast { width: 56px; height: 56px; }
+
+.artifact-graphic-bar {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: artifact-podcast-bar 1.1s ease-in-out infinite;
+}
+.artifact-graphic-bar:nth-child(1) { animation-delay: 0s; }
+.artifact-graphic-bar:nth-child(2) { animation-delay: 0.15s; }
+.artifact-graphic-bar:nth-child(3) { animation-delay: 0.3s; }
+.artifact-graphic-bar:nth-child(4) { animation-delay: 0.15s; }
+.artifact-graphic-bar:nth-child(5) { animation-delay: 0s; }
+@keyframes artifact-podcast-bar {
+  0%, 100% { transform: scaleY(0.35); }
+  50%      { transform: scaleY(1); }
+}
+
+/* The embedded player for a podcast/audio artifact. */
+.artifact-audio { margin-top: 0.9rem; }
+.artifact-audio audio { display: block; width: 100%; max-width: 360px; }
+
 /* --- Involvement page: athletics ---
    Sport cards sit on a faintly striped background, a nod to a mown pitch.
    The stripes are deliberately very low contrast — they should read as
