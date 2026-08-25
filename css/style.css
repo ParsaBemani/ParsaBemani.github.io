@@ -1770,15 +1770,18 @@ a.wheel-item:hover { background: rgba(255, 255, 255, 0.28); }
   .seminar { grid-template-columns: 1fr; }
   .seminar .date { grid-column: 1; grid-row: auto; }
 
-  /* Gel lanes: marker + band keep the top row, the paper drops beneath so
-     the title still gets the full panel width to wrap into. */
+  /* Gel lanes: marker, band and arrow keep the top row, the paper drops
+     beneath so the title gets the full panel width to wrap into. Both the
+     arrow and the body need explicit placement — without it the arrow is
+     pushed past the full-width body onto a third row of its own. */
   .gel { padding: 1.2rem 1rem 0.8rem; }
   .gel-lane-link {
     grid-template-columns: auto 1fr auto;
     gap: 0.55rem 0.9rem;
     padding: 0.8rem 0.7rem;
   }
-  .gel-lane-body { grid-column: 1 / -1; }
+  .gel-lane-go { grid-column: 3; grid-row: 1; }
+  .gel-lane-body { grid-column: 1 / -1; grid-row: 2; }
 
   /* Education entries stack: dates/location drop below the school name */
   .edu-head { flex-direction: column; gap: 0.5rem; }
