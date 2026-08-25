@@ -13,10 +13,10 @@
    8.  TODO placeholder blocks
    9.  Photo placeholders
    10. Home page (hero, "currently" blurb)
-   11. Lab Bootcamp session flowchart
+   11. Lab Bootcamp — two timelines
    12. Capstone timeline
    13. Seminars list
-   14. Responsive tweaks (mobile nav, flowchart tracks)
+   14. Responsive tweaks (mobile nav)
    ========================================================================== */
 
 
@@ -1246,105 +1246,94 @@ a.wheel-item:hover { background: rgba(255, 255, 255, 0.28); }
 
 
 /* ==========================================================================
-   11. LAB BOOTCAMP — SESSION FLOWCHART
-   A minimal schematic, not a session write-up: one shared starting step,
-   then two parallel technique tracks (colour-coded via --track-color, set
-   per .flow-track--* modifier), then the point where they meet again —
-   the same Rat2 fibroblast cell line both experiments were run on.
+   11. LAB BOOTCAMP — TWO TIMELINES
+   Two independent vertical timelines (one per experiment), not one merged
+   diagram. .lab-track scopes a colour via --track-color (see the two
+   modifiers below); .lab-timeline is the connected list of points inside
+   it. Each point is a lab number + one-word objective tag, a title, and a
+   short line on what was done and why.
 
-   To add a step: copy a whole <li> inside the relevant .flow-nodes list.
-   .flow-node-cite is optional — leave it off a step with no paired paper.
+   To add a point: copy a whole <li> inside a .lab-timeline.
    ========================================================================== */
 
-.flowchart {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 2.5rem 0 0;
-}
+.lab-track { margin: 2.5rem 0 0; }
+.lab-track h2 { display: flex; align-items: baseline; gap: 0.7rem; flex-wrap: wrap; }
 
-.flow-anchor {
-  padding: 0.7rem 1.4rem;
-  background: var(--accent-soft);
-  border: 1px solid var(--accent-line);
-  border-radius: var(--radius);
-  font-weight: 650;
-  font-size: 0.92rem;
-  text-align: center;
-  color: var(--ink);
-}
-
-.flow-arrow {
-  font-size: 1.4rem;
-  line-height: 1;
-  color: var(--ink-faint);
-  margin: 0.3rem 0;
-}
-
-.flow-tracks {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  width: 100%;
-  max-width: 600px;
-}
-
-.flow-track-label {
-  margin: 0 0 0.7rem;
-  max-width: none;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  text-align: center;
+.lab-track-range {
+  font-size: 0.85rem;
+  font-weight: 500;
   color: var(--track-color);
 }
 
 /* Gel electrophoresis (RT-qPCR) vs. immunoblotting (Western Blot) —
    reuses the two colours the old two-lane journey map used, so anyone
    who saw that version still reads the same colour language. */
-.flow-track--qpcr { --track-color: #7a5ea7; }
-.flow-track--wb   { --track-color: #2f6f6b; }
+.lab-track--qpcr { --track-color: #7a5ea7; }
+.lab-track--wb   { --track-color: #2f6f6b; }
 
-.flow-nodes {
+.lab-timeline {
   list-style: none;
-  margin: 0;
+  margin: 1.5rem 0 0;
   padding: 0;
 }
-.flow-nodes li {
+.lab-timeline li {
   position: relative;
   max-width: none;
-  margin-bottom: 1.3rem;
-  padding: 0.55rem 0.75rem;
-  background: var(--bg);
-  border: 1px solid var(--line);
-  border-left: 3px solid var(--track-color);
-  border-radius: var(--radius);
-  text-align: center;
+  padding: 0 0 1.75rem 2.5rem;
 }
-.flow-nodes li:last-child { margin-bottom: 0; }
+.lab-timeline li:last-child { padding-bottom: 0; }
 
-.flow-node-label { display: block; font-size: 0.84rem; color: var(--ink); }
-.flow-node-cite {
-  display: block;
-  margin-top: 0.2rem;
-  font-size: 0.72rem;
-  font-style: italic;
-  color: var(--ink-faint);
-}
-
-/* The connecting line between stacked nodes within one track. */
-.flow-nodes li:not(:last-child)::after {
+/* The dot */
+.lab-timeline li::before {
   content: "";
   position: absolute;
-  left: 50%;
-  bottom: -1.3rem;
+  left: 0;
+  top: 0.3rem;
+  width: 14px;
+  height: 14px;
+  background: var(--bg);
+  border: 3px solid var(--track-color);
+  border-radius: 50%;
+}
+/* The connecting line down to the next dot */
+.lab-timeline li::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 1.1rem;
+  bottom: -0.25rem;
   width: 2px;
-  height: 1.3rem;
   background: var(--track-color);
   opacity: 0.3;
-  transform: translateX(-50%);
 }
+.lab-timeline li:last-child::after { display: none; }
+
+.lab-timeline-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.35rem;
+}
+.lab-timeline-num {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--track-color);
+}
+/* The one-word objective, next to the lab number */
+.lab-timeline-tag {
+  display: inline-block;
+  padding: 0.1em 0.65em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--track-color);
+  border-radius: 999px;
+}
+.lab-timeline h3 { margin: 0 0 0.35rem; font-size: 1.02rem; }
+.lab-timeline p { margin: 0; max-width: none; font-size: 0.92rem; color: var(--ink-soft); }
 
 
 /* ==========================================================================
@@ -1588,9 +1577,6 @@ a.wheel-item:hover { background: rgba(255, 255, 255, 0.28); }
   .about-intro { grid-template-columns: 1fr; gap: 1.75rem; }
   .about-intro .photo-placeholder { max-width: 200px; }
 
-  /* --- Session flowchart narrows its two tracks --- */
-  .flow-tracks { max-width: 420px; gap: 1.25rem; }
-
   /* --- Capstone timeline goes vertical ---
      Each phase now draws its segment *downward* to the next dot, so the line
      runs dot-to-dot however tall each phase's text turns out to be. */
@@ -1628,9 +1614,6 @@ a.wheel-item:hover { background: rgba(255, 255, 255, 0.28); }
   .subnav-link { font-size: 0.85rem; padding: 0.35rem 0.6rem; }
   .seminar { grid-template-columns: 1fr; }
   .seminar .date { grid-column: 1; grid-row: auto; }
-
-  /* Flowchart's two tracks stack instead of squeezing side by side */
-  .flow-tracks { grid-template-columns: 1fr; max-width: 320px; gap: 2rem; }
 
   /* Education entries stack: dates/location drop below the school name */
   .edu-head { flex-direction: column; gap: 0.5rem; }

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lab Bootcamp — Parsa Bemani</title>
-  <meta name="description" content="Lab Bootcamp — a flowchart of the basic science rotation's two wet-lab technique tracks.">
+  <meta name="description" content="Lab Bootcamp — two timelines from the basic science rotation, one per wet-lab technique track.">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -84,84 +84,124 @@
       <p class="eyebrow">Basic science rotation</p>
       <h1>Lab Bootcamp</h1>
       <p class="lede">
-        A flowchart of the basic science rotation &mdash; two wet-lab technique tracks, run in
-        parallel on the same cell line.
+        Two timelines from the basic science rotation, one per wet-lab technique track &mdash;
+        both run on the same cell line.
       </p>
     </div>
   </div>
 
   <!-- ==========================================================================
-       THE FLOWCHART
-       A schematic, not a write-up: one shared starting step, then the two
-       technique tracks running in parallel, then where they meet again.
-       Styles live in section 11 of css/style.css. Node text is a title
-       (.flow-node-label) plus, where one exists, the paired paper in one
-       line (.flow-node-cite) — no per-step paragraphs.
+       TWO TIMELINES
+       Every session ran on the same Rat2 fibroblast line, but the two
+       experiments are shown as two separate timelines rather than one
+       merged diagram — Labs 2–6 building the RT-qPCR experiment, Labs 7–9
+       building the western blot. (Lab 1 was shared orientation and isn't
+       part of either.) Each point carries a one-word objective tag plus a
+       line or two on what was done and why. Styles live in section 11 of
+       css/style.css — .lab-track scopes the colour, .lab-timeline is the
+       connected list of points.
        ========================================================================== -->
   <section class="section">
     <div class="container">
 
       <p>
-        Every session ran on the same Rat2 fibroblast cell line, building toward two
-        experiments &mdash; one asking whether ascorbate changes Collagen&nbsp;I expression by
-        RT-qPCR, the other comparing single-protein against total-protein normalization by
-        western blot.
+        Both experiments ran on the same Rat2 fibroblast cell line, after a shared first
+        session on lab safety and core bench skills. From there the two tracks diverged:
+        Labs 2&ndash;6 built an RT-qPCR experiment testing whether ascorbate changes
+        Collagen&nbsp;I expression, and Labs 7&ndash;9 built a western blot comparing
+        single-protein against total-protein normalization.
       </p>
 
-      <div class="flowchart">
+      <div class="lab-track lab-track--qpcr">
+        <h2>RNA &amp; RT-qPCR <span class="lab-track-range">Labs 2&ndash;6</span></h2>
 
-        <div class="flow-anchor">Lab Bootcamp Introduction</div>
-        <span class="flow-arrow" aria-hidden="true">&darr;</span>
+        <ol class="lab-timeline">
+          <li>
+            <div class="lab-timeline-head">
+              <span class="lab-timeline-num">Lab 2</span>
+              <span class="lab-timeline-tag">Isolation</span>
+            </div>
+            <h3>Cell Culture &amp; RNA Isolation</h3>
+            <p>Subcultured Rat2 fibroblasts and isolated RNA from ascorbate-treated and
+              control cells, to get RNA clean enough to reliably measure gene expression
+              from.</p>
+          </li>
+          <li>
+            <div class="lab-timeline-head">
+              <span class="lab-timeline-num">Lab 3</span>
+              <span class="lab-timeline-tag">Synthesis</span>
+            </div>
+            <h3>Reverse Transcription &amp; RNA Integrity</h3>
+            <p>Removed trace genomic DNA and reverse-transcribed the RNA into cDNA, checking
+              its integrity first so a degraded sample wouldn't undermine the rest of the
+              experiment.</p>
+          </li>
+          <li>
+            <div class="lab-timeline-head">
+              <span class="lab-timeline-num">Lab 4</span>
+              <span class="lab-timeline-tag">Specificity</span>
+            </div>
+            <h3>Primer Validation I &mdash; Gradient PCR</h3>
+            <p>Ran a gradient PCR to find the annealing temperature at which each primer
+              produced one specific product, since a non-specific primer would make later
+              results uninterpretable.</p>
+          </li>
+          <li>
+            <div class="lab-timeline-head">
+              <span class="lab-timeline-num">Lab 5</span>
+              <span class="lab-timeline-tag">Efficiency</span>
+            </div>
+            <h3>Primer Validation II &mdash; Specificity &amp; Efficiency</h3>
+            <p>Confirmed specificity on a gel, then built a dilution series to calculate
+              primer efficiency &mdash; only primers between 90&ndash;110% efficiency are
+              valid for accurate quantification.</p>
+          </li>
+          <li>
+            <div class="lab-timeline-head">
+              <span class="lab-timeline-num">Lab 6</span>
+              <span class="lab-timeline-tag">Expression</span>
+            </div>
+            <h3>RT-qPCR Experiment</h3>
+            <p>Ran the full qPCR experiment testing whether ascorbate treatment changes
+              Collagen&nbsp;I expression &mdash; the question the whole track was built to
+              answer.</p>
+          </li>
+        </ol>
+      </div>
 
-        <div class="flow-tracks">
+      <div class="lab-track lab-track--wb">
+        <h2>Western Blot <span class="lab-track-range">Labs 7&ndash;9</span></h2>
 
-          <div class="flow-track flow-track--qpcr">
-            <p class="flow-track-label">RT-qPCR</p>
-            <ol class="flow-nodes">
-              <li>
-                <span class="flow-node-label">Cell Culture &amp; RNA Isolation</span>
-                <span class="flow-node-cite">Chomczynski &amp; Sacchi, 1987</span>
-              </li>
-              <li>
-                <span class="flow-node-label">Reverse Transcription &amp; RNA Integrity</span>
-              </li>
-              <li>
-                <span class="flow-node-label">Primer Validation &mdash; Gradient PCR</span>
-                <span class="flow-node-cite">Bustin &amp; Huggett</span>
-              </li>
-              <li>
-                <span class="flow-node-label">Primer Validation &mdash; Specificity &amp; Efficiency</span>
-                <span class="flow-node-cite">Ririe, Rasmussen &amp; Wittwer</span>
-              </li>
-              <li>
-                <span class="flow-node-label">RT-qPCR Experiment</span>
-                <span class="flow-node-cite">Higuchi et al.</span>
-              </li>
-            </ol>
-          </div>
-
-          <div class="flow-track flow-track--wb">
-            <p class="flow-track-label">Western Blot</p>
-            <ol class="flow-nodes">
-              <li>
-                <span class="flow-node-label">Protein Isolation &amp; BCA Assay</span>
-                <span class="flow-node-cite">Meftahi et al.</span>
-              </li>
-              <li>
-                <span class="flow-node-label">SDS-PAGE &amp; Membrane Transfer</span>
-                <span class="flow-node-cite">Nguyen et al.</span>
-              </li>
-              <li>
-                <span class="flow-node-label">Immunoblotting &amp; Imaging</span>
-              </li>
-            </ol>
-          </div>
-
-        </div>
-
-        <span class="flow-arrow" aria-hidden="true">&darr;</span>
-        <div class="flow-anchor">Shared model &mdash; Rat2 fibroblasts</div>
-
+        <ol class="lab-timeline">
+          <li>
+            <div class="lab-timeline-head">
+              <span class="lab-timeline-num">Lab 7</span>
+              <span class="lab-timeline-tag">Quantification</span>
+            </div>
+            <h3>Protein Isolation &amp; BCA Assay</h3>
+            <p>Isolated total protein from cell lysates and measured its concentration by
+              BCA assay, to set up a fair comparison between normalization methods.</p>
+          </li>
+          <li>
+            <div class="lab-timeline-head">
+              <span class="lab-timeline-num">Lab 8</span>
+              <span class="lab-timeline-tag">Separation</span>
+            </div>
+            <h3>SDS-PAGE &amp; Membrane Transfer</h3>
+            <p>Separated the proteins by size on a stain-free gel and transferred them to a
+              membrane, using a technique that keeps total lane protein measurable alongside
+              the reference bands.</p>
+          </li>
+          <li>
+            <div class="lab-timeline-head">
+              <span class="lab-timeline-num">Lab 9</span>
+              <span class="lab-timeline-tag">Detection</span>
+            </div>
+            <h3>Immunoblotting &amp; Imaging</h3>
+            <p>Probed the membrane for reference proteins and imaged the result, comparing a
+              single reference protein against total lane protein as the loading control.</p>
+          </li>
+        </ol>
       </div>
 
     </div>
