@@ -908,16 +908,20 @@ a.card { display: block; color: inherit; text-decoration: none; }
   color: var(--accent);
 }
 .artifact-body h3 { margin: 0 0 0.5rem; font-size: 1.1rem; }
-/* Every paragraph in the body gets the same treatment — an artifact can
-   run one closing line or several (aim/what/learned), and they should
-   all read as one voice rather than the last one looking different. */
-.artifact-body > p:not(.artifact-kind):not(.todo-inline) {
+/* Every plain paragraph in the body gets the same treatment — an artifact
+   can run one closing line or several under .label sub-headings (what was
+   done / why / what I learned), and they should all read as one voice
+   rather than the last one looking different. .artifact-kind, .todo-inline
+   and .label all carry their own distinct styling, so they're excluded. */
+.artifact-body > p:not(.artifact-kind):not(.todo-inline):not(.label) {
   margin: 0 0 0.6rem;
   max-width: none;
   font-size: 0.96rem;
   color: var(--ink-soft);
 }
-.artifact-body > p:not(.artifact-kind):not(.todo-inline):last-of-type { margin-bottom: 0; }
+.artifact-body > p:not(.artifact-kind):not(.todo-inline):not(.label):last-of-type { margin-bottom: 0; }
+/* A .label sub-heading sits snug above the paragraph it introduces. */
+.artifact-body > p.label { margin: 0.9rem 0 0.3rem; max-width: none; }
 
 /* Explicit so a third flex child (.artifact-graphic) can sit to its
    right without the body getting squeezed to fit-content width. */
