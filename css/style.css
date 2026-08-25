@@ -911,15 +911,16 @@ a.card { display: block; color: inherit; text-decoration: none; }
 /* Every plain paragraph in the body gets the same treatment — an artifact
    can run one closing line or several under .label sub-headings (what was
    done / why / what I learned), and they should all read as one voice
-   rather than the last one looking different. .artifact-kind, .todo-inline
-   and .label all carry their own distinct styling, so they're excluded. */
-.artifact-body > p:not(.artifact-kind):not(.todo-inline):not(.label) {
+   rather than the last one looking different. .artifact-kind, .todo-inline,
+   .label and .artifact-cite all carry their own distinct styling, so
+   they're excluded. */
+.artifact-body > p:not(.artifact-kind):not(.todo-inline):not(.label):not(.artifact-cite) {
   margin: 0 0 0.6rem;
   max-width: none;
   font-size: 0.96rem;
   color: var(--ink-soft);
 }
-.artifact-body > p:not(.artifact-kind):not(.todo-inline):not(.label):last-of-type { margin-bottom: 0; }
+.artifact-body > p:not(.artifact-kind):not(.todo-inline):not(.label):not(.artifact-cite):last-of-type { margin-bottom: 0; }
 /* A .label sub-heading sits snug above the paragraph it introduces. */
 .artifact-body > p.label { margin: 0.9rem 0 0.3rem; max-width: none; }
 
@@ -1019,6 +1020,34 @@ a.card { display: block; color: inherit; text-decoration: none; }
 /* The embedded player for a podcast/audio artifact. */
 .artifact-audio { margin-top: 0.9rem; }
 .artifact-audio audio { display: block; width: 100%; max-width: 360px; }
+
+/* A citation line inside an artifact body — smaller and quieter than the
+   regular paragraphs, same idea as .journal-card-cite. Excluded from the
+   generic .artifact-body > p rule via :not(.artifact-cite) there. */
+.artifact-body > p.artifact-cite {
+  margin: 0 0 0.4rem;
+  max-width: none;
+  font-size: 0.84rem;
+  color: var(--ink-faint);
+}
+.artifact-body > p.artifact-cite:last-child { margin-bottom: 0; }
+
+/* Retraction stamp: a document face with a "RETRACTED" stamp that lands
+   hard (scaling in from oversized) then holds before fading, on a loop —
+   the moment a retraction notice actually gets stamped on a paper. */
+.artifact-graphic--document { width: 48px; height: 64px; }
+
+.artifact-graphic-stamp {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: artifact-stamp-hit 3.5s ease-in-out infinite;
+}
+@keyframes artifact-stamp-hit {
+  0%        { opacity: 0; transform: scale(1.8); }
+  8%        { opacity: 1; transform: scale(1); }
+  65%       { opacity: 1; transform: scale(1); }
+  78%, 100% { opacity: 0; transform: scale(1); }
+}
 
 /* --- Involvement page: athletics ---
    Sport cards sit on a faintly striped background, a nod to a mown pitch.
