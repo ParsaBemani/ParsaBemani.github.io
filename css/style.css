@@ -1104,6 +1104,19 @@ a.card { display: block; color: inherit; text-decoration: none; }
   80%      { opacity: 1; transform: translateY(0); }
 }
 
+/* Solutions Development: a lightbulb's rays bursting outward and fading,
+   on a loop — the idea switching on. */
+.artifact-graphic--idea { width: 48px; height: 56px; }
+
+.artifact-graphic-rays {
+  transform-origin: 24px 22px;
+  animation: artifact-idea-glow 2.6s ease-in-out infinite;
+}
+@keyframes artifact-idea-glow {
+  0%, 100% { opacity: 0; transform: scale(0.6); }
+  50%      { opacity: 1; transform: scale(1); }
+}
+
 /* --- Involvement page: athletics ---
    Sport cards sit on a faintly striped background, a nod to a mown pitch.
    The stripes are deliberately very low contrast — they should read as
