@@ -1,0 +1,172 @@
+/* ==========================================================================
+   THEME SAMPLE — "MAGAZINE"
+   Applied only to the Sci Comm course page (body.theme-magazine), loaded
+   AFTER style.css so it can override without touching the base file or any
+   page content. Warm, editorial, serif-headline look: cream paper, a bold
+   ink-orange accent, asymmetric artifact rows that alternate sides like a
+   magazine feature spread.
+
+   This is one of three sample themes — see also theme-ledger.css and
+   theme-dashboard.css. Nothing in the three course pages' HTML content
+   changed to build these; only a stylesheet link + a body class were added.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Sans+3:wght@400;500;600&display=swap');
+
+body.theme-magazine {
+  --accent:        #c1440e;
+  --accent-dark:   #8f3009;
+  --accent-soft:   #fbe6d8;
+  --accent-line:   #edb98e;
+
+  --ink:           #2a2016;
+  --ink-soft:      #5c5041;
+  --ink-faint:     #948773;
+
+  --bg:            #faf5ea;
+  --bg-alt:        #f1e6d2;
+  --line:          #e3d3b3;
+
+  --font-sans: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --radius:        2px;
+  --radius-lg:     2px;
+  --shadow-sm: 0 1px 0 rgba(42, 32, 22, 0.12);
+  --shadow-md: 0 10px 24px rgba(42, 32, 22, 0.14);
+
+  background: var(--bg);
+}
+
+body.theme-magazine h1,
+body.theme-magazine h2,
+body.theme-magazine h3,
+body.theme-magazine .brand {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+body.theme-magazine h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); font-style: italic; }
+body.theme-magazine h2 {
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+body.theme-magazine h2::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 56px; height: 3px;
+  background: var(--accent);
+}
+
+/* Header: cream masthead with a rule instead of a shadowed sticky bar */
+body.theme-magazine .site-header {
+  background: var(--bg);
+  backdrop-filter: none;
+  border-bottom: 3px solid var(--ink);
+}
+body.theme-magazine .brand { font-size: 1.3rem; }
+body.theme-magazine .nav-link.is-active::after { background: var(--accent); height: 3px; }
+
+body.theme-magazine .subnav {
+  background: var(--ink);
+  border-bottom: none;
+}
+body.theme-magazine .subnav-label { color: var(--accent-line); }
+body.theme-magazine .subnav-link { color: #ecdfc8; border-radius: 0; }
+body.theme-magazine .subnav-link:hover { background: rgba(255,255,255,0.08); color: #fff; }
+body.theme-magazine .subnav-link.is-active {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: none;
+}
+
+body.theme-magazine .page-head { border-bottom: 3px double var(--ink); }
+body.theme-magazine .page-head .eyebrow {
+  font-family: "Source Sans 3", sans-serif;
+  color: var(--accent);
+}
+
+body.theme-magazine .section--alt {
+  background: var(--bg-alt);
+  border-block-color: var(--line);
+}
+
+/* Chips: small caps ticket-style labels instead of soft pills */
+body.theme-magazine .chip {
+  border-radius: 0;
+  background: transparent;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  font-family: "Source Sans 3", sans-serif;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+}
+
+/* Cards: sharp corners, a heavy top rule instead of a shadowed box */
+body.theme-magazine .card {
+  border-radius: 0;
+  border: none;
+  border-top: 3px solid var(--ink);
+  box-shadow: none;
+  background: var(--bg);
+}
+body.theme-magazine .card:hover { border-top-color: var(--accent); box-shadow: none; }
+
+/* Artifact list: alternating magazine spread — every second entry runs its
+   number/kind on the right instead of the left, so the eye zig-zags down
+   the page the way a print feature layout does. Pure CSS re-ordering; the
+   HTML markup order is untouched. */
+body.theme-magazine .artifact {
+  border-radius: 0;
+  border: none;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  border-left: none;
+  box-shadow: none;
+  padding: 2rem 0;
+  gap: 2rem;
+  background: transparent;
+}
+body.theme-magazine .artifact:hover { box-shadow: none; border-color: var(--ink); }
+body.theme-magazine .artifact-list > li:nth-child(even) .artifact {
+  flex-direction: row-reverse;
+}
+body.theme-magazine .artifact-num {
+  border-radius: 0;
+  background: transparent;
+  border: none;
+  color: var(--accent);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 2.1rem;
+  font-weight: 800;
+  width: auto;
+  height: auto;
+  flex-basis: 64px;
+}
+body.theme-magazine .artifact-kind {
+  font-family: "Source Sans 3", sans-serif;
+  color: var(--accent);
+}
+body.theme-magazine .artifact-body h3 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.4rem;
+}
+body.theme-magazine .artifact-body > p:not(.artifact-kind):not(.todo-inline):not(.label):not(.artifact-cite) {
+  font-size: 1rem;
+}
+
+body.theme-magazine .btn {
+  border-radius: 0;
+  background: var(--ink);
+  border-color: var(--ink);
+}
+body.theme-magazine .btn:hover { background: var(--accent); border-color: var(--accent); }
+body.theme-magazine .btn--ghost { border-color: var(--ink); color: var(--ink); }
+
+body.theme-magazine .site-footer {
+  background: var(--ink);
+  border-top: none;
+}
+body.theme-magazine .site-footer p { color: #cabb9d; }
+body.theme-magazine .site-footer a { color: var(--accent-line); }

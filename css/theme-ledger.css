@@ -1,0 +1,161 @@
+/* ==========================================================================
+   THEME SAMPLE — "LEDGER"
+   Applied only to the Academic Integrity course page (body.theme-ledger),
+   loaded AFTER style.css so it can override without touching the base file
+   or any page content. Dark, formal, "case file" look: charcoal-navy
+   background, a muted gold accent, serif headings, bracket-cornered boxes
+   around each artifact — apt for a course about academic integrity.
+
+   This is one of three sample themes — see also theme-magazine.css and
+   theme-dashboard.css. Nothing in the three course pages' HTML content
+   changed to build these; only a stylesheet link + a body class were added.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Spectral:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+body.theme-ledger {
+  --accent:        #c9a227;
+  --accent-dark:   #a3821a;
+  --accent-soft:   #2a2718;
+  --accent-line:   #5c5127;
+
+  --ink:           #e8e4d8;
+  --ink-soft:      #b3ad9c;
+  --ink-faint:     #7d7768;
+
+  --bg:            #14171c;
+  --bg-alt:        #1b1f26;
+  --line:          #2e333c;
+
+  --font-sans: "IBM Plex Mono", "Consolas", monospace;
+  --radius:        0px;
+  --radius-lg:     0px;
+  --shadow-sm: none;
+  --shadow-md: 0 12px 28px rgba(0, 0, 0, 0.45);
+
+  background: var(--bg);
+  color: var(--ink);
+}
+
+body.theme-ledger h1,
+body.theme-ledger h2,
+body.theme-ledger h3,
+body.theme-ledger .brand {
+  font-family: "Spectral", Georgia, serif;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+body.theme-ledger a { color: var(--accent); }
+body.theme-ledger a:hover { color: #e6c65a; }
+
+body.theme-ledger .site-header {
+  background: rgba(20, 23, 28, 0.95);
+  border-bottom: 1px solid var(--accent-line);
+}
+body.theme-ledger .nav-link { color: var(--ink-soft); }
+body.theme-ledger .nav-link:hover { background: var(--accent-soft); color: var(--accent); }
+body.theme-ledger .nav-link.is-active { color: var(--ink); }
+body.theme-ledger .nav-link.is-active::after { background: var(--accent); }
+body.theme-ledger .nav-toggle { border-color: var(--line); color: var(--ink); }
+
+body.theme-ledger .subnav {
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--accent-line);
+}
+body.theme-ledger .subnav-label { color: var(--accent); }
+body.theme-ledger .subnav-link { color: var(--ink-soft); border-radius: 0; }
+body.theme-ledger .subnav-link:hover { background: rgba(201, 162, 39, 0.1); color: var(--accent); }
+body.theme-ledger .subnav-link.is-active {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent-line);
+  box-shadow: none;
+}
+body.theme-ledger .subnav-menu { background: var(--bg-alt); border-color: var(--accent-line); }
+body.theme-ledger .subnav-menu a { color: var(--ink-soft); }
+body.theme-ledger .subnav-menu a:hover { background: var(--accent-soft); color: var(--accent); }
+
+body.theme-ledger .page-head { border-bottom: 1px solid var(--accent-line); }
+body.theme-ledger .page-head .eyebrow {
+  font-family: "IBM Plex Mono", monospace;
+  color: var(--accent);
+}
+body.theme-ledger .page-head .lede { color: var(--ink-soft); }
+
+body.theme-ledger .section--alt {
+  background: var(--bg-alt);
+  border-block-color: var(--line);
+}
+
+body.theme-ledger .chip {
+  border-radius: 0;
+  background: transparent;
+  border: 1px solid var(--accent-line);
+  color: var(--accent);
+}
+
+body.theme-ledger .card {
+  border-radius: 0;
+  background: var(--bg-alt);
+  border: 1px solid var(--line);
+  box-shadow: none;
+}
+body.theme-ledger .card:hover { border-color: var(--accent-line); box-shadow: none; }
+
+/* Artifacts: framed like a case-file exhibit — corner brackets drawn with
+   background gradients, a mono case number instead of a round badge. */
+body.theme-ledger .artifact {
+  position: relative;
+  border-radius: 0;
+  background: var(--bg-alt);
+  border: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+  box-shadow: none;
+  padding: 1.75rem 1.75rem 1.75rem 2rem;
+}
+body.theme-ledger .artifact::before,
+body.theme-ledger .artifact::after {
+  content: "";
+  position: absolute;
+  width: 14px; height: 14px;
+  border: 2px solid var(--accent);
+}
+body.theme-ledger .artifact::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+body.theme-ledger .artifact::after  { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+body.theme-ledger .artifact:hover { box-shadow: none; border-color: var(--accent-line); }
+
+body.theme-ledger .artifact-num {
+  border-radius: 0;
+  background: transparent;
+  border: 1px solid var(--accent-line);
+  color: var(--accent);
+  font-family: "IBM Plex Mono", monospace;
+}
+body.theme-ledger .artifact-kind {
+  font-family: "IBM Plex Mono", monospace;
+  color: var(--accent);
+  letter-spacing: 0.14em;
+}
+body.theme-ledger .artifact-body h3 {
+  font-family: "Spectral", Georgia, serif;
+}
+body.theme-ledger .artifact-body > p:not(.artifact-kind):not(.todo-inline):not(.label):not(.artifact-cite) {
+  color: var(--ink-soft);
+}
+body.theme-ledger .label { color: var(--ink-faint); }
+body.theme-ledger .artifact-body > p.artifact-cite { color: var(--ink-faint); }
+
+body.theme-ledger .btn {
+  border-radius: 0;
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+body.theme-ledger .btn:hover { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+
+body.theme-ledger .site-footer {
+  background: var(--bg-alt);
+  border-top: 1px solid var(--accent-line);
+}
+body.theme-ledger .site-footer p { color: var(--ink-faint); font-family: "IBM Plex Mono", monospace; }
